@@ -1,0 +1,333 @@
+/* SearchFilter Component Styles */
+.search-filter {
+    width: 100%;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+}
+
+/* Main Search Bar */
+.search-filter-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    margin-bottom: 12px;
+}
+
+.search-filter-input {
+    flex: 1;
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    
+    padding: 12px 16px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 0.9rem;
+    
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    
+    outline: none;
+    
+    transition: all 0.2s ease;
+}
+
+.search-filter-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-filter-input:focus {
+    border-color: #00acc1;
+    
+    background: rgba(0, 172, 193, 0.1);
+    
+    box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2);
+}
+
+.search-filter-toggle {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    
+    padding: 10px 16px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    
+    transition: all 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.search-filter-toggle:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.search-filter-toggle.active {
+    border-color: #00acc1;
+    
+    background: rgba(0, 172, 193, 0.2);
+    color: #00acc1;
+}
+
+.search-filter-clear {
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 8px;
+    
+    padding: 10px 14px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 0.85rem;
+    
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+    
+    transition: all 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.search-filter-clear:hover {
+    border-color: rgba(220, 53, 69, 0.5);
+    
+    background: rgba(220, 53, 69, 0.3);
+}
+
+/* Advanced Filters Panel */
+.search-filter-advanced {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    
+    margin-top: 8px;
+    padding: 16px;
+    
+    background: rgba(255, 255, 255, 0.05);
+    
+    animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+    
+    transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateY(0);
+    }
+}
+
+.search-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    
+    margin-bottom: 16px;
+}
+
+.search-filter-row:last-child {
+    margin-bottom: 0;
+}
+
+.search-filter-group {
+    flex: 1;
+    
+    min-width: 200px;
+}
+
+.search-filter-group label {
+    display: block;
+    
+    margin-bottom: 6px;
+    
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    color: #fff;
+}
+
+/* Multi-select checkboxes */
+.search-filter-checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.search-filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    
+    padding: 6px 10px;
+    
+    font-size: 0.8rem;
+    
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    
+    transition: all 0.2s ease;
+    
+    cursor: pointer;
+    user-select: none;
+}
+
+.search-filter-checkbox:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.search-filter-checkbox input {
+    height: 14px;
+    margin: 0;
+    width: 14px;
+}
+
+.search-filter-checkbox.checked {
+    border-color: #00acc1;
+    
+    background: rgba(0, 172, 193, 0.2);
+    color: #00acc1;
+}
+
+/* Range inputs */
+.search-filter-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-filter-range input {
+    flex: 1;
+    
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    
+    padding: 8px 12px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 0.8rem;
+    
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    
+    outline: none;
+    
+    transition: all 0.2s ease;
+}
+
+.search-filter-range input:focus {
+    border-color: #00acc1;
+    
+    background: rgba(0, 172, 193, 0.1);
+}
+
+.search-filter-range input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.search-filter-range-separator {
+    padding: 0 4px;
+    
+    font-size: 0.8rem;
+    
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Active filter indicators */
+.search-filter-active {
+    position: relative;
+}
+
+.search-filter-active::after {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    
+    border: 2px solid #232833;
+    border-radius: 50%;
+    
+    height: 8px;
+    width: 8px;
+    
+    background: #00acc1;
+    
+    content: "";
+}
+
+/* Results counter */
+.search-filter-results {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    
+    margin-top: 12px;
+    padding: 8px 0;
+    
+    font-size: 0.8rem;
+    text-align: center;
+    
+    color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    .search-filter-main {
+        flex-direction: column;
+    gap: 12px;
+    }
+
+    .search-filter-toggle,
+  .search-filter-clear {
+        width: 100%;
+    
+    text-align: center;
+    }
+
+    .search-filter-row {
+        flex-direction: column;
+    gap: 12px;
+    }
+
+    .search-filter-group {
+        min-width: unset;
+    }
+
+    .search-filter-checkbox-group {
+        justify-content: center;
+    }
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+    .search-filter-input,
+  .search-filter-toggle,
+  .search-filter-advanced,
+  .search-filter-checkbox,
+  .search-filter-range input {
+        border-color: rgba(255, 255, 255, 0.1);
+    
+    background: rgba(255, 255, 255, 0.05);
+    }
+
+    .search-filter-input:focus,
+  .search-filter-toggle.active,
+  .search-filter-checkbox.checked,
+  .search-filter-range input:focus {
+        border-color: #00acc1;
+    
+    background: rgba(0, 172, 193, 0.15);
+    }
+}

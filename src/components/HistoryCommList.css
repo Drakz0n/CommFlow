@@ -1,0 +1,115 @@
+/* History Commission List Container */
+.history-comm-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    
+    overflow: hidden;
+    
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* History Commission List Styles */
+.history-comm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 1;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    box-sizing: border-box;
+    height: 100%;
+    max-height: 100%;
+    max-width: 680px;
+    min-height: 0;
+    padding: 20px;
+    width: 100%;
+    
+    scrollbar-color: rgba(76, 175, 80, 0.3)transparent;
+    scrollbar-width: thin;
+}
+
+/* Constrain individual cards within the list */
+.history-comm-list .history-comm-card {
+    flex-shrink: 0;
+    
+    overflow: visible;
+    
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Main scrollbar styling with green theme */
+.history-comm-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-comm-list::-webkit-scrollbar-track {
+    border-radius: 3px;
+    
+    background: transparent;
+}
+
+.history-comm-list::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.history-comm-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(76, 175, 80, 0.5);
+}
+
+@media (max-width: 800px) {
+    .history-comm-container {
+        padding: 0;
+    }
+
+    .history-comm-list {
+        max-width: 100%;
+    padding: 10px;
+    }
+}
+
+/* Empty state styling */
+.history-comm-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    height: 200px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    text-align: center;
+    
+    color: #718096;
+}
+
+.history-comm-empty-icon {
+    margin-bottom: 16px;
+    
+    font-size: 3rem;
+    
+    opacity: 0.5;
+}
+
+.history-comm-empty-text {
+    margin-bottom: 8px;
+    
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.history-comm-empty-subtext {
+    font-size: 0.9rem;
+    
+    opacity: 0.7;
+}

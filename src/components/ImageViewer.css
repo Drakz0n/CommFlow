@@ -1,0 +1,293 @@
+/* Fullscreen overlay creates an immersive viewing experience */
+.image-viewer-overlay {
+    bottom: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99999; /* High z-index ensures overlay appears above all other content */
+    
+    background-color: rgba(0, 0, 0, 0.95); /* Dark backdrop focuses attention on the image */
+    
+    animation: fadeIn 0.3s ease-out; /* Smooth entrance reduces jarring transitions */
+}
+
+/* Enhanced fullscreen mode for maximum image detail viewing */
+.image-viewer-overlay.fullscreen {
+    z-index: 100000; /* Highest priority when in true fullscreen */
+    
+    background-color: rgba(0, 0, 0, 0.98); /* Nearly opaque for pure focus */
+}
+
+/* Gentle fade animation creates professional polish */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Container balances image prominence with interface accessibility */
+.image-viewer-container {
+    display: flex;
+    flex-direction: column;
+    
+    overflow: hidden; /* Prevents content bleeding outside rounded corners */
+    
+    border-radius: 8px; /* Softens the modal appearance */
+    
+    height: 80%; /* Leaves breathing room around the viewer */
+    width: 80%;
+    
+    background: #1a1a1a; /* Dark theme reduces eye strain during image viewing */
+    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Depth helps separate from background */
+}
+
+/* True fullscreen removes all visual barriers for maximum image focus */
+.image-viewer-container.fullscreen {
+    border-radius: 0; /* Edge-to-edge display maximizes viewing area */
+    
+    height: 100vh; /* Full viewport utilization */
+    max-height: none;
+    max-width: none;
+    width: 100vw;
+}
+
+/* Header provides essential context without overwhelming the image */
+.image-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0; /* Maintains consistent header height regardless of content */
+    
+    border-bottom: 1px solid #444; /* Subtle separation from image area */
+    
+    padding: 16px 20px;
+    
+    background: #2d2d2d; /* Slightly lighter than container for visual hierarchy */
+}
+
+/* File information helps users maintain context during navigation */
+.image-viewer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Tight spacing keeps related info visually grouped */
+}
+
+/* Filename display balances readability with space efficiency */
+.image-viewer-title {
+    overflow: hidden; /* Prevents long filenames from breaking layout */
+    
+    max-width: 70%; /* Leaves room for controls on smaller screens */
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-overflow: ellipsis; /* Graceful handling of long names */
+    white-space: nowrap;
+    
+    color: #fff;
+}
+
+/* Counter provides navigation context when viewing multiple images */
+.image-viewer-counter {
+    font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
+    font-size: 0.9rem;
+    
+    color: #718096; /* Muted color indicates secondary importance */
+}
+
+/* Control cluster provides intuitive zoom and navigation without overwhelming the interface */
+.image-viewer-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Comfortable spacing prevents accidental clicks */
+}
+
+/* Zoom level display provides precise feedback for detail work */
+.zoom-level {
+    min-width: 50px; /* Consistent width prevents layout shifts */
+    
+    font-size: 0.9rem;
+    text-align: center;
+    
+    color: #fff;
+}
+
+/* Main content area optimizes space for image display */
+.image-viewer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Takes all available space between header and footer */
+    
+    overflow: hidden; /* Prevents zoomed images from creating scrollbars */
+    
+    position: relative; /* Enables absolute positioning for navigation buttons */
+}
+
+/* Fullscreen content removes padding for maximum image real estate */
+.image-viewer-content.fullscreen {
+    padding: 0;
+}
+
+/* Image container handles zoom transforms and cursor states */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    overflow: hidden; /* Contains zoomed content within bounds */
+    
+    height: 100%;
+    width: 100%;
+    
+    user-select: none; /* Prevents text selection interfering with image interaction */
+}
+
+/* Keep nav-btn classes for the specific navigation positioning */
+
+/* Positioning creates clear directional associations */
+.nav-prev {
+    position: absolute;
+    top: 50%;
+    left: 20px; /* Left side for previous image */
+    transform: translateY(-50%);
+    z-index: 100003;
+}
+
+.nav-next {
+    position: absolute;
+    top: 50%;
+    right: 20px; /* Right side for next image */
+    transform: translateY(-50%);
+    z-index: 100003;
+}
+
+/* Image styling optimizes display quality and interaction feedback */
+.image-viewer-image {
+    border-radius: 4px; /* Subtle rounding softens the presentation */
+    
+    max-height: 100%;
+    max-width: 100%; /* Responsive scaling maintains aspect ratio */
+    
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Gentle depth separates image from background */
+    
+    transition: transform 0.1s ease; /* Smooth zoom transitions feel natural */
+    
+    user-select: none; /* Prevents accidental text selection during interaction */
+    
+    object-fit: contain; /* Preserves aspect ratio within container bounds */
+    -webkit-user-drag: none; /* Prevents browser image dragging conflicts */
+}
+
+/* Fullscreen images get unlimited scaling for maximum detail viewing */
+.image-viewer-image.fullscreen {
+    height: auto;
+    max-height: none; /* Removes constraints for true fullscreen display */
+    max-width: none;
+    width: auto;
+    
+    transform-origin: center; /* Ensures zooming focuses on image center */
+}
+
+/* Footer provides helpful keyboard shortcuts without cluttering the interface */
+.image-viewer-footer {
+    border-top: 1px solid #444; /* Subtle separation from image content */
+    
+    padding: 12px 20px;
+    
+    text-align: center; /* Centered hints feel balanced and professional */
+    
+    background: #2d2d2d; /* Matches header for visual consistency */
+}
+
+/* Hint text guides users toward efficient keyboard navigation */
+.image-viewer-hint {
+    font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
+    font-size: 0.9rem;
+    
+    color: #718096; /* Muted color indicates this is supplementary information */
+}
+
+/* Tablet optimization maintains usability while maximizing screen real estate */
+@media (max-width: 768px) {
+    .image-viewer-container {
+        height: 85%; /* Slightly larger on tablets for better image viewing */
+    width: 95%; /* Leaves minimal margin for backdrop visibility */
+    }
+
+    .image-viewer-header {
+        padding: 12px 16px; /* Reduced padding saves vertical space */
+    }
+
+    .image-viewer-title {
+        max-width: 60%; /* More conservative width leaves room for controls */
+    
+    font-size: 1rem; /* Smaller text fits better on limited screen width */
+    }
+
+    .image-viewer-content {
+        padding: 16px; /* Maintains some breathing room around image */
+    }
+
+    .image-viewer-footer {
+        padding: 8px 16px; /* Compressed footer maximizes image space */
+    }
+
+    .image-viewer-hint {
+        font-size: 0.8rem; /* Smaller hint text fits better on narrow screens */
+    }
+}
+
+/* Mobile optimization prioritizes image viewing over interface elements */
+@media (max-width: 480px) {
+    .image-viewer-container {
+        border-radius: 0; /* Edge-to-edge on small screens maximizes viewing area */
+    
+    height: 100%; /* Full screen utilization on mobile devices */
+    width: 100%;
+    }
+}
+
+/* Fix navigation button colors and positioning for image viewer */
+.image-viewer-content .nav-btn.cf-btn--secondary {
+    background: #ffffff !important;
+    color: #475569 !important;
+    border: 1px solid #718096 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: none !important; /* Remove hover transitions for performance */
+}
+
+.image-viewer-content .nav-btn.cf-btn--secondary:hover:not(:disabled) {
+    /* Minimal hover effect - very subtle */
+    background: #f9fafb !important;
+    color: #475569 !important;
+    border-color: #d1d5db !important;
+    /* Preserve vertical centering on hover */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.image-viewer-content .nav-btn.cf-btn--secondary:disabled {
+    background: rgba(255,255,255,0.5) !important;
+    color: #718096 !important;
+    opacity: 0.6 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}

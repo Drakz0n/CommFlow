@@ -1,0 +1,89 @@
+/* Root container centers content and provides responsive max-width for readability */
+#root {
+    margin: 0 auto;
+    max-width: 1280px; /* Prevents content from becoming too wide on large screens */
+    padding: 2rem;
+    
+    text-align: center; /* Default center alignment for main content */
+}
+
+/* Logo styling with interactive hover effects for brand engagement */
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    
+    transition: filter 300ms; /* Smooth color transition enhances interaction feel */
+    
+    will-change: filter; /* Optimizes performance for frequent hover interactions */
+}
+
+/* Brand color glow effect creates memorable visual feedback */
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa); /* Blue glow matches primary brand color */
+}
+
+/* React logo gets distinctive cyan treatment for technology recognition */
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa); /* React cyan creates tech stack awareness */
+}
+
+/* Continuous rotation animation adds subtle dynamism without distraction */
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Respects user motion preferences while providing engaging animation */
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear; /* Slow rotation feels playful not nauseating */
+    }
+}
+
+/* Card styling provides consistent content grouping */
+.card {
+    padding: 2em; /* Generous padding improves readability and touch targets */
+}
+
+/* Muted text color for supplementary documentation links */
+.read-the-docs {
+    color: #718096; /* Subdued color indicates secondary importance */
+}
+
+/* Custom context menu styles - ensure buttons are blue and text is white */
+.custom-context-menu {
+    /* container fallback if inline styles are removed later */
+    background: #0f1724;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(2,6,23,0.6);
+}
+
+.custom-context-menu .cf-btn {
+    background: #00bcd4; /* brand cyan */
+    color: #ffffff !important; /* force white text */
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.18);
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    text-align: left;
+}
+
+.custom-context-menu .cf-btn:hover:not(:disabled) {
+    background: #00acc1 !important; /* slightly darker on hover */
+    transform: translateY(-1px) !important;
+}
+
+.custom-context-menu .cf-btn:disabled,
+.custom-context-menu .cf-btn:disabled:hover {
+    background: rgba(0,0,0,0.25) !important;
+    color: #718096 !important;
+    opacity: 0.6 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}

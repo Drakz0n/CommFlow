@@ -1,0 +1,550 @@
+/* History Commission Card Styles */
+.history-comm-card {
+    overflow: hidden;
+    
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    
+    font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
+    
+    background: #ffffff;
+    
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    
+    color: #1a1d29;
+}
+
+/* ANIMATION SYSTEM - Only when .animated class is present */
+.history-comm-card.animated {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.history-comm-card.animated:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    
+    transform: translateY(-2px);
+}
+
+.history-comm-card.animated.expanded {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    
+    transform: translateY(-2px);
+}
+
+.history-comm-card.animated .history-comm-header {
+    transition: background-color 0.2s ease;
+}
+
+.history-comm-card.animated .history-comm-header:hover {
+    background-color: rgba(76, 175, 80, 0.04);
+}
+
+.history-comm-card.animated .history-comm-expand-btn svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.history-comm-card.animated .history-comm-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+.history-comm-header {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    
+    border-bottom: none;
+    
+    box-sizing: border-box;
+    min-height: 70px;
+    padding: 18px 20px;
+    width: 100%;
+    
+    cursor: pointer;
+}
+
+.history-comm-card.animated .history-comm-header {
+    transition: background-color 0.2s ease;
+}
+
+.history-comm-card.animated .history-comm-header:hover {
+    background-color: rgba(76, 175, 80, 0.04);
+}
+
+.history-comm-header.expanded-header {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.history-comm-client {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    flex-shrink: 0;
+    
+    min-width: 0;
+}
+
+.history-comm-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    overflow: hidden;
+    
+    border-radius: 50%;
+    
+    height: 44px;
+    width: 44px;
+    
+    background: #f1f5f9;
+}
+
+.client-pfp {
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+.client-pfp-placeholder {
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50%;
+    
+    height: 44px;
+    width: 44px;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    
+    background: #4caf50;
+    
+    box-shadow: 0 3px 6px rgba(76, 175, 80, 0.2);
+    
+    color: white;
+    
+    /* solid */
+  
+  display: flex;
+}
+
+.history-comm-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    flex-shrink: 1;
+    
+    min-width: 0;
+}
+
+.history-comm-client-name {
+    overflow: hidden;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #1a1d29;
+}
+
+.history-comm-client-contact {
+    overflow: hidden;
+    
+    margin-bottom: 2px;
+    
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #388e3c;
+}
+
+.history-comm-type {
+    overflow: hidden;
+    
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #1a1d29;
+}
+
+.history-comm-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+    
+    margin-right: 12px;
+}
+
+.history-comm-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    
+    color: #4caf50;
+}
+
+.history-comm-status {
+    border-radius: 12px;
+    
+    padding: 2px 8px;
+    
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    
+    background: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+}
+
+/* Payment Status Styling */
+.history-comm-payment {
+    border-radius: 6px;
+    
+    padding: 4px 8px;
+    
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.payment-status--not-paid {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.payment-status--half-paid {
+    background: #fef3c7;
+    color: #f59e0b;
+}
+
+.payment-status--fully-paid {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.history-comm-date {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    text-align: right;
+    white-space: nowrap;
+    
+    color: #718096;
+}
+
+.history-comm-expand-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    border: none;
+    border-radius: 8px;
+    
+    padding: 8px;
+    
+    background: none;
+    
+    outline: none;
+    
+    transition: background-color 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.history-comm-expand-btn svg {
+    display: block;
+    
+    height: 20px;
+    width: 20px;
+    
+    color: #1a1d29;
+    
+    fill: #1a1d29;
+}
+
+/* Animation for expand button - only when animated */
+.history-comm-card.animated .history-comm-expand-btn svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.history-comm-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* Action Buttons Container */
+.history-comm-actions {
+    border-top: 1px solid #f1f5f9;
+    
+    margin-top: 16px;
+    padding-top: 16px;
+}
+
+@media (max-width: 768px) {
+    .history-comm-header {
+        flex-wrap: wrap;
+    gap: 8px;
+    
+    padding: 14px 16px;
+    }
+}
+
+.history-comm-expanded-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex-shrink: 1;
+    
+    overflow-y: auto;
+    
+    border-top: 1px solid #f1f5f9;
+    
+    max-height: 350px;
+    padding: 20px;
+    
+    background: #fafbfc;
+}
+
+/* EXPANSION ANIMATION - Working approach using CSS Grid */
+.history-comm-details {
+    display: grid;
+    
+    grid-template-rows: 0fr;
+    
+    overflow: hidden;
+    
+    border-top: none;
+    
+    background: #fafbfc;
+    
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.history-comm-card.animated .history-comm-details {
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.history-comm-card.expanded .history-comm-details {
+    grid-template-rows: 1fr;
+    
+    border-top: 1px solid #f1f5f9;
+}
+
+.history-comm-details > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    min-height: 0;
+    padding: 0 20px;
+    
+    opacity: 0;
+    
+    transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.history-comm-card.animated .history-comm-details > div {
+    transition: opacity 0.3s ease 0.1s, padding 0.3s ease;
+}
+
+.history-comm-card.expanded .history-comm-details > div {
+    padding: 20px;
+    
+    opacity: 1;
+}
+
+.history-comm-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.history-comm-section h4 {
+    border-bottom: 2px solid #4caf50;
+    
+    margin: 0;
+    padding-bottom: 8px;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    
+    color: #1a1d29;
+}
+
+.history-comm-description {
+    margin: 0;
+    
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+    
+    color: #475569;
+}
+
+.history-comm-refs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.history-comm-ref {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    border-radius: 8px;
+    
+    padding: 8px 12px;
+    
+    font-size: 0.9rem;
+    text-decoration: none;
+    
+    background: rgba(76, 175, 80, 0.1);
+    color: #1a1d29;
+    
+    transition: all 0.2s ease;
+}
+
+.history-comm-ref:hover {
+    background: rgba(76, 175, 80, 0.15);
+    
+    transform: translateY(-1px);
+}
+
+.history-comm-ref.text-ref {
+    border-color: rgba(100, 116, 139, 0.2);
+    
+    background: rgba(100, 116, 139, 0.1);
+    color: #718096;
+    
+    cursor: default;
+}
+
+.history-comm-ref.text-ref:hover {
+    background: rgba(100, 116, 139, 0.15);
+    
+    transform: none;
+}
+
+.history-comm-delivery-info {
+    display: grid;
+    gap: 12px;
+    
+    grid-template-columns: 1fr 1fr;
+    
+    border-left: 3px solid #4caf50;
+    border-radius: 8px;
+    
+    padding: 16px;
+    
+    background: rgba(76, 175, 80, 0.05);
+}
+
+.delivery-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.delivery-info-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    color: #718096;
+}
+
+.delivery-info-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    
+    color: #4caf50;
+}
+
+@media (max-width: 600px) {
+    .history-comm-header {
+        flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    
+    padding: 16px;
+    }
+
+    .history-comm-meta {
+        align-items: flex-start;
+    
+    margin-right: 0;
+    width: 100%;
+    }
+
+    .history-comm-expand-btn {
+        align-self: flex-end;
+    
+    margin-top: -40px;
+    }
+
+    .history-comm-delivery-info {
+        grid-template-columns: 1fr;
+    }
+
+    .history-comm-refs {
+        flex-direction: column;
+    }
+}
+
+/* Reference Image Styles */
+.ref-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.ref-image {
+    border: 2px solid #718096;
+    border-radius: 8px;
+    
+    height: 100px;
+    width: 100px;
+    
+    object-fit: cover;
+}
+
+.ref-image.clickable-image {
+    transition: all 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.ref-image.clickable-image:hover {
+    border-color: #00acc1;
+    
+    opacity: 0.8;
+    
+    transform: scale(1.05);
+}
+
+.ref-name {
+    max-width: 100px;
+    
+    font-size: 0.8rem;
+    text-align: center;
+    word-wrap: break-word;
+    
+    color: #718096;
+}

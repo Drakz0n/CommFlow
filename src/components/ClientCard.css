@@ -1,0 +1,477 @@
+/* Client cards balance information density with visual clarity for efficient client management scanning */
+.client-card {
+    overflow: hidden; /* Prevents content from bleeding outside rounded corners during animations */
+    
+    border: 1px solid rgba(0, 0, 0, 0.04); /* Subtle definition without harsh lines */
+    border-left: 4px solid #00acc1; /* Brand accent provides visual cohesion and status indication */
+    border-radius: 16px; /* Generous rounding creates friendly, modern appearance */
+    
+    box-sizing: border-box;
+    width: 100%;
+    
+    font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
+    
+    background: #ffffff; /* Light background ensures readability on dark app theme */
+    
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); /* Gentle elevation separates cards from background */
+    
+    color: #1a1d29; /* High contrast text for accessibility */
+    
+    flex-shrink: 0; /* Prevents card distortion in flexible layouts */
+}
+
+/* Animation enhancement respects user preferences while providing polished interactions */
+.client-card.animated {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions feel responsive without being distracting */
+}
+
+.client-card.animated:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16); /* Enhanced depth on hover draws attention */
+    
+    transform: translateY(-2px); /* Subtle lift creates tactile feedback */
+}
+
+.client-card.animated.expanded {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16); /* Expanded cards maintain elevated appearance */
+    
+    transform: translateY(-2px); /* Consistent positioning for expanded state */
+}
+
+.client-card.animated .client-header {
+    transition: background-color 0.2s ease; /* Smooth header background changes */
+}
+
+.client-card.animated .client-header:hover {
+    background-color: rgba(0, 172, 193, 0.04); /* Subtle tint indicates clickable area */
+}
+
+.client-card.animated .client-expand-btn svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth arrow rotation provides clear visual feedback */
+}
+
+.client-card.animated .client-expand-btn.expanded svg {
+    transform: rotate(180deg); /* 180-degree rotation clearly indicates expanded state */
+}
+
+/* Header provides large click target for intuitive expansion without requiring precise targeting */
+.client-header {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    
+    box-sizing: border-box;
+    padding: 18px 20px; /* Generous padding creates comfortable touch targets */
+    width: 100%;
+    
+    cursor: pointer; /* Clear indication that entire header area is interactive */
+    
+    border-bottom: none; /* Clean separation handled by content styling */
+    
+    min-height: 70px; /* Consistent height prevents layout jumping during content changes */
+}
+
+.client-card.animated .client-header {
+    transition: background-color 0.2s ease; /* Smooth background transitions feel polished */
+}
+
+.client-card.animated .client-header:hover {
+    background-color: rgba(0, 172, 193, 0.04); /* Subtle brand-colored hover state */
+}
+
+.client-header.expanded-header {
+    border-bottom: 1px solid #f1f5f9; /* Visual separation when details are visible */
+}
+
+/* Client information layout optimizes for text truncation within flexible containers */
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 14px; /* Comfortable spacing between avatar and text content */
+    flex: 1;
+    
+    min-width: 0; /* Critical for text ellipsis to function in flex layouts */
+    
+    flex-shrink: 0; /* Prevents information area from collapsing */
+}
+
+/* Avatar design provides consistent visual identity with graceful image handling */
+.client-avatar {
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Maintains fixed size regardless of content */
+    
+    overflow: hidden; /* Ensures circular crop for any image aspect ratio */
+    
+    border-radius: 50%;
+    
+    height: 44px;
+    width: 44px;
+    
+    background: #f1f5f9; /* Neutral background visible when no image is loaded */
+    
+    display: flex;
+}
+
+.client-pfp {
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover; /* Crops images to fit circular frame while maintaining aspect ratio */
+}
+
+/* Initial-based placeholders create personal connection when profile photos aren't available */
+.client-pfp-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50%;
+    
+    height: 44px;
+    width: 44px;
+    
+    font-size: 1.2rem;
+    font-weight: 700; /* Bold text ensures readability within small circular space */
+    
+    background: #00acc1; /* Brand color creates visual consistency */
+    
+    box-shadow: 0 3px 6px rgba(0, 172, 193, 0.2); /* Subtle depth distinguishes from background */
+    
+    color: white; /* High contrast ensures initials are clearly readable */
+}
+
+.client-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    
+    min-width: 0;
+    
+    /* Same flex trick needed here for text truncation */
+  
+  flex-shrink: 1;
+}
+
+/* Client names can get really long,so we truncate them to keep the layout clean
+    while making sure they're visually prominent since that's what users look for first */
+.client-name {
+    overflow: hidden;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #1a1d29;
+}
+
+/* Contact info is secondary but still important,and we keep it on one line
+    to maintain the compact card feel */
+.client-contact {
+    overflow: hidden;
+    
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #007b87;
+}
+
+/* We put key stats on the right because Western readers scan left-to-right
+    so they'll see the name first,then the numbers */
+.client-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+    
+    margin-right: 12px;
+}
+
+/* Green is universally understood as "good" for money/earnings */
+.client-earnings {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    
+    color: #4caf50;
+}
+
+/* The pill shape makes status feel more like a badge than plain text */
+.client-status {
+    border-radius: 12px;
+    
+    padding: 2px 8px;
+    
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    
+    background: rgba(0, 172, 193, 0.1);
+}
+
+.client-commissions {
+    font-size: 0.85rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    
+    color: #718096;
+}
+
+/* We keep the button simple because the arrow rotation already shows what it does
+    and too much styling would distract from the actual content */
+.client-expand-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    border: none;
+    border-radius: 8px;
+    
+    padding: 8px;
+    
+    background: none;
+    
+    outline: none;
+    
+    transition: background-color 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.client-expand-btn svg {
+    display: block;
+    
+    height: 20px;
+    width: 20px;
+    
+    color: #0f172a;
+    
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    fill: #0f172a;
+}
+
+.client-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* We use the grid-rows trick because animating height:auto just doesn't work well
+    this gives us smooth expand/collapse without the animation jank */
+.client-expanded-details {
+    display: grid;
+    
+    grid-template-rows: 0fr;
+    
+    overflow: hidden;
+    
+    /* Important - keeps content from spilling out during animation */
+  
+  background: #fafbfc;
+    
+    /* Just a tiny tint to show it's different from the header */
+  
+  border-top: none;
+    
+    /* Start collapsed */
+  
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.client-card.animated .client-expanded-details {
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.client-card.expanded .client-expanded-details {
+    grid-template-rows: 1fr;
+    
+    background: #f3f5f7;
+    
+    /* Expanded */
+  
+  border-top: 1px solid #f1f5f9;
+}
+
+/* We want the content to fade in after the height settles, not at the same time
+    otherwise it looks too abrupt and unpolished */
+.client-expanded-details > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    min-height: 0;
+    padding: 0 20px;
+    
+    opacity: 0;
+    
+    transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.client-card.animated .client-expanded-details > div {
+    transition: opacity 0.3s ease 0.1s, padding 0.3s ease;
+}
+
+.client-card.expanded .client-expanded-details > div {
+    padding: 20px;
+    
+    opacity: 1;
+}
+
+.client-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* The brand blue accent on section headers helps tie everything together
+    and gives the expanded content some visual structure */
+.client-section h4 {
+    border-bottom: 2px solid #00acc1;
+    
+    margin: 0;
+    padding-bottom: 8px;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    
+    color: #1a1d29;
+}
+
+/* Two columns work well on desktop because people can scan both sides easily
+    but we'll stack them on mobile */
+.client-info-grid {
+    display: grid;
+    gap: 12px;
+    
+    grid-template-columns: 1fr 1fr;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    color: #718096;
+}
+
+.info-value {
+    font-size: 0.95rem;
+    font-weight: 500;
+    
+    color: #0f172a;
+}
+
+/* Notes get special treatment because they're longer text that needs to stand out
+    from the structured data above */
+.client-notes {
+    border-left: 3px solid #00acc1;
+    border-radius: 8px;
+    
+    margin: 0;
+    
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+    
+    background: rgba(0, 172, 193, 0.05);
+    color: #334155;
+    
+    /* Just a hint of color to set it apart */
+  
+  padding: 12px;
+}
+
+/* Keep actions separated so people don't accidentally tap them when scrolling */
+.client-actions {
+    border-top: 1px solid #718096;
+    
+    padding-top: 12px;
+}
+
+@media (max-width: 600px) {
+    .client-header {
+        flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    
+    padding: 16px;
+    }
+
+    .client-meta {
+        align-items: flex-start;
+    
+    margin-right: 0;
+    width: 100%;
+    }
+
+    /* Keep the expand button where people expect it - top right corner */
+  .client-expand-btn {
+        align-self: flex-end;
+    
+    margin-top: -40px;
+    }
+
+    /* Single column is much easier to read on narrow screens */
+  .client-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .client-actions {
+        gap: 8px;
+    }
+}
+
+/* Custom scrollbar styling - purely cosmetic but makes things feel more polished */
+.client-list-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.client-list-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.client-list-content::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    
+    background: #718096;
+}
+
+.client-list-content::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+/* We keep the same background color in both states to avoid any weird flashing */
+.client-expanded-details {
+    background: #f3f5f7;
+}
+
+.client-card.expanded .client-expanded-details {
+    background: #f3f5f7;
+}
+
+/* Text needs a bit more contrast inside the expanded area since the background is lighter */
+.client-expanded-details .info-label {
+    color: #475569;
+}
+
+.client-expanded-details .info-value {
+    color: #0f172a;
+}
+
+.client-expanded-details .client-section h4 {
+    color: #0f172a;
+}

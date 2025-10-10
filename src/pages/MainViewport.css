@@ -1,0 +1,600 @@
+/* Slide Transitions */
+.slide-in-left {
+    animation: slideInLeft 0.3s ease-out forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 0.3s ease-out forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.3s ease-out forwards;
+}
+
+.slide-out-left {
+    animation: slideOutLeft 0.3s ease-out forwards;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.3s ease-out forwards;
+}
+
+.slide-out-down {
+    animation: slideOutDown 0.3s ease-out forwards;
+}
+
+.slide-in-down {
+    animation: slideInDown 0.3s ease-out forwards;
+}
+
+.slide-out-up {
+    animation: slideOutUp 0.3s ease-out forwards;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+    
+    transform: translateX(-100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateX(0);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+    
+    transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translateX(100%);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+    
+    transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateX(0);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+    
+    transform: translateX(0);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translateX(-100%);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+    
+    transform: translateY(-100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateY(0);
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        opacity: 1;
+    
+    transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translateY(100%);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+    
+    transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateY(0);
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        opacity: 1;
+    
+    transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translateY(-100%);
+    }
+}
+
+/* Container for the viewport */
+.viewport-container {
+    bottom: 0;
+    
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    box-sizing: border-box;
+    height: 90vh;
+    margin: auto;
+    max-height: 800px;
+    max-width: 800px;
+    min-height: 320px;
+    min-width: 320px;
+    padding: 0;
+    width: 90vw;
+    
+    background: transparent;
+}
+
+.viewport-box.comm-main {
+    position: relative;
+    
+    border-radius: 0;
+    
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    
+    background: transparent;
+}
+
+/* Top Arrow and Label */
+.comm-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    left: 50%;
+    position: absolute;
+    top: 5px;
+    
+    transform: translateX(-50%);
+}
+
+.comm-arrow-up {
+    height: 32px;
+    margin-bottom: 4px;
+    width: 32px;
+}
+
+.comm-label-top {
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    
+    color: #fff;
+}
+
+/* Left Arrow and Label */
+.comm-left {
+    display: flex;
+    align-items: center;
+    
+    left: 5px;
+    position: absolute;
+    top: 50%;
+    
+    transform: translateY(-50%);
+}
+
+.comm-arrow-left {
+    height: 32px;
+    margin-right: 8px;
+    width: 32px;
+}
+
+.comm-label-left {
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    
+    color: #fff;
+}
+
+/* Right Arrow and Label */
+.comm-right {
+    display: flex;
+    align-items: center;
+    
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    
+    transform: translateY(-50%);
+}
+
+.comm-label-right {
+    margin-right: 8px;
+    
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    
+    color: #fff;
+}
+
+.comm-arrow-right {
+    height: 32px;
+    width: 32px;
+}
+
+/* Bottom Arrow and Label */
+.comm-bottom {
+    bottom: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    left: 50%;
+    position: absolute;
+    
+    transform: translateX(-50%);
+}
+
+.comm-label-bottom {
+    margin-bottom: 4px;
+    
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    
+    color: #fff;
+}
+
+.comm-arrow-down {
+    height: 32px;
+    width: 32px;
+}
+
+/* Center Content */
+.comm-center {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    
+    height: auto;
+    width: 100%;
+    
+    text-align: center;
+    
+    transform: translate(-50%, -50%);
+    
+    will-change: transform, opacity;
+}
+
+/* Animation Classes */
+/* Faster and smoother transitions */
+.slide-in-left {
+    animation: slideInLeft 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-out-left {
+    animation: slideOutLeft 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-in-up {
+    animation: slideInUp 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-out-down {
+    animation: slideOutDown 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-in-down {
+    animation: slideInDown 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+.slide-out-up {
+    animation: slideOutUp 0.05s cubic-bezier(0.4, 0.0, 0.2, 1)forwards;
+}
+
+/* Consistent Slide Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+    
+    transform: translate(-100%, -50%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translate(100%, -50%);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+    
+    transform: translate(100%, -50%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translate(-100%, -50%);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+    
+    transform: translate(-50%, -100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translate(-50%, 100%);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+    
+    transform: translate(-50%, 100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideOutUp {
+    from {
+        opacity: 1;
+    
+    transform: translate(-50%, -50%);
+    }
+
+    to {
+        opacity: 0;
+    
+    transform: translate(-50%, -100%);
+    }
+}
+
+.comm-welcome {
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    
+    color: #f1f5f9;
+}
+
+.comm-user {
+    color: #06b6d4;
+}
+
+.comm-pending {
+    margin-top: 4px;
+    
+    font-size: 1.1rem;
+    
+    color: #718096;
+}
+
+.comm-pending-count {
+    color: #00bcd4;
+}
+
+/* Version and Edit Icon */
+.comm-version {
+    bottom: 16px;
+    left: 24px;
+    position: absolute;
+    
+    font-size: 1rem;
+    
+    color: #06b6d4;
+}
+
+.comm-edit {
+    bottom: 16px;
+    position: absolute;
+    right: 24px;
+    
+    font-size: 1.5rem;
+    
+    color: #f8fafc;
+}
+
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('../assets/fonts/NeverMindHand/NeverMindHand-Variable.ttf') format('truetype');
+}
+
+:root {
+    font-family: 'NeverMindHand', Arial, sans-serif;
+}
+
+html, body {
+    overflow: hidden;
+    
+    height: 100vh;
+    margin: 0;
+    max-height: 100vh;
+    max-width: 100vw;
+    min-height: 320px;
+    min-width: 320px;
+    padding: 0;
+    width: 100vw;
+    
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    
+    background: #232833;
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .viewport-container {
+        height: 98vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    width: 98vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .viewport-container {
+        border-radius: 0;
+    
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    min-height: 0;
+    min-width: 0;
+    width: 100vw;
+    }
+
+    .comm-center {
+        max-width: 98vw;
+    min-width: 0;
+    width: 98vw;
+    }
+
+    .comm-welcome {
+        font-size: 1.2rem;
+    }
+
+    .comm-label-left,
+  .comm-label-right,
+  .comm-label-bottom {
+        font-size: 1rem;
+    }
+
+    .comm-version,
+  .comm-edit {
+        bottom: 1vw;
+    left: 2vw;
+    right: 2vw;
+    
+    font-size: 0.9rem;
+    }
+}
+
+/* Stats Display */
+.stats-display {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #00bcd4;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #718096;
+}

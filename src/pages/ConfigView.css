@@ -1,0 +1,135 @@
+.config-view {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.settings-section {
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    
+    margin-bottom: 20px;
+    padding: 24px;
+    
+    background: var(--card-background);
+}
+
+.settings-section h2 {
+    margin: 0 0 24px 0;
+    
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+    color: var(--text-primary);
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-bottom: 1px solid var(--border-color);
+    
+    padding: 16px 0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-item.user-setting {
+    border-bottom: none;
+    
+    margin-bottom: 10px;
+    padding: 20px 16px;
+}
+
+.setting-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+    cursor: pointer;
+}
+
+.setting-name {
+    font-size: 1rem;
+    font-weight: 500;
+    
+    color: var(--text-primary);
+}
+
+.setting-description {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    
+    color: var(--text-secondary);
+}
+
+.toggle-container {
+    position: relative;
+}
+
+.toggle-input {
+    position: absolute;
+    
+    height: 0;
+    width: 0;
+    
+    opacity: 0;
+}
+
+.toggle-label {
+    display: block;
+    
+    position: relative;
+    
+    border-radius: 14px;
+    
+    height: 28px;
+    width: 52px;
+    
+    background: var(--border-color);
+    
+    transition: background-color 0.3s ease;
+    
+    cursor: pointer;
+}
+
+.toggle-slider {
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    
+    border-radius: 50%;
+    
+    height: 24px;
+    width: 24px;
+    
+    background: white;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    transition: transform 0.3s ease;
+}
+
+.toggle-input:checked + .toggle-label {
+    background: var(--accent-primary);
+}
+
+.toggle-input:checked + .toggle-label .toggle-slider {
+    transform: translateX(24px);
+}
+
+.toggle-label:hover {
+    background: var(--border-color-hover, #4a5568);
+}
+
+.toggle-input:checked + .toggle-label:hover {
+    background: var(--accent-primary-hover, #007acc);
+}
+
+.toggle-input:focus + .toggle-label {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}

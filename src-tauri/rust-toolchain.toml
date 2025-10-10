@@ -1,0 +1,7 @@
+[toolchain]
+channel = "stable"
+# Pre-install both common Windows targets (choose one when building)
+targets = [
+  "x86_64-pc-windows-msvc",
+  "aarch64-pc-windows-msvc"
+]

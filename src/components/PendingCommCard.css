@@ -1,0 +1,518 @@
+/* Pending Commission Card Styles */
+.pending-comm-card {
+    flex-shrink: 0;
+    
+    overflow: hidden;
+    
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 16px;
+    
+    box-sizing: border-box;
+    width: 100%;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    
+    background: #ffffff;
+    
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    
+    color: #1a1d29;
+}
+
+/* ANIMATION SYSTEM - Only when .animated class is present */
+.pending-comm-card.animated {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pending-comm-card.animated:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    
+    transform: translateY(-2px);
+}
+
+.pending-comm-card.animated.expanded {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    
+    transform: translateY(-2px);
+}
+
+.pending-comm-card.animated .pending-comm-header {
+    transition: background-color 0.2s ease;
+}
+
+.pending-comm-card.animated .pending-comm-header:hover {
+    background-color: rgba(59, 130, 246, 0.04);
+}
+
+.pending-comm-card.animated .pending-comm-expand-btn svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pending-comm-card.animated .pending-comm-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* Header Section */
+.pending-comm-header {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    
+    border-bottom: none;
+    
+    box-sizing: border-box;
+    min-height: 70px;
+    padding: 18px 20px;
+    width: 100%;
+    
+    cursor: pointer;
+}
+
+.pending-comm-card.animated .pending-comm-header {
+    transition: background-color 0.2s ease;
+}
+
+.pending-comm-card.animated .pending-comm-header:hover {
+    background-color: rgba(59, 130, 246, 0.04);
+}
+
+.pending-comm-header.expanded-header {
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.pending-comm-client {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    flex-shrink: 0;
+    
+    min-width: 0;
+    
+    background: none;
+    
+    outline: none;
+}
+
+.pending-comm-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    overflow: hidden;
+    
+    border-radius: 50%;
+    
+    height: 44px;
+    width: 44px;
+    
+    background: #f1f5f9;
+}
+
+.client-pfp {
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+.client-pfp-placeholder {
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50%;
+    
+    height: 44px;
+    width: 44px;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    
+    background: #ffb300;
+    
+    box-shadow: 0 3px 6px rgba(255, 179, 0, 0.2);
+    
+    color: white;
+    
+    /* solid */
+  
+  display: flex;
+}
+
+.pending-comm-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    flex-shrink: 1;
+    
+    min-width: 0;
+}
+
+.pending-comm-client-name {
+    overflow: hidden;
+    
+    font-size: 1.1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #1a1d29;
+}
+
+.pending-comm-client-contact {
+    overflow: hidden;
+    
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #718096;
+}
+
+.pending-comm-type {
+    overflow: hidden;
+    
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    color: #1a1d29;
+}
+
+.pending-comm-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.pending-comm-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+    
+    color: #ffb300;
+}
+
+.pending-comm-date {
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    
+    color: #718096;
+}
+
+/* Payment Status Selector */
+.pending-comm-payment {
+    display: flex;
+    align-items: center;
+    
+    margin-top: 4px;
+}
+
+.payment-selector {
+    display: flex;
+    align-items: center;
+    
+    font-size: 0.85rem;
+    
+    color: #718096;
+    
+    cursor: pointer;
+}
+
+.payment-select {
+    border: 1px solid #718096;
+    border-radius: 6px;
+    
+    min-width: 90px;
+    padding: 4px 8px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 0.85rem;
+    
+    background: white;
+    color: #718096;
+    
+    cursor: pointer;
+}
+
+.payment-select:focus {
+    border-color: #ffb300;
+    box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.1);
+    outline: none;
+}
+
+.payment-select option {
+    padding: 4px;
+}
+
+/* Status Badges */
+.pending-comm-status {
+    border-radius: 12px;
+    
+    padding: 4px 10px;
+    
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.pending-comm-status--pending {
+    border: 1px solid #ffcc02;
+    
+    background: #fff8e1;
+    color: #f57c00;
+}
+
+.pending-comm-status--in-progress {
+    border: 1px solid #2196f3;
+    
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.pending-comm-status--finished {
+    border: 1px solid #4caf50;
+    
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+/* Expand Button */
+.pending-comm-expand-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    border: none;
+    
+    height: 24px;
+    width: 24px;
+    
+    background: none;
+    
+    outline: none;
+    
+    transition: transform 0.3s ease;
+    
+    cursor: pointer;
+}
+
+.pending-comm-expand-btn svg {
+    display: block;
+    
+    height: 20px;
+    width: 20px;
+    
+    color: #0f172a;
+    fill: #0f172a;
+    
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pending-comm-expand-btn:hover svg {
+    color: #0f172a;
+    fill: #0f172a;
+}
+
+.pending-comm-expand-btn.expanded svg {
+    transform: rotate(180deg);
+}
+
+/* EXPANSION ANIMATION - Same as HistoryCommCard and ClientCard */
+.pending-comm-details {
+    display: grid;
+    
+    grid-template-rows: 0fr;
+    
+    overflow: hidden;
+    
+    border-top: none;
+    
+    background: #fafbfc;
+    
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pending-comm-card.animated .pending-comm-details {
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pending-comm-card.expanded .pending-comm-details {
+    grid-template-rows: 1fr;
+    
+    border-top: 1px solid #f1f5f9;
+}
+
+.pending-comm-details > div {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    
+    min-height: 0;
+    padding: 0 20px;
+    
+    opacity: 0;
+    
+    transition: opacity 0.3s ease, padding 0.3s ease;
+}
+
+.pending-comm-card.animated .pending-comm-details > div {
+    transition: opacity 0.3s ease 0.1s, padding 0.3s ease;
+}
+
+.pending-comm-card.expanded .pending-comm-details > div {
+    padding: 20px;
+    
+    opacity: 1;
+}
+
+.pending-comm-description h4,
+.pending-comm-refs h4 {
+    flex-shrink: 0;
+    
+    margin: 0 0 6px 0;
+    
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    color: #718096;
+}
+
+.pending-comm-description p {
+    flex-shrink: 0;
+    
+    margin: 0;
+    
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: normal;
+    word-wrap: break-word;
+    
+    color: #475569;
+}
+
+.pending-comm-refs-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.pending-comm-ref {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    overflow: hidden;
+    
+    position: relative;
+    
+    border: 1px solid #718096;
+    border-radius: 8px;
+    
+    height: 80px;
+    max-height: 80px;
+    max-width: 80px;
+    padding: 4px;
+    width: 80px;
+    
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    
+    background: #ffffff;
+    
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    
+    color: #475569;
+    
+    transition: all 0.2s ease;
+}
+
+.pending-comm-ref:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    
+    transform: scale(1.05);
+}
+
+.pending-comm-ref img {
+    border-radius: 4px;
+    
+    height: 100%;
+    width: 100%;
+    
+    object-fit: cover;
+}
+
+.pending-comm-ref img.clickable-image {
+    transition: opacity 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.pending-comm-ref img.clickable-image:hover {
+    opacity: 0.8;
+}
+
+.pending-comm-ref:not(:has(img)) {
+    padding: 8px;
+    
+    line-height: 1.2;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    
+    background: #f1f5f9;
+    
+    /* solid */
+  
+  font-size: 0.7rem;
+}
+
+/* Action Buttons Container */
+.pending-comm-actions {
+    border-top: 1px solid #f1f5f9;
+    
+    padding-top: 16px;
+}
+
+@media (max-width: 768px) {
+    .pending-comm-header {
+        flex-wrap: wrap;
+    gap: 8px;
+    
+    padding: 14px 16px;
+    }
+
+    .pending-comm-client {
+        flex: 1;
+    
+    min-width: 200px;
+    }
+
+    .pending-comm-meta {
+        flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+    }
+
+    .pending-comm-details {
+        padding: 16px;
+    }
+}

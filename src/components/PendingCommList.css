@@ -1,0 +1,233 @@
+/* Parent container for centering */
+.pending-comm-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    
+    overflow: hidden;
+    
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Pending Commission List Styles */
+.pending-comm-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    box-sizing: border-box;
+    max-height: 100%;
+    max-width: 680px;
+    padding: 0 20px;
+    width: 100%;
+    
+    /* CRITICAL: Use the full height of parent */ height: 100%;
+    /* CRITICAL: Allow scrolling to work properly */ min-height: 0;
+    /* CRITICAL: Don't allow this to grow beyond its container */ flex-shrink: 1;
+    scrollbar-color: rgba(0, 172, 193, 0.3)transparent;
+    scrollbar-width: thin;
+}
+
+/* Constrain individual cards within the list */
+.pending-comm-list .pending-comm-card {
+    flex-shrink: 0;
+    
+    box-sizing: border-box;
+    width: 100%;
+    
+    /* CRITICAL: Don't let cards grow the container */ max-height: none;
+    /* Ensure cards don't break the layout */
+  
+  overflow: hidden;
+}
+
+/* Handle expanded cards properly */
+.pending-comm-list .pending-comm-card.expanded {
+    flex-direction: column;
+    flex-shrink: 0;
+    
+    /* CRITICAL: Limit expanded card height to prevent container growth */ max-height: 500px;
+    /* Ensure content is scrollable within the card */
+  
+  overflow: hidden;
+    
+    /* Fixed max height for expanded cards */
+  
+  display: flex;
+}
+
+.pending-comm-list .pending-comm-card.expanded .pending-comm-details {
+    flex: 1;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    min-height: 0;
+    
+    /* Allow scrolling within expanded content */
+  /* Custom scrollbar for card details */
+  scrollbar-width: thin;
+    /* CRITICAL: Make details section scrollable */ max-height: 350px;
+    scrollbar-color: rgba(0, 172, 193, 0.2)transparent;
+}
+
+.pending-comm-list
+  .pending-comm-card.expanded
+  .pending-comm-details::-webkit-scrollbar {
+    width: 4px;
+}
+
+.pending-comm-list
+  .pending-comm-card.expanded
+  .pending-comm-details::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.pending-comm-list
+  .pending-comm-card.expanded
+  .pending-comm-details::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    
+    background: rgba(0, 172, 193, 0.2);
+}
+
+/* Main scrollbar styling */
+.pending-comm-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.pending-comm-list::-webkit-scrollbar-track {
+    border-radius: 3px;
+    
+    background: transparent;
+}
+
+.pending-comm-list::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    
+    background: rgba(0, 172, 193, 0.3);
+}
+
+.pending-comm-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 172, 193, 0.5);
+}
+
+/* Hide native scrollbars but keep scroll behavior (works with wheel/trackpad/keyboard) */
+.pending-comm-list,
+.client-list-content,
+.history-comm-list {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.pending-comm-list::-webkit-scrollbar,
+.client-list-content::-webkit-scrollbar,
+.history-comm-list::-webkit-scrollbar {
+    width: 0; /* Chrome, Safari, Opera */
+    height: 0;
+}
+
+/* Optional: provide a subtle custom thin thumb on hover (uncomment if you want it)
+.pending-comm-list:hover::-webkit-scrollbar-thumb,
+.client-list-content:hover::-webkit-scrollbar-thumb,
+.history-comm-list:hover::-webkit-scrollbar-thumb {
+    width: 6px;
+    background: rgba(0,172,193,0.25);
+    border-radius: 3px;
+}
+*/
+
+/* Loading State */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    height: 200px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    
+    color: #718096;
+}
+
+.loading-spinner {
+    border: 3px solid #718096;
+    border-radius: 50%;
+    border-top: 3px solid #00bcd4;
+    
+    height: 40px;
+    margin-bottom: 16px;
+    width: 40px;
+    
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Empty State */
+.pending-comm-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    height: 200px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    text-align: center;
+    
+    color: #718096;
+}
+
+.pending-comm-empty-icon {
+    margin-bottom: 16px;
+    
+    font-size: 3rem;
+    
+    opacity: 0.5;
+}
+
+.pending-comm-empty-text {
+    margin-bottom: 8px;
+    
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.pending-comm-empty-subtext {
+    font-size: 0.9rem;
+    
+    opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+    .pending-comm-container {
+        padding: 0;
+    }
+
+    .pending-comm-list {
+        max-width: 100%;
+    padding: 0 10px;
+    }
+
+    .pending-comm-list .pending-comm-card.expanded {
+        max-height: 70vh;
+    }
+}

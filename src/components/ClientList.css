@@ -1,0 +1,58 @@
+/* The list needs to take full height and manage overflow properly
+   so we can scroll through lots of clients without breaking the layout */
+.client-list {
+    display: flex;
+    flex-direction: column;
+    
+    overflow: hidden;
+    
+    height: 100%;
+    width: 100%;
+}
+
+/* We want consistent spacing between cards and smooth scrolling */
+.client-list-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
+    overflow-y: auto;
+    
+    height: 100%;
+    padding: 16px 20px;
+    
+    /* Nice breathing room between each client card */
+  
+  box-sizing: border-box;
+}
+
+/* Make the scrollbar prettier than the default ugly browser one */
+.client-list-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.client-list-content::-webkit-scrollbar-track {
+    border-radius: 4px;
+    
+    background: #718096;
+}
+
+.client-list-content::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    
+    background: #718096;
+    
+    transition: background-color 0.2s ease;
+}
+
+.client-list-content::-webkit-scrollbar-thumb:hover {
+    background: #718096;
+}
+
+@media (max-width: 600px) {
+    .client-list-content {
+        gap: 12px;
+    
+    padding: 12px 16px;
+    }
+}

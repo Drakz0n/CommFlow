@@ -1,0 +1,403 @@
+/* Shared component styles provide consistent UI elements across the application */
+@import './components/shared/buttons.css';
+
+/* Load NeverMindHand early so components use it */
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'NeverMindHand';
+    src: url('./assets/fonts/NeverMindHand/ttf/NeverMindHand-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fallback button system ensures functionality even if imports fail */
+.cf-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px; /* Consistent spacing between icon and text */
+    flex-shrink: 0; /* Prevents button distortion in tight layouts */
+    
+    border: none;
+    border-radius: 8px; /* Friendly rounded corners match design language */
+    
+    padding: 8px 16px; /* Comfortable click targets with adequate text spacing */
+    
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600; /* Semi-bold text ensures readability on colored backgrounds */
+    text-decoration: none; /* Clean appearance when used as links */
+    white-space: nowrap; /* Prevents awkward text wrapping in buttons */
+    
+    outline: none; /* Custom focus styles handle accessibility */
+    
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth micro-interactions feel responsive */
+    
+    cursor: pointer;
+}
+
+/* Primary buttons use brand cyan for main actions and calls-to-action */
+.cf-btn--primary {
+    background: #00bcd4; /* Brand cyan creates strong visual hierarchy */
+    
+    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.2); /* Subtle depth reinforces importance */
+    
+    color: white; /* High contrast ensures accessibility */
+}
+
+.cf-btn--primary:hover {
+    background: #00acc1; /* Darker shade confirms interaction */
+    
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3); /* Enhanced shadow adds tactile feedback */
+    
+    transform: translateY(-1px); /* Gentle lift effect feels responsive */
+}
+
+/* Success buttons for positive actions like saving and completing */
+.cf-btn--success {
+    background: #4caf50; /* Green universally signals positive actions */
+    
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+    
+    color: white;
+}
+
+.cf-btn--success:hover {
+    background: #388e3c; /* Darker green maintains color family consistency */
+    
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    
+    transform: translateY(-1px);
+}
+
+/* Warning buttons for potentially risky but reversible actions */
+.cf-btn--warning {
+    background: #ff9800; /* Orange captures attention without panic */
+    
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
+    
+    color: white;
+}
+
+.cf-btn--warning:hover {
+    background: #f57c00; /* Deeper orange increases urgency appropriately */
+    
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+    
+    transform: translateY(-1px);
+}
+
+/* Danger buttons for destructive actions requiring serious consideration */
+.cf-btn--danger {
+    background: #f44336; /* Red universally signals danger and deletion */
+    
+    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+    
+    color: white;
+}
+
+.cf-btn--danger:hover {
+    background: #d32f2f; /* Darker red reinforces the seriousness of the action */
+    
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
+    
+    transform: translateY(-1px);
+}
+
+/* Secondary buttons for supporting actions that need visibility but not dominance */
+.cf-btn--secondary {
+    border: 1px solid #718096; /* Light border provides definition without heaviness */
+    
+    background: #ffffff; /* Clean white background works with any color scheme */
+    
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Minimal shadow maintains button recognition */
+    
+    color: #475569; /* Muted text color indicates secondary importance */
+}
+
+.cf-btn--secondary:hover {
+    border-color: #718096; /* Subtle border darkening shows responsiveness */
+    
+    background: #f8fafc; /* Light tint provides feedback without drama */
+    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow creates tactile feeling */
+    
+    transform: translateY(-1px);
+}
+
+/* Ghost buttons for minimal actions and modal close functionality */
+.cf-btn--ghost {
+    border: 1px solid #3a3f50; /* Dark border matches dark theme aesthetic */
+    
+    background: transparent; /* Transparency keeps focus on other elements */
+    color: #a0a0b0; /* Subdued color indicates optional or dismissive actions */
+}
+
+.cf-btn--ghost:hover {
+    border-color: #ff4757; /* Red border signals destructive or close action */
+    
+    background: #ff4757; /* Full red background clearly indicates purpose */
+    
+    box-shadow: 0 6px 20px rgba(255, 71, 87, .4); /* Strong shadow emphasizes the action */
+    
+    color: #fff; /* White text ensures readability on red background */
+}
+
+/* Button grouping provides consistent spacing and alignment */
+.cf-btn-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on narrow screens */
+    align-items: center;
+    gap: 8px; /* Comfortable spacing prevents accidental clicks */
+}
+
+/* Root typography and color foundation establishes app-wide visual consistency */
+:root {
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.5; /* Comfortable reading rhythm across all text */
+    
+    color: #718096; /* Light text provides good contrast on dark backgrounds */
+    
+    -moz-osx-font-smoothing: grayscale; /* Enhanced text rendering on Mac systems */
+    -webkit-font-smoothing: antialiased; /* Crisp text rendering across browsers */
+    
+    font-synthesis: none; /* Prevents synthetic bold/italic for performance */
+    
+    background-color: #232833; /* Professional dark blue-gray base theme */
+    
+    text-rendering: optimizeLegibility; /* Better spacing and kerning for readability */
+}
+
+/* Ensure NeverMindHand is used app-wide; use !important to override component-specific font-family rules if necessary */
+html, body {
+    font-family: 'NeverMindHand', Arial, sans-serif !important;
+}
+
+/* Animation control system respects user preferences and performance needs */
+.no-animations,
+.no-animations *,
+.no-animations *::before,
+.no-animations *::after {
+    animation-duration: 0.01ms !important; /* Nearly instant but not zero to avoid breaking */
+    animation-iteration-count: 1 !important; /* Single iteration prevents loops */
+    transition-duration: 0.01ms !important; /* Maintains state changes without delay */
+    
+    scroll-behavior: auto !important; /* Immediate scrolling for accessibility */
+}
+
+/* Link styling provides clear interactive elements with brand consistency */
+a {
+    font-weight: 500; /* Slightly heavier weight helps links stand out in text */
+    text-decoration: inherit; /* Inherits decoration based on context */
+    
+    color: #646cff; /* Blue color follows web conventions for links */
+}
+
+a:hover {
+    color: #535bf2; /* Darker blue confirms hover interaction */
+}
+
+/* Body layout creates centered, responsive foundation for the application */
+body {
+    display: flex;
+    
+    margin: 0; /* Reset default margins for consistent cross-browser appearance */
+    min-height: 100vh; /* Full viewport height ensures proper layout */
+    min-width: 320px; /* Minimum width prevents extremely narrow displays */
+    
+    /* Animated checker pattern background with dark base */
+    background-color: #232833;
+    background-image: 
+        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    animation: checkerMove 300s linear infinite;
+    
+    color: #718096; /* Light text for readability on dark background */
+    
+    place-items: center; 
+    
+    position: relative;
+}
+
+/* Slow diagonal movement animation */
+@keyframes checkerMove {
+    from { 
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px; 
+    }
+    to { 
+        background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px; 
+    }
+}
+
+/* Heading typography optimized for impact and hierarchy */
+h1 {
+    font-size: 3.2em; /* Large size creates strong visual hierarchy */
+    line-height: 1.1; /* Tighter line height for large headings improves impact */
+}
+
+/* Base button styling provides consistent interactive elements */
+button {
+    border: 1px solid transparent; /* Transparent border prevents layout shift on hover */
+    border-radius: 8px; /* Consistent with other UI elements */
+    
+    padding: 0.6em 1.2em; /* Comfortable touch targets with adequate text space */
+    
+    font-family: inherit; /* Maintains consistent typography */
+    font-size: 1em;
+    font-weight: 500; /* Medium weight balances readability with emphasis */
+    
+    background-color: #1a1a1a; /* Dark background fits the overall theme */
+    
+    cursor: pointer; /* Clear indication of interactivity */
+}
+
+/* Conditional animation prevents motion for users who prefer reduced motion */
+body:not(.no-animations) button {
+    transition: border-color 0.25s; /* Smooth border transitions when animations are enabled */
+}
+
+button:hover {
+    border-color: #646cff; /* Brand color border on hover creates consistency */
+}
+
+/* Focus states ensure keyboard accessibility */
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color; /* Browser-native focus indication */
+}
+
+/* Brand-consistent link colors provide clear navigation cues */
+a {
+    color: #38bdf8; /* Cyan links match the overall brand color scheme */
+}
+
+a:hover {
+    color: #0ea5e9; /* Darker cyan on hover confirms interaction */
+}
+
+/* Client card styling adapts to light surface with dark text for readability */
+.client-card {
+    color: #0f172a; /* Dark text ensures high contrast on light card backgrounds */
+}
+
+.client-card .client-contact {
+    color: #007b87; /* Teal color for contact info creates visual distinction */
+}
+
+.client-card .info-label {
+    color: #475569; /* Muted color for labels reduces visual noise */
+}
+
+.client-card .info-value {
+    color: #0f172a; /* High contrast for important information */
+}
+
+.client-card .client-section h4 {
+    color: #0f172a; /* Consistent heading color maintains hierarchy */
+}
+
+.client-card .client-notes {
+    color: #334155; /* Slightly muted for longer text blocks */
+}
+
+/* Button color overrides ensure accessibility on light card backgrounds */
+.client-card .cf-btn--primary,
+.client-card .cf-btn--success,
+.client-card .cf-btn--warning,
+.client-card .cf-btn--danger {
+    color: #ffffff !important; /* White text maintains contrast on colored buttons */
+}
+
+/* Outline buttons adapt their text color to the card context */
+.client-card .cf-btn--outline-primary {
+    color: #00acc1; /* Brand color for outline buttons */
+}
+
+.client-card .cf-btn--outline-success {
+    color: #4caf50; /* Green for positive outline actions */
+}
+
+/* Secondary buttons maintain readable colors on light backgrounds */
+.client-card .cf-btn--secondary,
+.client-card .cf-btn--tertiary {
+    color: #475569; /* Dark text for secondary actions */
+}
+
+/* Dark surface text styling ensures readability across commission interfaces */
+.comm-welcome, .comm-user, .comm-label-top, .comm-label-left, .comm-label-right, .comm-label-bottom {
+    color: #f1f5f9; /* Light text for high contrast on dark backgrounds */
+}
+
+.comm-pending {
+    color: #718096; /* Slightly muted for pending states */
+}
+
+/* Main viewport containers use consistent light text on dark surfaces */
+.viewport-container, .viewport-box.comm-main {
+    color: #f1f5f9; /* Light text ensures readability across all content */
+}
+
+/* Dark surface links maintain brand consistency with adequate contrast */
+.viewport-container a {
+    color: #38bdf8; /* Cyan links are visible against dark backgrounds */
+}
+
+.viewport-container a:hover {
+    color: #0ea5e9; /* Darker cyan hover state provides feedback */
+}
+
+/* Utility classes for explicit color control across varied contexts */
+.text-on-dark {
+    color: #f1f5f9 !important; /* Force light text for dark backgrounds */
+}
+
+.text-on-light {
+    color: #0f172a !important; /* Force dark text for light backgrounds */
+}

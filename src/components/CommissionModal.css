@@ -1,0 +1,274 @@
+/* Full screen overlay to focus attention on the modal */
+.commission-modal-overlay {
+    bottom: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+    
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* Dark theme modal that matches the rest of our app design */
+.commission-modal {
+    position: relative;
+    
+    border-radius: 8px;
+    
+    max-height: 90vh;
+    max-width: 600px;
+    width: 90%;
+    
+    background: #2a2f3a;
+    color: #fff;
+    
+    animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    
+    /* Leave breathing room at top and bottom */
+  
+  overflow-y: auto;
+}
+
+/* Smooth entrance animation makes the modal feel polished */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+    
+    transform: translateY(-30px)scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateY(0)scale(1);
+    }
+}
+
+.commission-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-bottom: 1px solid #4a5568;
+    
+    padding: 20px 24px;
+}
+
+.commission-modal-header h2 {
+    margin: 0;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 1.5rem;
+    
+    color: #fff;
+}
+
+.commission-modal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border: none;
+    
+    height: 32px;
+    padding: 0;
+    width: 32px;
+    
+    font-size: 24px;
+    
+    background: none;
+    color: #fff;
+    
+    cursor: pointer;
+}
+
+.commission-modal-close:hover {
+    color: #ff6b6b;
+}
+
+.commission-modal-form {
+    padding: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    
+    margin-bottom: 8px;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-weight: 600;
+    
+    color: #fff;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    border: 1px solid #4a5568;
+    border-radius: 4px;
+    
+    box-sizing: border-box;
+    padding: 12px;
+    width: 100%;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 14px;
+    
+    background: #1e2530;
+    color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #fff;
+    box-shadow: 0 0 0 2px rgba(0, 172, 193, 0.2);
+    outline: none;
+}
+
+.form-group select option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Special styling for select element to ensure visibility */
+.form-group select {
+    padding-right: 40px;
+    
+    background: #1e2530 !important;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http: //www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6, 9 12, 15 18, 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    color: #fff !important;
+    
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    
+}
+
+.reference-upload {
+    margin-bottom: 12px;
+}
+
+.text-reference {
+    display: flex;
+    gap: 8px;
+    
+    margin-bottom: 16px;
+}
+
+.text-reference input {
+    flex: 1;
+    
+    margin-bottom: 0;
+}
+
+.references-list {
+    border: 0px solid #555;
+    border-radius: 4px;
+    
+    padding: 12px;
+    
+    background: #1a1a1a;
+}
+
+.references-list h4 {
+    margin: 0 0 12px 0;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 14px;
+    
+    color: #fff;
+}
+
+.reference-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-radius: 4px;
+    
+    margin-bottom: 8px;
+    padding: 8px;
+    
+    background: #2d2d2d;
+}
+
+.reference-item:last-child {
+    margin-bottom: 0;
+}
+
+.reference-image {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.reference-image img {
+    border: 1px solid #555;
+    border-radius: 4px;
+    
+    height: 40px;
+    width: 40px;
+    
+    object-fit: cover;
+}
+
+.reference-text {
+    flex: 1;
+}
+
+.reference-text span {
+    font-size: 14px;
+    
+    color: #fff;
+}
+
+.commission-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    
+    border-top: 1px solid #444;
+    
+    margin-top: 24px;
+    padding-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .commission-modal {
+        margin: 20px;
+    width: 95%;
+    }
+
+    .commission-modal-header,
+  .commission-modal-form {
+        padding: 16px;
+    }
+
+    .text-reference {
+        flex-direction: column;
+    }
+
+    .commission-modal-actions {
+        flex-direction: column;
+    }
+
+    .commission-modal-actions button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,182 @@
+/* Toast notification system provides unobtrusive user feedback without disrupting workflow */
+.toast-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Comfortable spacing prevents visual collision between multiple toasts */
+    
+    position: fixed;
+    right: 20px; /* Right-side positioning follows common UX patterns */
+    top: 20px; /* Top placement ensures visibility without blocking main content */
+    z-index: 10000; /* High z-index ensures toasts appear above all other content */
+    
+    max-width: 400px; /* Reasonable width prevents toasts from dominating screen space */
+    
+    pointer-events: none; /* Container doesn't intercept clicks, allowing interaction with underlying content */
+}
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Space for optional icons or dismiss buttons */
+    
+    border-left: 4px solid; /* Color-coded border provides quick visual categorization */
+    border-radius: 12px; /* Rounded corners feel friendly and modern */
+    
+    max-width: 400px;
+    min-width: 300px; /* Minimum width ensures consistent appearance */
+    padding: 16px 20px; /* Generous padding improves readability and touch targets */
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500; /* Medium weight ensures readability */
+    word-wrap: break-word; /* Handles long messages gracefully */
+    
+    background: #2a2f3a; /* Dark background provides contrast against light app content */
+    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); /* Strong shadow creates clear separation from background */
+    
+    color: #fff; /* High contrast text for accessibility */
+    
+    animation: toastSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth entrance animation */
+    transition: all 0.2s ease; /* Responsive hover effects */
+    
+    cursor: pointer; /* Indicates toasts are interactive for dismissal */
+    pointer-events: auto; /* Individual toasts can be clicked */
+}
+
+.toast:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover draws attention */
+    
+    transform: translateX(-4px); /* Subtle movement indicates interactivity */
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+    
+    transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateX(0);
+    }
+}
+
+.toast--success {
+    border-left-color: #4caf50;
+    
+    background: #233027;
+}
+
+.toast--error {
+    border-left-color: #f44336;
+    
+    background: #332323;
+}
+
+.toast--warning {
+    border-left-color: #ff9800;
+    
+    background: #332b1f;
+}
+
+.toast--info {
+    border-left-color: #00acc1;
+    
+    background: #232f35;
+}
+
+.toast-icon {
+    flex-shrink: 0;
+    
+    font-size: 1.2rem;
+}
+
+.toast-message {
+    flex: 1;
+    
+    line-height: 1.4;
+}
+
+.toast-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    
+    border: none;
+    border-radius: 4px;
+    
+    height: 24px;
+    padding: 4px;
+    width: 24px;
+    
+    font-size: 1.4rem;
+    
+    background: none;
+    color: #fff;
+    
+    transition: background-color 0.2s ease;
+    
+    cursor: pointer;
+}
+
+.toast-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .toast-container {
+        left: 10px;
+    right: 10px;
+    top: 10px;
+    
+    max-width: none;
+    }
+
+    .toast {
+        max-width: none;
+    min-width: auto;
+    padding: 14px 16px;
+    
+    font-size: 0.85rem;
+    }
+}
+
+
+
+@media (prefers-color-scheme: light) {
+    .toast {
+        background: #ffffff;
+    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    
+    color: #1a1d29;
+    }
+
+    .toast--success {
+        background: #f1f8e9;
+    }
+
+    .toast--error {
+        background: #ffebee;
+    }
+
+    .toast--warning {
+        background: #fff3e0;
+    }
+
+    .toast--info {
+        background: #e0f2f1;
+    }
+
+    .toast-close {
+        color: #1a1d29;
+    }
+
+    .toast-close:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+}

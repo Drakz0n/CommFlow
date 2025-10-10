@@ -1,0 +1,394 @@
+/* Unified button foundation creates consistent interactions across the commission management interface */
+.cf-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px; /* Comfortable spacing for icon-text combinations */
+    flex-shrink: 0; /* Prevents distortion in flexible layouts */
+    
+    overflow: hidden; /* Contains any internal animations or effects */
+    
+    position: relative; /* Enables loading spinners and focus effects */
+    
+    border: none;
+    border-radius: 8px; /* Friendly rounded corners match the app's design language */
+    
+    padding: 8px 16px; /* Generous padding ensures comfortable touch targets */
+    
+    font-family: 'NeverMindHand', 'Roboto', Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600; /* Semi-bold text stands out against colored backgrounds */
+    letter-spacing: .3px; /* Slight spacing improves readability on small buttons */
+    text-decoration: none; /* Clean appearance when used as link elements */
+    white-space: nowrap; /* Prevents awkward text wrapping */
+    
+    background-clip: padding-box; /* Prevents background bleeding outside borders */
+    color: #ffffff; /* Default white text works with most button variants */
+    
+    outline: none; /* Custom focus styles provide better control */
+    
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.18s ease; /* Smooth interactions feel responsive */
+    
+    cursor: pointer;
+}
+
+/* Hover effects provide satisfying tactile feedback for all button interactions */
+.cf-btn:hover:not(:disabled):not(.cf-btn--disabled) {
+    transform: translateY(-2px)scale(1.02); /* Gentle lift and growth indicates responsiveness */
+}
+
+/* Active state provides immediate feedback during click/tap */
+.cf-btn:active:not(:disabled):not(.cf-btn--disabled) {
+    transform: translateY(0)scale(.99); /* Slight compression mimics physical button press */
+}
+
+/* Size variants accommodate different interface contexts and importance levels */
+.cf-btn--small {
+    padding: 6px 12px; /* Compact padding for space-constrained areas */
+    
+    font-size: 0.8rem; /* Smaller text maintains readability while saving space */
+    letter-spacing: .25px;
+}
+
+.cf-btn--large {
+    padding: 12px 20px; /* Extra padding creates prominent call-to-action buttons */
+    
+    font-size: 0.9rem; /* Larger text reinforces importance */
+    letter-spacing: .35px;
+}
+
+/* Primary actions use brand cyan for main commission workflow steps */
+.cf-btn--primary {
+    background: #00bcd4; /* Brand cyan creates strong visual hierarchy for main actions */
+    
+    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.2); /* Subtle depth reinforces importance */
+    
+    color: white; /* High contrast ensures accessibility compliance */
+}
+
+.cf-btn--primary:hover {
+    background: #00acc1; /* Darker shade confirms user interaction */
+    
+    box-shadow: 0 6px 18px rgba(0, 188, 212, .35); /* Enhanced shadow adds tactile quality */
+    
+    transform: translateY(-1px); /* Lift effect feels responsive and engaging */
+}
+
+.cf-btn--primary:active {
+    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.2); /* Returns to base shadow for press feedback */
+    
+    transform: translateY(0); /* Reset transform provides click confirmation */
+}
+
+/* Success actions signal positive outcomes like payment completion and project delivery */
+.cf-btn--success {
+    background: #4caf50; /* Green universally represents success and completion */
+    
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+    
+    color: white;
+}
+
+.cf-btn--success:hover {
+    background: #43a047; /* Darker green maintains color family consistency */
+    
+    box-shadow: 0 6px 18px rgba(76, 175, 80, .35);
+    
+    transform: translateY(-1px);
+}
+
+/* Warning actions indicate attention needed without panic for commission status changes */
+.cf-btn--warning {
+    background: #ff9800; /* Orange captures attention while remaining approachable */
+    
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
+    
+    color: white;
+}
+
+.cf-btn--warning:hover {
+    background: #f57c00; /* Deeper orange reinforces the need for caution */
+    
+    box-shadow: 0 6px 18px rgba(255, 152, 0, .4);
+    
+    transform: translateY(-1px);
+}
+
+/* Danger actions for irreversible operations like deleting clients or commissions */
+.cf-btn--danger {
+    background: #f44336; /* Red universally signals danger and permanent deletion */
+    
+    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+    
+    color: white;
+}
+
+.cf-btn--danger:hover {
+    background: #d32f2f; /* Darker red emphasizes the seriousness of the action */
+    
+    box-shadow: 0 6px 18px rgba(244, 67, 54, .45);
+    
+    transform: translateY(-1px);
+}
+
+/* WARNING ACTIONS -> Orange (In Progress, Pending Review) */
+.cf-btn--warning {
+    background: #ff9800;
+    
+    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
+    
+    /* solid */
+  
+  
+  color: white;
+}
+
+.cf-btn--warning:hover {
+    background: #f57c00;
+    
+    box-shadow: 0 6px 18px rgba(255, 152, 0, .4);
+    
+    /* darker */
+  
+  
+  transform: translateY(-1px);
+}
+
+/* DANGER ACTIONS -> Red (Delete, Cancel, Remove) */
+.cf-btn--danger {
+    background: #f44336;
+    
+    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+    
+    /* solid */
+  
+  
+  color: white;
+}
+
+.cf-btn--danger:hover {
+    background: #d32f2f;
+    
+    box-shadow: 0 6px 18px rgba(244, 67, 54, .45);
+    
+    /* darker */
+  
+  
+  transform: translateY(-1px);
+}
+
+/* Secondary actions provide important functionality without overwhelming primary workflows */
+.cf-btn--secondary {
+    border: 1px solid #718096; /* Light border defines button without competing for attention */
+    
+    background: #ffffff; /* Clean white works well in both light and dark contexts */
+    
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow maintains button recognition */
+    
+    color: #475569; /* Muted color indicates supporting role */
+}
+
+.cf-btn--secondary:hover {
+    border-color: #718096; /* Darker border provides interaction feedback */
+    
+    background: #f8fafc; /* Light tint shows responsiveness */
+    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow creates depth */
+    
+    color: #1e293b; /* Darker text on hover improves readability */
+    
+    transform: translateY(-1px);
+}
+
+/* Tertiary actions for minimal operations like closing dialogs or going back */
+.cf-btn--tertiary {
+    border: 1px solid #718096; /* Minimal border provides structure */
+    
+    background: transparent; /* Transparency keeps focus on more important elements */
+    color: #718096; /* Subdued color suggests optional actions */
+}
+
+.cf-btn--tertiary:hover {
+    border-color: #718096; /* Subtle border change indicates interactivity */
+    
+    background: #f1f5f9; /* Very light background provides gentle feedback */
+    color: #475569;
+}
+
+/* Outline variants provide brand emphasis without the visual weight of filled buttons */
+.cf-btn--outline-primary {
+    border: 2px solid #00bcd4; /* Prominent border creates brand recognition */
+    
+    background: transparent; /* Transparency reduces visual competition */
+    color: #00bcd4; /* Matching text color reinforces brand consistency */
+}
+
+.cf-btn--outline-primary:hover {
+    background: #00bcd4; /* Fill on hover provides clear interaction feedback */
+    
+    box-shadow: 0 6px 18px rgba(0, 188, 212, .35);
+    
+    color: white; /* White text ensures readability on filled background */
+    
+    transform: translateY(-1px);
+}
+
+.cf-btn--outline-success {
+    border: 2px solid #4caf50; /* Green outline for positive actions */
+    
+    background: transparent;
+    color: #4caf50;
+}
+
+.cf-btn--outline-success:hover {
+    background: #4caf50; /* Consistent fill behavior across outline variants */
+    
+    box-shadow: 0 6px 18px rgba(76, 175, 80, .35);
+    
+    color: white;
+    
+    transform: translateY(-1px);
+}
+
+/* Danger outline variant for high-risk actions that need extra consideration */
+.cf-btn--outline-danger {
+    border: 2px solid #f44336; /* Red outline warns of destructive action */
+    
+    background: transparent;
+    color: #f44336;
+}
+
+.cf-btn--outline-danger:hover {
+    background: #f44336; /* Red fill confirms user's intent to proceed */
+    
+    box-shadow: 0 6px 18px rgba(244, 67, 54, .45);
+    
+    color: #fff;
+}
+
+/* Disabled state prevents user interaction during loading or when actions aren't available */
+.cf-btn:disabled,
+.cf-btn--disabled {
+    box-shadow: none !important; /* Removes depth to indicate non-interactive state */
+    
+    opacity: 0.5; /* Clear visual indication that button is unavailable */
+    
+    transform: none !important; /* Prevents hover effects from triggering */
+    
+    cursor: not-allowed; /* Browser cursor reinforces the disabled state */
+}
+
+.cf-btn:disabled:hover,
+.cf-btn--disabled:hover {
+    box-shadow: none; /* Ensures no hover effects when disabled */
+    
+    transform: none; /* Prevents any movement on disabled buttons */
+}
+
+/* Loading state provides user feedback during asynchronous operations */
+.cf-btn--loading {
+    position: relative; /* Enables positioned spinner overlay */
+    
+    pointer-events: none; /* Prevents additional clicks during loading */
+}
+
+.cf-btn--loading::after {
+    position: absolute; /* Overlays spinner on button content */
+    
+    border: 2px solid transparent;
+    border-radius: 50%;
+    border-top-color: currentColor; /* Inherits button text color for visibility */
+    
+    height: 16px;
+    margin: auto;
+    width: 16px;
+    
+    animation: cf-spin 1s linear infinite; /* Continuous rotation indicates activity */
+    
+    content: ''; /* Creates the visual spinner element */
+}
+
+/* Spinner animation provides clear loading feedback */
+@keyframes cf-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg); /* Full rotation creates recognizable loading indicator */
+    }
+}
+
+/* Focus states ensure keyboard accessibility across all button variants */
+.cf-btn:focus,
+.cf-btn:focus-visible {
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.2); /* Brand-colored focus ring for recognition */
+    outline: none; /* Custom focus replaces browser default */
+}
+
+.cf-btn--success:focus {
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2); /* Green focus matches success button color */
+}
+
+.cf-btn--danger:focus {
+    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2); /* Red focus matches danger button color */
+}
+
+.cf-btn--warning:focus {
+    box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2); /* Orange focus matches warning button color */
+}
+
+/* Mobile optimization ensures comfortable touch targets and appropriate sizing */
+@media (max-width: 768px) {
+    .cf-btn {
+        padding: 10px 14px; /* Slightly larger padding for easier touch interaction */
+    
+    font-size: 0.85rem; /* Maintains readability on smaller screens */
+    }
+
+    .cf-btn--small {
+        padding: 8px 12px; /* Proportional adjustment for small variant */
+    
+    font-size: 0.8rem;
+    }
+
+    .cf-btn--large {
+        padding: 14px 18px; /* Enhanced touch targets for important actions */
+    
+    font-size: 0.9rem;
+    }
+}
+
+/* Button grouping systems organize related actions with proper spacing and alignment */
+.cf-btn-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on narrow screens to prevent overflow */
+    align-items: center;
+    gap: 8px; /* Consistent spacing prevents accidental clicks between buttons */
+}
+
+.cf-btn-group--vertical {
+    flex-direction: column; /* Stacks buttons vertically for sidebar or narrow layouts */
+    align-items: stretch; /* Full width buttons in vertical groups */
+}
+
+.cf-btn-group--justified {
+    justify-content: space-between; /* Distributes buttons evenly across available space */
+}
+
+.cf-btn-group--centered {
+    justify-content: center; /* Centers button groups for focused call-to-action areas */
+}
+
+/* Animation control respects user preferences and accessibility needs */
+.no-animations .cf-btn {
+    transition: none !important; /* Disables all transitions for users preferring reduced motion */
+}
+
+.no-animations .cf-btn:hover {
+    transform: none !important; /* Prevents hover transforms when animations are disabled */
+}
+
+.no-animations .cf-btn--loading::after {
+    animation: none !important; /* Stops loading spinner for motion-sensitive users */
+}

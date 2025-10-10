@@ -1,0 +1,305 @@
+/* Sort Modal Styles */
+.sort-modal-overlay {
+    bottom: 0;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+    
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.sort-modal {
+    overflow-y: auto;
+    
+    position: relative;
+    
+    border-radius: 12px;
+    
+    max-height: 85vh;
+    max-width: 480px;
+    width: 90%;
+    
+    font-family: "NeverMindHand", Arial, sans-serif;
+    
+    background: #2a2f3a;
+    color: #fff;
+    
+    animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+    
+    transform: translateY(-30px)scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+    
+    transform: translateY(0)scale(1);
+    }
+}
+
+.sort-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    border-bottom: 1px solid #4a5568;
+    
+    padding: 20px 24px;
+}
+
+.sort-modal-header h2 {
+    margin: 0;
+    
+    font-size: 1.4rem;
+    font-weight: 600;
+    
+    color: #fff;
+}
+
+.sort-modal-content {
+    padding: 24px;
+}
+
+.sort-group {
+    margin-bottom: 28px;
+}
+
+.sort-group:last-child {
+    margin-bottom: 0;
+}
+
+.sort-group label {
+    display: block;
+    
+    margin-bottom: 12px;
+    
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    color: #00bcd4;
+}
+
+/* Sort Options Grid */
+.sort-options {
+    display: grid;
+    gap: 12px;
+    
+    grid-template-columns: 1fr 1fr;
+}
+
+.sort-option {
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    
+    padding: 16px 12px;
+    
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    
+    background: rgba(255, 255, 255, 0.08);
+    
+    transition: all 0.2s ease;
+    
+    cursor: pointer;
+    user-select: none;
+}
+
+.sort-option:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    
+    background: rgba(255, 255, 255, 0.12);
+    
+    transform: translateY(-1px);
+}
+
+.sort-option.active {
+    border-color: #00bcd4;
+    
+    background: rgba(0, 188, 212, 0.2);
+    
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.1);
+    
+    color: #00bcd4;
+}
+
+/* Sort Order Options */
+.sort-order-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sort-order-option {
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    
+    padding: 12px 16px;
+    
+    font-size: 0.9rem;
+    font-weight: 500;
+    
+    background: rgba(255, 255, 255, 0.08);
+    
+    transition: all 0.2s ease;
+    
+    cursor: pointer;
+    user-select: none;
+}
+
+.sort-order-option:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.sort-order-option.active {
+    border-color: #00bcd4;
+    
+    background: rgba(0, 188, 212, 0.2);
+    
+    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.1);
+    
+    color: #00bcd4;
+}
+
+/* Payment Status Info */
+.payment-filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    
+    padding: 16px;
+    
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.payment-status-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    font-size: 0.9rem;
+    
+    color: #718096;
+}
+
+.payment-dot {
+    flex-shrink: 0;
+    
+    border-radius: 50%;
+    
+    height: 12px;
+    width: 12px;
+}
+
+.payment-dot.not-paid {
+    background: #ef4444;
+}
+
+.payment-dot.half-paid {
+    background: #f59e0b;
+}
+
+.payment-dot.fully-paid {
+    background: #10b981;
+}
+
+.payment-info-text {
+    margin: 8px 0 0 0;
+    
+    font-size: 0.8rem;
+    font-style: italic;
+    
+    color: #718096;
+}
+
+/* Payment Priority Toggle */
+.payment-priority-toggle {
+    display: flex;
+    gap: 8px;
+    
+    margin-top: 12px;
+}
+
+/* Modal Actions */
+.sort-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    
+    border-top: 1px solid #4a5568;
+    
+    padding: 20px 24px;
+    
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Sort Button in Views */
+.sort-button {
+    bottom: 20px;
+    left: 40px;
+    position: absolute;
+    z-index: 10;
+}
+
+.sort-button:active {
+    transform: translateY(0);
+}
+
+.sort-button::before {
+    margin-right: 0;
+    
+    content: "";
+}
+
+@media (max-width: 768px) {
+    .sort-modal {
+        max-height: 90vh;
+    width: 95%;
+    }
+
+    .sort-modal-header,
+  .sort-modal-content,
+  .sort-modal-actions {
+        padding: 16px;
+    }
+
+    .sort-options {
+        grid-template-columns: 1fr;
+    }
+
+    .sort-modal-actions {
+        flex-direction: column;
+    }
+
+    .sort-modal-actions button {
+        width: 100%;
+    }
+
+    .sort-button {
+        bottom: 16px;
+    left: 20px;
+    
+    padding: 10px 16px;
+    
+    font-size: 0.85rem;
+    }
+}
