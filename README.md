@@ -9,7 +9,23 @@ A Simple desktop app made for small artists looking to manage their art commissi
 
 ### Windows Installation
 
+#### Deployment (Windows Portable Build)
+
+To generate a portable Windows build locally:
+
+1. Ensure you've run `npm install` at least once (the script will do it automatically if `node_modules/` is missing).
+2. Execute the PowerShell helper:
+
+	```powershell
+	./DeployScripts/Build-WindowsPortable.ps1
+	```
+
+	Use `-SkipRestore` to skip dependency restoration.
+3. The script outputs `deploy-artifacts/CommFlow-portable/` containing the executable, license, and signature file, plus a `CommFlow-portable.zip` ready for use.
+
 #### ⚠️ Please Read! - Why the Security Warning When launching the app?
+
+Currently i cant afford any kind of license.. but that might change in the future but for now -->
 
 - CommFlow is **open source** - you can verify the code yourself
 - The App was made Mainly for my personal use but some friends found it useful, and i bet more will find it useful
