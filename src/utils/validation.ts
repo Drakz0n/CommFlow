@@ -154,7 +154,7 @@ export class SecurityValidator {
   }
 
   // Size limit prevents DoS attacks via large file uploads
-  static validateFileSize(file: File, maxSizeMB: number = 5): boolean {
+  static validateFileSize(file: File, maxSizeMB: number = 25): boolean {
     const maxSizeBytes = maxSizeMB * 1024 * 1024;
     return file.size <= maxSizeBytes;
   }

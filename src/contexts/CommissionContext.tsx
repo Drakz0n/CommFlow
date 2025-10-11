@@ -105,7 +105,7 @@ interface CommissionProviderProps {
 }
 
 export const CommissionProvider: React.FC<CommissionProviderProps> = ({ children }) => {
-  const { updateClientStats } = useClients();
+  const { updateClientStats, getClientById } = useClients();
   const [pendingCommissions, setPending] = useState<PendingCommission[]>([]);
   const [historyCommissions, setHistory] = useState<HistoryCommission[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -114,6 +114,8 @@ export const CommissionProvider: React.FC<CommissionProviderProps> = ({ children
    * Data transformation between storage layer and UI layer.
    * Handles legacy price field migrations and domain mapping complexities.
    */
+
+
   const convertStorageToLocal = useCallback(async (s: StorageCommission): Promise<PendingCommission | HistoryCommission> => {
     // Legacy compatibility: some old records have 'price' instead of 'price_cents'
     const normalized: any = { ...s };
@@ -122,11 +124,14 @@ export const CommissionProvider: React.FC<CommissionProviderProps> = ({ children
     }
     if (normalized.price == null) normalized.price = 0;
     const domain = storageCommissionToDomain(normalized);
-    
+
+    // Properly enrich client information
+    const fullClientInfo = getClientById(domain.client.id) || domain.client;
+
     // Convert from domain format back to UI format for context state
     const base = { 
       id: domain.id, 
-      client: domain.client, 
+      client: fullClientInfo, 
       commType: domain.commType, 
       price: domain.priceCents / 100, 
       description: domain.description, 
@@ -144,7 +149,7 @@ export const CommissionProvider: React.FC<CommissionProviderProps> = ({ children
       }; 
     }
     return { ...base, status: domain.status as 'Pending' | 'In Progress' };
-  }, []);
+  }, [getClientById]); // <-- Depend on getClientById to ensure latest client info
 
   const convertLocalToStorage = useCallback((c: PendingCommission | HistoryCommission): StorageCommission => {
     const domainLike = { 
