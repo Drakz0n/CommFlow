@@ -66,8 +66,8 @@ const EditCommissionModal: React.FC<EditCommissionModalProps> = ({ isOpen, commi
         return;
       }
 
-      if (!SecurityValidator.validateFileSize(file, 5)) {
-        ErrorHandler.showUserError(`File too large: ${file.name}. Maximum size is 5MB.`);
+      if (!SecurityValidator.validateFileSize(file, 25)) {
+        ErrorHandler.showUserError(`File too large: ${file.name}. Maximum size is 25MB.`);
         return;
       }
 

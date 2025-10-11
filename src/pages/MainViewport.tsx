@@ -66,7 +66,7 @@ const MainViewport = () => {
   const [view, setView] = useState<ViewType>('main');
   const [transition, setTransition] = useState<{direction: SlideDirection, nextView: ViewType, type: 'exit' | 'enter'} | null>(null);
   const [displayView, setDisplayView] = useState<ViewType>('main');
-  const [appVersion, setAppVersion] = useState<string>('0.5.0'); // Default fallback
+  const [appVersion, setAppVersion] = useState<string>('0.5.1'); // Default fallback
   const timeoutRef = useRef<number | null>(null);
   const lastSyncRef = useRef<number>(0);
 

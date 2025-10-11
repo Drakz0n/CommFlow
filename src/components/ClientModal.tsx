@@ -109,8 +109,8 @@ const ClientModal: React.FC<ClientModalProps> = ({
         setErrors(prev => ({ ...prev, pfp: 'Please select a valid image file' }));
         return;
       }
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors(prev => ({ ...prev, pfp: 'Image size should be less than 5MB' }));
+      if (file.size > 25 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, pfp: 'Image size should be less than 25MB' }));
         return;
       }
 

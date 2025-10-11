@@ -129,8 +129,8 @@ export class DataManager {
       const historySize = history.length;
       const settingsSize = settings.length;
       
-      // Conservative estimate: most browsers allow 5-10MB
-      const estimatedLimit = 5 * 1024 * 1024;
+      // Even if browser limits vary, 25MB will be enough for most users
+      const estimatedLimit = 25 * 1024 * 1024;
       const usagePercentage = (totalSize / estimatedLimit) * 100;
       
       return {
