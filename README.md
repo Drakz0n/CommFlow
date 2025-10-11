@@ -8,7 +8,7 @@ A Simple desktop app made for small artists looking to manage their art commissi
 ## Quick Start
 
 ### Windows Installation
-v#### Deployment (Windows Portable Build)
+#### Deployment (Windows Portable Build)
 #### Install / Update (Portable Build)
 
 1. Download Latest Release from the release section
