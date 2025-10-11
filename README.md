@@ -8,6 +8,12 @@ A Simple desktop app made for small artists looking to manage their art commissi
 ## Quick Start
 
 ### Windows Installation
+v#### Deployment (Windows Portable Build)
+#### Install / Update (Portable Build)
+
+1. Download Latest Release from the release section
+2. Extract the Zip files in any folder you find more comfy
+3. Every Update you just replace the previous files with the new ones, without touching the data folder you already created !
 
 #### Deployment (Windows Portable Build)
 
