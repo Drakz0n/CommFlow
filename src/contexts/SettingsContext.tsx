@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { BackupManager } from '../utils/backupManager';
+import i18n from '../i18n';
 
 export interface SettingsState {
   animations: boolean;
   userName: string;
+  language: string;
   // Extensible design allows adding new preferences without breaking existing code
 }
 
@@ -31,6 +33,7 @@ export const useSettings = () => {
 const defaultSettings: SettingsState = {
   animations: true,
   userName: 'User',
+  language: 'en',
 };
 
 interface SettingsProviderProps {
@@ -54,6 +57,11 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
         const mergedSettings = { ...defaultSettings, ...savedSettings };
         console.log('SettingsContext: Merged with defaults:', mergedSettings); // Debug logging
         setSettings(mergedSettings);
+        
+        // Sync i18n with loaded language preference
+        if (mergedSettings.language) {
+          i18n.changeLanguage(mergedSettings.language);
+        }
       } else {
         console.log('SettingsContext: No saved settings found, using defaults'); // Debug logging
       }
@@ -84,6 +92,12 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
 
   const updateSettings = (updates: Partial<SettingsState>) => {
     console.log('SettingsContext: updateSettings called with:', updates); // Debug logging
+    
+    // If language is being updated, sync with i18n
+    if (updates.language && updates.language !== settings.language) {
+      i18n.changeLanguage(updates.language);
+    }
+    
     setSettings(prev => {
       const newSettings = { ...prev, ...updates };
       console.log('SettingsContext: New settings state:', newSettings); // Debug logging

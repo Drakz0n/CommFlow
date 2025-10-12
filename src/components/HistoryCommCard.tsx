@@ -4,6 +4,7 @@
  * Essential for freelancers to maintain accurate financial records and project history.
  */
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSettings } from '../contexts/SettingsContext';
 import { useCommissions } from '../contexts/CommissionContext';
 import type { HistoryCommission } from '../contexts/CommissionContext';
@@ -24,6 +25,7 @@ interface HistoryCommCardProps {
 }
 
 const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onToggle }) => {
+  const { t } = useTranslation(['commissions', 'common']);
   const [viewingImageIndex, setViewingImageIndex] = useState<number>(-1);
   const { settings } = useSettings();
   const { markCommissionIncomplete, deleteHistoryCommission, updateHistoryPaymentStatus } = useCommissions();
@@ -42,7 +44,7 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
    * Common scenario: client requests revisions after initial completion.
    */
   const handleMarkIncomplete = () => {
-    if (window.confirm(`Mark this commission as incomplete? It will be moved back to pending.`)) {
+    if (window.confirm(t('commissions:history.markIncomplete'))) {
       markCommissionIncomplete(comm.id);
     }
   };
@@ -52,7 +54,7 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
    * Historical records are valuable for business analytics and tax purposes.
    */
   const handleDelete = () => {
-    if (window.confirm(`Are you sure you want to delete this commission from ${comm.client.name}? This action cannot be undone.`)) {
+    if (window.confirm(t('commissions:history.deleteConfirm', { clientName: comm.client.name }))) {
       deleteHistoryCommission(comm.id);
     }
   };
@@ -63,9 +65,9 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
    */
   const handleMarkPaid = () => {
     const nextStatus = comm.paymentStatus === 'not-paid' ? 'half-paid' : 'fully-paid';
-    const statusText = nextStatus === 'half-paid' ? 'half paid' : 'fully paid';
+    const statusText = nextStatus === 'half-paid' ? t('commissions:history.halfPaid') : t('commissions:history.fullyPaid');
     
-    if (window.confirm(`Mark this commission as ${statusText}?`)) {
+    if (window.confirm(t('commissions:history.markPaidConfirm', { status: statusText }))) {
       updateHistoryPaymentStatus(comm.id, nextStatus);
     }
   };
@@ -99,8 +101,8 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
             {comm.status}
           </span>
           <span className={`history-comm-payment payment-status--${comm.paymentStatus}`}>
-            {comm.paymentStatus === 'not-paid' ? '❌ Not Paid' : 
-             comm.paymentStatus === 'half-paid' ? '⏳ Half Paid' : '✅ Fully Paid'}
+            {comm.paymentStatus === 'not-paid' ? t('commissions:paymentStatus.notPaid') : 
+             comm.paymentStatus === 'half-paid' ? t('commissions:paymentStatus.halfPaid') : t('commissions:paymentStatus.fullyPaid')}
           </span>
           <span className="history-comm-date">{new Date(comm.completedDate).toLocaleDateString()}</span>
         </div>
@@ -120,16 +122,16 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
       <div className="history-comm-details">
         <div>
           <div className="history-comm-section">
-            <h4>Commission Details</h4>
+            <h4>{t('commissions:history.commissionDetails')}</h4>
             <p className="history-comm-description">{comm.description}</p>
             
             <div className="history-comm-timeline">
               <div className="timeline-item">
-                <span className="timeline-label">Started:</span>
+                <span className="timeline-label">{t('commissions:history.started')}</span>
                 <span className="timeline-date">{new Date(comm.originalDate).toLocaleDateString()}</span>
               </div>
               <div className="timeline-item">
-                <span className="timeline-label">Completed:</span>
+                <span className="timeline-label">{t('commissions:history.completed')}</span>
                 <span className="timeline-date">{new Date(comm.completedDate).toLocaleDateString()}</span>
               </div>
             </div>
@@ -137,7 +139,7 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
           
           {comm.refs && comm.refs.filter(ref => ref.type === 'image').length > 0 && (
             <div className="history-comm-section">
-              <h4>References Used</h4>
+              <h4>{t('commissions:history.referencesUsed')}</h4>
               <div className="history-comm-refs">
                 {comm.refs
                   .filter(ref => ref.type === 'image')
@@ -170,20 +172,20 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
                 className="cf-btn cf-btn--success"
                 onClick={handleMarkPaid}
               >
-                {comm.paymentStatus === 'not-paid' ? 'Mark Half Paid ⏳' : 'Mark Fully Paid ✅'}
+                {comm.paymentStatus === 'not-paid' ? t('commissions:history.markHalfPaidBtn') : t('commissions:history.markFullyPaidBtn')}
               </button>
             )}
             <button 
               className="cf-btn cf-btn--warning"
               onClick={handleMarkIncomplete}
             >
-              Mark as Incomplete
+              {t('commissions:history.markIncompleteBtn')}
             </button>
             <button 
               className="cf-btn cf-btn--danger"
               onClick={handleDelete}
             >
-              Delete Commission
+              {t('commissions:history.deleteBtn')}
             </button>
           </div>
         </div>

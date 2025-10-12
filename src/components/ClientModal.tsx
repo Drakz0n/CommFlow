@@ -5,6 +5,7 @@
  */
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import './ClientModal.css';
 import type { Client } from '../contexts/ClientContext';
 import { SecurityValidator } from '../utils/validation';
@@ -26,6 +27,7 @@ const ClientModal: React.FC<ClientModalProps> = ({
   client,
   mode
 }) => {
+  const { t } = useTranslation(['clients', 'common']);
   const [formData, setFormData] = useState({
     name: '',
     contactInfo: '',
@@ -130,13 +132,13 @@ const ClientModal: React.FC<ClientModalProps> = ({
     <div className="client-modal-overlay" onClick={onClose}>
       <div className="client-modal" onClick={(e) => e.stopPropagation()}>
         <div className="client-modal-header">
-          <h2>{mode === 'edit' ? 'Edit Client' : 'Add New Client'}</h2>
+          <h2>{mode === 'edit' ? t('clients:editClient') : t('clients:addClient')}</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="client-modal-form">
           {/* Profile Picture Section */}
           <div className="form-group profile-picture-section">
-            <label>Profile Picture</label>
+            <label>{t('clients:fields.profilePicture')}</label>
             <div className="profile-picture-container">
               <div 
                 className="profile-picture-preview" 
@@ -168,7 +170,7 @@ const ClientModal: React.FC<ClientModalProps> = ({
 
           {/* Client Information */}
           <div className="form-group">
-            <label htmlFor="name">Client Name *</label>
+            <label htmlFor="name">{t('clients:fields.name')} {t('clients:required')}</label>
             <input
               type="text"
               id="name"
@@ -176,7 +178,7 @@ const ClientModal: React.FC<ClientModalProps> = ({
               value={formData.name}
               onChange={handleInputChange}
               className={errors.name ? 'error' : ''}
-              placeholder="Enter client name"
+              placeholder={t('common:placeholders.enterClientName')}
             />
             {errors.name && <span className="error-message">{errors.name}</span>}
           </div>
@@ -184,18 +186,18 @@ const ClientModal: React.FC<ClientModalProps> = ({
           {/* Communication Settings */}
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="communicationPreference">Communication Preference *</label>
+              <label htmlFor="communicationPreference">{t('clients:fields.communicationPreference')} {t('clients:required')}</label>
               <select
                 id="communicationPreference"
                 name="communicationPreference"
                 value={formData.communicationPreference}
                 onChange={handleInputChange}
               >
-                <option value="Discord">Discord</option>
-                <option value="Email">Email</option>
-                <option value="X (Twitter)">X (Twitter)</option>
-                <option value="Bluesky">Bluesky</option>
-                <option value="Instagram">Instagram</option>
+                <option value="Discord">{t('clients:communicationMethods.discord')}</option>
+                <option value="Email">{t('clients:communicationMethods.email')}</option>
+                <option value="X (Twitter)">{t('clients:communicationMethods.twitter')}</option>
+                <option value="Bluesky">{t('clients:communicationMethods.bluesky')}</option>
+                <option value="Instagram">{t('clients:communicationMethods.instagram')}</option>
               </select>
             </div>
 
@@ -220,7 +222,7 @@ const ClientModal: React.FC<ClientModalProps> = ({
                   formData.communicationPreference === 'X (Twitter)' ? '@username' :
                   formData.communicationPreference === 'Bluesky' ? '@username.bsky.social' :
                   formData.communicationPreference === 'Instagram' ? '@username' :
-                  'Enter contact info'
+                  t('common:placeholders.enterContactInfo')
                 }
               />
               {errors.contactInfo && <span className="error-message">{errors.contactInfo}</span>}
@@ -229,23 +231,23 @@ const ClientModal: React.FC<ClientModalProps> = ({
 
           {/* Notes Section */}
           <div className="form-group">
-            <label htmlFor="notes">Notes</label>
+            <label htmlFor="notes">{t('clients:fields.notes')}</label>
             <textarea
               id="notes"
               name="notes"
               value={formData.notes}
               onChange={handleInputChange}
-              placeholder="Add any notes about this client..."
+              placeholder={t('common:placeholders.addNotes')}
               rows={4}
             />
           </div>
 
           <div className="client-modal-actions cf-btn-group">
             <button type="button" onClick={onClose} className="cf-btn cf-btn--secondary">
-              Cancel
+              {t('common:buttons.cancel')}
             </button>
             <button type="submit" className="cf-btn cf-btn--primary">
-              {mode === 'edit' ? 'Update Client' : 'Add Client'}
+              {mode === 'edit' ? t('common:buttons.updateClient') : t('common:buttons.addClient')}
             </button>
           </div>
         </form>

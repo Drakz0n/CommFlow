@@ -1,0 +1,34 @@
+{
+  "title": "Clients",
+  "addClient": "Add Client",
+  "editClient": "Edit Client",
+  "deleteConfirm": "Are you sure you want to delete this client? This action cannot be undone.",
+  "required": "*",
+  "fields": {
+    "name": "Client Name",
+    "contactInfo": "Contact Info",
+    "communicationPreference": "Communication Preference",
+    "notes": "Notes",
+    "profilePicture": "Profile Picture"
+  },
+  "communicationMethods": {
+    "discord": "Discord",
+    "email": "Email",
+    "twitter": "X (Twitter)",
+    "bluesky": "Bluesky",
+    "instagram": "Instagram"
+  },
+  "empty": {
+    "noClients": "No clients yet",
+    "addFirstClient": "Add your first client to get started"
+  },
+  "clientCard": {
+    "noCommissionsYet": "No commissions yet",
+    "deleteConfirm": "Delete {{clientName}}? This cannot be undone.",
+    "removeButton": "Remove Client",
+    "information": "Client Information",
+    "joinDate": "Join Date",
+    "lastCommission": "Last Commission",
+    "communication": "Communication"
+  }
+}

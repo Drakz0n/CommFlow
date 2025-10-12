@@ -1,0 +1,34 @@
+{
+  "title": "Clientes",
+  "addClient": "Agregar Cliente",
+  "editClient": "Editar Cliente",
+  "deleteConfirm": "¿Está seguro de que desea eliminar este cliente? Esta acción no se puede deshacer.",
+  "required": "*",
+  "fields": {
+    "name": "Nombre del Cliente",
+    "contactInfo": "Información de Contacto",
+    "communicationPreference": "Preferencia de Comunicación",
+    "notes": "Notas",
+    "profilePicture": "Foto de Perfil"
+  },
+  "communicationMethods": {
+    "discord": "Discord",
+    "email": "Correo Electrónico",
+    "twitter": "X (Twitter)",
+    "bluesky": "Bluesky",
+    "instagram": "Instagram"
+  },
+  "empty": {
+    "noClients": "Aún no hay clientes",
+    "addFirstClient": "Agrega tu primer cliente para comenzar"
+  },
+  "clientCard": {
+    "noCommissionsYet": "Aún sin comisiones",
+    "deleteConfirm": "¿Eliminar a {{clientName}}? Esto no se puede deshacer.",
+    "removeButton": "Eliminar Cliente",
+    "information": "Información del Cliente",
+    "joinDate": "Fecha de Ingreso",
+    "lastCommission": "Última Comisión",
+    "communication": "Comunicación"
+  }
+}

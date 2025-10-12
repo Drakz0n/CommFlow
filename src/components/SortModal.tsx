@@ -5,6 +5,7 @@
  */
 import React, { useState } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import './SortModal.css';
 
 interface SortModalProps {
@@ -21,6 +22,7 @@ export interface SortOptions {
 }
 
 const SortModal: React.FC<SortModalProps> = ({ isOpen, onClose, onSortChange, currentSort }) => {
+  const { t } = useTranslation(['commissions', 'common']);
   const [tempSort, setTempSort] = useState<SortOptions>(currentSort);
 
   const handleApply = () => {
@@ -39,72 +41,72 @@ const SortModal: React.FC<SortModalProps> = ({ isOpen, onClose, onSortChange, cu
     <div className="sort-modal-overlay">
       <div className="sort-modal">
         <div className="sort-modal-header">
-          <h2>Sort Options</h2>
+          <h2>{t('sort.title')}</h2>
         </div>
 
         <div className="sort-modal-content">
           <div className="sort-group">
-            <label>Sort by:</label>
+            <label>{t('sort.sortBy')}</label>
             <div className="sort-options">
               {/* Visual active state communicates the current choice */}
               <div 
                 className={`sort-option ${tempSort.sortBy === 'date' ? 'active' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, sortBy: 'date' }))}
               >
-                Date
+                {t('sort.fields.date')}
               </div>
               <div 
                 className={`sort-option ${tempSort.sortBy === 'price' ? 'active' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, sortBy: 'price' }))}
               >
-                Price
+                {t('sort.fields.price')}
               </div>
               <div 
                 className={`sort-option ${tempSort.sortBy === 'client' ? 'active' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, sortBy: 'client' }))}
               >
-                Client Name
+                {t('sort.fields.clientName')}
               </div>
               <div 
                 className={`sort-option ${tempSort.sortBy === 'type' ? 'active' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, sortBy: 'type' }))}
               >
-                Commission Type
+                {t('sort.fields.commissionType')}
               </div>
             </div>
           </div>
 
           <div className="sort-group">
-            <label>Order:</label>
+            <label>{t('sort.order')}</label>
             <div className="sort-order-options">
               {/* Use human-friendly labels that adapt to the selected field */}
               <div 
                 className={`sort-order-option ${tempSort.sortOrder === 'desc' ? 'active' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, sortOrder: 'desc' }))}
               >
-                {tempSort.sortBy === 'date' && 'Newest First'}
-                {tempSort.sortBy === 'price' && 'Highest First'}
-                {tempSort.sortBy === 'client' && 'Z to A'}
-                {tempSort.sortBy === 'type' && 'Z to A'}
+                {tempSort.sortBy === 'date' && t('sort.orderLabels.newestFirst')}
+                {tempSort.sortBy === 'price' && t('sort.orderLabels.highestFirst')}
+                {tempSort.sortBy === 'client' && t('sort.orderLabels.zToA')}
+                {tempSort.sortBy === 'type' && t('sort.orderLabels.zToA')}
               </div>
               <div 
                 className={`sort-order-option ${tempSort.sortOrder === 'asc' ? 'active' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, sortOrder: 'asc' }))}
               >
-                {tempSort.sortBy === 'date' && 'Oldest First'}
-                {tempSort.sortBy === 'price' && 'Lowest First'}
-                {tempSort.sortBy === 'client' && 'A to Z'}
-                {tempSort.sortBy === 'type' && 'A to Z'}
+                {tempSort.sortBy === 'date' && t('sort.orderLabels.oldestFirst')}
+                {tempSort.sortBy === 'price' && t('sort.orderLabels.lowestFirst')}
+                {tempSort.sortBy === 'client' && t('sort.orderLabels.aToZ')}
+                {tempSort.sortBy === 'type' && t('sort.orderLabels.aToZ')}
               </div>
             </div>
           </div>
 
           <div className="sort-group">
-            <label>Payment Status:</label>
+            <label>{t('sort.paymentStatus')}</label>
             <div className="payment-filter-options">
-              <div className="payment-status-info"><span className="payment-dot not-paid"></span><span>❌ Not Paid</span></div>
-              <div className="payment-status-info"><span className="payment-dot half-paid"></span><span>⏳ Half Paid</span></div>
-              <div className="payment-status-info"><span className="payment-dot fully-paid"></span><span>✅ Fully Paid</span></div>
+              <div className="payment-status-info"><span className="payment-dot not-paid"></span><span>{t('paymentStatus.notPaid')}</span></div>
+              <div className="payment-status-info"><span className="payment-dot half-paid"></span><span>{t('paymentStatus.halfPaid')}</span></div>
+              <div className="payment-status-info"><span className="payment-dot fully-paid"></span><span>{t('paymentStatus.fullyPaid')}</span></div>
             </div>
             
             <div className="payment-priority-toggle">
@@ -112,27 +114,27 @@ const SortModal: React.FC<SortModalProps> = ({ isOpen, onClose, onSortChange, cu
                 className={`cf-btn cf-btn--secondary cf-btn--small ${tempSort.paymentPriority === 'unpaid-first' ? 'cf-btn--primary' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, paymentPriority: 'unpaid-first' }))}
               >
-                Unpaid First
+                {t('sort.paymentPriority.unpaidFirst')}
               </button>
               <button
                 className={`cf-btn cf-btn--secondary cf-btn--small ${tempSort.paymentPriority === 'paid-first' ? 'cf-btn--primary' : ''}`}
                 onClick={() => setTempSort(prev => ({ ...prev, paymentPriority: 'paid-first' }))}
               >
-                Paid First
+                {t('sort.paymentPriority.paidFirst')}
               </button>
             </div>
             
             <p className="payment-info-text">
               {tempSort.paymentPriority === 'unpaid-first' 
-                ? 'Prioritizes unpaid commissions at the top' 
-                : 'Prioritizes fully paid commissions at the top'}
+                ? t('sort.paymentPriority.unpaidInfo') 
+                : t('sort.paymentPriority.paidInfo')}
             </p>
           </div>
         </div>
 
         <div className="sort-modal-actions">
-          <button className="cf-btn cf-btn--secondary" onClick={handleCancel}>Cancel</button>
-          <button className="cf-btn cf-btn--primary" onClick={handleApply}>Apply Sort</button>
+          <button className="cf-btn cf-btn--secondary" onClick={handleCancel}>{t('common:buttons.cancel')}</button>
+          <button className="cf-btn cf-btn--primary" onClick={handleApply}>{t('sort.applySort')}</button>
         </div>
       </div>
     </div>,

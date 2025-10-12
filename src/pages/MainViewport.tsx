@@ -4,6 +4,7 @@
  * Creates intuitive spatial navigation where users understand which direction takes them where.
  */
 import './MainViewport.css';
+import { useTranslation } from 'react-i18next';
 import ArrowUp from '../assets/icons/arrow-up-s-line.svg?react';
 import ArrowLeft from '../assets/icons/arrow-left-s-line.svg?react';
 import ArrowRight from '../assets/icons/arrow-right-s-line.svg?react';
@@ -39,18 +40,6 @@ const NAV_MAP: Record<ViewType, {
   config:  { up: 'main', down: 'config', left: 'main', right: 'main' },
 };
 
-/**
- * Button labels that show users where each direction will take them.
- * Empty strings hide buttons that don't make logical sense from current view.
- */
-const VIEW_LABELS: Record<ViewType, { top: string; left: string; right: string; bottom: string }> = {
-  main:    { top: 'Clients', left: 'Pending', right: 'Finished', bottom: 'Config' },
-  clients: { top: '', left: '', right: '', bottom: ' ' },
-  pending: { top: '', left: '', right: ' ', bottom: '' },
-  history: { top: '', left: ' ', right: '', bottom: '' },
-  config:  { top: ' ', left: '', right: '', bottom: '' },
-};
-
 function getViewComponent(view: ViewType) {
   switch (view) {
     case 'main': return <MainView />;
@@ -63,6 +52,19 @@ function getViewComponent(view: ViewType) {
 }
 
 const MainViewport = () => {
+  const { t } = useTranslation('dashboard');
+  
+  /**
+   * Button labels that show users where each direction will take them.
+   * Empty strings hide buttons that don't make logical sense from current view.
+   */
+  const VIEW_LABELS: Record<ViewType, { top: string; left: string; right: string; bottom: string }> = {
+    main:    { top: t('navigation.clients'), left: t('navigation.pending'), right: t('navigation.finished'), bottom: t('navigation.config') },
+    clients: { top: '', left: '', right: '', bottom: ' ' },
+    pending: { top: '', left: '', right: ' ', bottom: '' },
+    history: { top: '', left: ' ', right: '', bottom: '' },
+    config:  { top: ' ', left: '', right: '', bottom: '' },
+  };
   const [view, setView] = useState<ViewType>('main');
   const [transition, setTransition] = useState<{direction: SlideDirection, nextView: ViewType, type: 'exit' | 'enter'} | null>(null);
   const [displayView, setDisplayView] = useState<ViewType>('main');

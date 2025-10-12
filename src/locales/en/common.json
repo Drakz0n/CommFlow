@@ -1,0 +1,61 @@
+{
+  "buttons": {
+    "addClient": "Add Client",
+    "updateClient": "Update Client",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "close": "Close",
+    "remove": "Remove"
+  },
+  "labels": {
+    "name": "Name",
+    "clientName": "Client Name",
+    "contactInfo": "Contact Info",
+    "communicationPreference": "Communication Preference",
+    "notes": "Notes",
+    "profilePicture": "Profile Picture",
+    "joinDate": "Join Date",
+    "lastCommission": "Last Commission",
+    "communication": "Communication",
+    "price": "Price",
+    "description": "Description",
+    "references": "References",
+    "commissionType": "Commission Type",
+    "status": "Status",
+    "paymentStatus": "Payment Status",
+    "date": "Date"
+  },
+  "placeholders": {
+    "enterClientName": "Enter client name",
+    "enterContactInfo": "Enter contact information",
+    "addNotes": "Add any notes about this client...",
+    "enterDescription": "Enter commission description...",
+    "addTextReference": "Add text reference..."
+  },
+  "status": {
+    "pending": "Pending",
+    "inProgress": "In Progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "paymentStatus": {
+    "notPaid": "❌ Not Paid",
+    "halfPaid": "⏳ Half Paid",
+    "fullyPaid": "✅ Fully Paid"
+  },
+  "navigation": {
+    "clients": "Clients",
+    "pending": "Pending",
+    "finished": "Finished",
+    "config": "Config"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Invalid email format",
+    "invalidPrice": "Invalid price format",
+    "invalidImage": "Invalid image data"
+  }
+}

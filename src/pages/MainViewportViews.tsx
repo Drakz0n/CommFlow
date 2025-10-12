@@ -3,6 +3,7 @@
  * Each view focuses on specific business workflows: dashboard, client management, project tracking.
  */
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import ClientList from '../components/ClientList';
 import ClientModal from '../components/ClientModal';
 import { useClients } from '../contexts/ClientContext';
@@ -20,12 +21,13 @@ export type ViewType = 'main' | 'clients' | 'pending' | 'history' | 'config';
  * Gives freelancers immediate sense of workload and progress.
  */
 export function MainView() {
+  const { t } = useTranslation(['dashboard', 'common']);
   const stats = useStats();
   const { settings } = useSettings();
   
   return (
     <>
-      <div className="comm-welcome">Welcome <span className="comm-user">{settings.userName}</span><span className="comm-!"> ! </span></div>
+      <div className="comm-welcome">{t('dashboard:welcome')} <span className="comm-user">{settings.userName}</span><span className="comm-!"> ! </span></div>
       
       {/* Quick workload assessment without overwhelming detail */}
       <div style={{ 
@@ -34,11 +36,11 @@ export function MainView() {
         color: '#fff', 
         fontSize: '0.95rem',
       }}>
-        <span style={{ color: '#00acc1', fontWeight: '600' }}>{stats.pendingCommissions} Pending</span>
+        <span style={{ color: '#00acc1', fontWeight: '600' }}>{stats.pendingCommissions} {t('dashboard:stats.pending')}</span>
         <span style={{ margin: '0 15px', color: '#4a5568' }}>•</span>
-        <span style={{ color: '#ff9800', fontWeight: '600' }}>{stats.inProgressCommissions} In Progress</span>
+        <span style={{ color: '#ff9800', fontWeight: '600' }}>{stats.inProgressCommissions} {t('dashboard:stats.inProgress')}</span>
         <span style={{ margin: '0 15px', color: '#4a5568' }}>•</span>
-        <span style={{ color: '#4caf50', fontWeight: '600' }}>{stats.completedCommissions} Completed</span>
+        <span style={{ color: '#4caf50', fontWeight: '600' }}>{stats.completedCommissions} {t('dashboard:stats.completed')}</span>
       </div>
     </>
   );
@@ -49,6 +51,7 @@ export function MainView() {
  * Central hub for managing ongoing business relationships.
  */
 export function ClientsView() {
+  const { t } = useTranslation('clients');
   const { addClient, updateClient } = useClients();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingClient, setEditingClient] = useState<Client | null>(null);
@@ -88,7 +91,7 @@ export function ClientsView() {
         textAlign: 'center',
         flexShrink: 0,
       }}>
-        Clients
+        {t('title')}
       </div>
       
       {/* Container for the list with proper sizing and scrolling */}
@@ -121,7 +124,7 @@ export function ClientsView() {
           className="cf-btn cf-btn--primary"
           onClick={handleAddClient}
         >
-          Add Client
+          {t('addClient')}
         </button>
       </div>
 
@@ -145,6 +148,7 @@ import type { PendingCommission } from '../contexts/CommissionContext';
 import type { SortOptions } from '../components/SortModal';
 
 export function PendingView() {
+  const { t } = useTranslation('commissions');
   const [isCommissionModalOpen, setIsCommissionModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingCommission, setEditingCommission] = useState<PendingCommission | null>(null);
@@ -190,7 +194,7 @@ export function PendingView() {
         textAlign: 'center',
         flexShrink: 0,
       }}>
-        Pending Comms
+        {t('title')}
       </div>
       
       {/* Container for the list with proper sizing and scrolling */}
@@ -214,7 +218,7 @@ export function PendingView() {
         className="cf-btn cf-btn--secondary sort-button"
         onClick={() => setIsSortModalOpen(true)}
       >
-        Sort
+        {t('sortButton')}
       </button>
       
       {/* Add Commission Button - Bottom Right */}
@@ -232,7 +236,7 @@ export function PendingView() {
           className="cf-btn cf-btn--primary"
           onClick={() => setIsCommissionModalOpen(true)}
         >
-          Add Commission
+          {t('addCommission')}
         </button>
       </div>
 
@@ -261,6 +265,7 @@ import HistoryCommList from '../components/HistoryCommList';
 import ExportImportData from '../components/ExportImportData';
 
 export function HistoryView() {
+  const { t } = useTranslation('commissions');
   const { historyCommissions, deleteHistoryCommission } = useCommissions();
   const [isSortModalOpen, setIsSortModalOpen] = useState(false);
   const [sortOptions, setSortOptions] = useState<SortOptions>({
@@ -275,12 +280,12 @@ export function HistoryView() {
   
   const handleArchiveAll = () => {
     if (historyCommissions.length === 0) {
-      alert('No commissions to archive');
+      alert(t('noCommissionsToArchive'));
       return;
     }
     
     const confirmArchive = confirm(
-      `Are you sure you want to archive all ${historyCommissions.length} completed commissions? This will remove them permanently.`
+      t('archiveAllConfirm', { count: historyCommissions.length })
     );
     
     if (confirmArchive) {
@@ -312,7 +317,7 @@ export function HistoryView() {
         textAlign: 'center',
         flexShrink: 0,
       }}>
-        History
+        {t('historyTitle')}
       </div>
       
       {/* Container for the list with proper sizing and scrolling */}
@@ -333,7 +338,7 @@ export function HistoryView() {
         className="cf-btn cf-btn--secondary sort-button"
         onClick={() => setIsSortModalOpen(true)}
       >
-        Sort
+        {t('sortButton')}
       </button>
       
       {/* Archive Button - Bottom Right */}
@@ -351,7 +356,7 @@ export function HistoryView() {
           className="cf-btn cf-btn--secondary"
           onClick={handleArchiveAll}
         >
-          Archive All ({historyCommissions.length})
+          {t('archiveAll', { count: historyCommissions.length })}
         </button>
       </div>
       
@@ -366,6 +371,7 @@ export function HistoryView() {
 }
 
 export const ConfigView = () => {
+  const { t } = useTranslation('config');
   const { settings, updateSettings } = useSettings();
   const [isExportImportOpen, setIsExportImportOpen] = useState(false);
   const [localUserName, setLocalUserName] = useState(settings.userName);
@@ -417,14 +423,14 @@ export const ConfigView = () => {
   return (
     <div className="config-view">
       <div className="settings-section">
-        <h2>Settings</h2>
+        <h2>{t('title')}</h2>
         
         {/* User Name Setting - First and separated */}
         <div className="setting-item user-setting">
           <label className="setting-label">
-            <span className="setting-name">Display Name</span>
+            <span className="setting-name">{t('settings.displayName')}</span>
             <span className="setting-description">
-              Your name shown on the main welcome screen
+              {t('settings.displayNameDescription')}
             </span>
           </label>
           <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -432,7 +438,7 @@ export const ConfigView = () => {
               type="text"
               value={localUserName}
               onChange={handleUserNameChange}
-              placeholder="Enter your name"
+              placeholder={t('settings.displayNamePlaceholder')}
               style={{
                 background: '#2d3748',
                 border: '1px solid #4a5568',
@@ -449,7 +455,7 @@ export const ConfigView = () => {
               onClick={handleSaveUserName}
               disabled={!localUserName.trim() || (!hasUnsavedChanges && localUserName === settings.userName)}
             >
-              Save
+              {t('settings.save')}
             </button>
           </div>
         </div>
@@ -461,11 +467,39 @@ export const ConfigView = () => {
           margin: '30px 0 20px 0' 
         }} />
         
+        {/* Language Selection */}
         <div className="setting-item">
           <label className="setting-label">
-            <span className="setting-name">Enable Animations</span>
+            <span className="setting-name">{t('settings.language')}</span>
             <span className="setting-description">
-              Smooth transitions when expanding cards and navigating
+              {t('settings.languageDescription')}
+            </span>
+          </label>
+          <select
+            value={settings.language}
+            onChange={(e) => updateSettings({ language: e.target.value })}
+            style={{
+              background: '#2d3748',
+              border: '1px solid #4a5568',
+              borderRadius: '4px',
+              color: '#fff',
+              padding: '8px 12px',
+              fontSize: '0.9rem',
+              width: '200px',
+              maxWidth: '100%',
+              cursor: 'pointer',
+            }}
+          >
+            <option value="en">English</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+        
+        <div className="setting-item">
+          <label className="setting-label">
+            <span className="setting-name">{t('settings.animations')}</span>
+            <span className="setting-description">
+              {t('settings.animationsDescription')}
             </span>
           </label>
           <div className="toggle-container">
@@ -485,9 +519,9 @@ export const ConfigView = () => {
         {/* Export/Import Data Section */}
         <div className="setting-item">
           <label className="setting-label">
-            <span className="setting-name">Manage Data</span>
+            <span className="setting-name">{t('dataManagement.title')}</span>
             <span className="setting-description">
-              Check data directory to export or import data, or delete all data.
+              {t('dataManagement.description')}
             </span>
           </label>
           <button 
@@ -495,7 +529,7 @@ export const ConfigView = () => {
             onClick={openExportImport}
             style={undefined}
           >
-            Manage Data
+            {t('dataManagement.button')}
           </button>
         </div>
       </div>
