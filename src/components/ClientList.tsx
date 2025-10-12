@@ -3,6 +3,7 @@
  * Central hub for adding, editing, and viewing client information with expandable details.
  */
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ClientCard from './ClientCard';
 import ClientModal from './ClientModal';
 import './ClientList.css';
@@ -10,6 +11,7 @@ import { useClients } from '../contexts/ClientContext';
 import type { Client } from '../contexts/ClientContext';
 
 const ClientList: React.FC = () => {
+  const { t } = useTranslation('clients');
   const { clients, addClient, updateClient, deleteClient } = useClients();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingClient, setEditingClient] = useState<Client | null>(null);
@@ -57,10 +59,10 @@ const ClientList: React.FC = () => {
           }}>
             <div style={{ fontSize: '2rem', marginBottom: '16px' }}>👥</div>
             <div style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px' }}>
-              No clients yet
+              {t('empty.noClients')}
             </div>
             <div style={{ fontSize: '0.9rem' }}>
-              Add your first client to get started
+              {t('empty.addFirstClient')}
             </div>
           </div>
         </div>

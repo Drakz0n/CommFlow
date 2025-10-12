@@ -1,0 +1,117 @@
+{
+  "title": "Pending Comms",
+  "historyTitle": "History",
+  "addCommission": "Add Commission",
+  "editCommission": "Edit Commission",
+  "sortButton": "Sort",
+  "archiveAll": "Archive All ({{count}})",
+  "archiveAllConfirm": "Are you sure you want to archive all {{count}} completed commissions? This will remove them permanently.",
+  "noCommissionsToArchive": "No commissions to archive",
+  "pendingCommissions": "Pending Comms",
+  "finishedCommissions": "Finished Comms",
+  "markComplete": "Mark commission from {{clientName}} as complete?",
+  "cancelCommission": "Are you sure you want to cancel the commission from {{clientName}}? This action cannot be undone.",
+  "required": "*",
+  "referencesCount": "References ({{count}}):",
+  "fields": {
+    "client": "Client",
+    "commissionType": "Commission Type",
+    "price": "Price",
+    "description": "Description",
+    "references": "References"
+  },
+  "placeholders": {
+    "selectClient": "Select a client...",
+    "commissionType": "e.g., Character Design, Logo Design, Portrait...",
+    "description": "Additional details about the commission...",
+    "textReference": "Add text reference..."
+  },
+  "buttons": {
+    "uploadImages": "Upload Images",
+    "addText": "Add Text",
+    "addCommission": "Add Commission",
+    "updateCommission": "Update Commission"
+  },
+  "errors": {
+    "fillRequired": "Please fill in all required fields",
+    "invalidPrice": "Invalid price",
+    "commTypeTooShort": "Commission type must be at least 3 characters long",
+    "selectValidClient": "Please select a valid client",
+    "invalidFileType": "Invalid file type: {{fileName}}. Only JPEG, PNG, GIF, and WebP images are allowed.",
+    "fileTooLarge": "File too large: {{fileName}}. Maximum size is 25MB.",
+    "invalidImageData": "Invalid image data: {{fileName}}. The image may be corrupted or too large."
+  },
+  "actions": {
+    "markComplete": "Mark Complete",
+    "markInProgress": "Mark In Progress",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "editDetails": "Edit Details",
+    "cancelCommission": "Cancel Commission"
+  },
+  "status": {
+    "pending": "Pending",
+    "inProgress": "In Progress",
+    "completed": "Completed"
+  },
+  "paymentStatus": {
+    "notPaid": "❌ Not Paid",
+    "halfPaid": "⏳ Half Paid",
+    "fullyPaid": "✅ Fully Paid"
+  },
+  "tooltips": {
+    "markComplete": "Mark as Complete",
+    "markInProgress": "Mark as In Progress",
+    "markInProgressFirst": "Must mark as In Progress first",
+    "alreadyInProgress": "Already in progress"
+  },
+  "history": {
+    "commissionDetails": "Commission Details",
+    "started": "Started:",
+    "completed": "Completed:",
+    "referencesUsed": "References Used",
+    "markIncomplete": "Mark this commission as incomplete? It will be moved back to pending.",
+    "deleteConfirm": "Are you sure you want to delete this commission from {{clientName}}? This action cannot be undone.",
+    "markPaidConfirm": "Mark this commission as {{status}}?",
+    "halfPaid": "half paid",
+    "fullyPaid": "fully paid",
+    "markHalfPaidBtn": "Mark Half Paid ⏳",
+    "markFullyPaidBtn": "Mark Fully Paid ✅",
+    "markIncompleteBtn": "Mark as Incomplete",
+    "deleteBtn": "Delete Commission"
+  },
+  "sort": {
+    "title": "Sort Options",
+    "sortBy": "Sort by:",
+    "order": "Order:",
+    "paymentStatus": "Payment Status:",
+    "fields": {
+      "date": "Date",
+      "price": "Price",
+      "clientName": "Client Name",
+      "commissionType": "Commission Type"
+    },
+    "orderLabels": {
+      "newestFirst": "Newest First",
+      "oldestFirst": "Oldest First",
+      "highestFirst": "Highest First",
+      "lowestFirst": "Lowest First",
+      "zToA": "Z to A",
+      "aToZ": "A to Z"
+    },
+    "paymentPriority": {
+      "unpaidFirst": "Unpaid First",
+      "paidFirst": "Paid First",
+      "unpaidInfo": "Prioritizes unpaid commissions at the top",
+      "paidInfo": "Prioritizes fully paid commissions at the top"
+    },
+    "applySort": "Apply Sort"
+  },
+  "empty": {
+    "noPending": "No pending commissions",
+    "pendingSubtext": "Completed commissions will move to the history tab",
+    "noHistory": "No completed commissions yet",
+    "historySubtext": "Completed commissions will appear here"
+  },
+  "loading": "Loading commissions..."
+}

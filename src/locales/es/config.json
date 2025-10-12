@@ -1,0 +1,31 @@
+{
+  "title": "Configuración",
+  "settings": {
+    "displayName": "Nombre para Mostrar",
+    "displayNameDescription": "Tu nombre mostrado en la pantalla de bienvenida principal",
+    "displayNamePlaceholder": "Ingresa tu nombre",
+    "save": "Guardar",
+    "animations": "Habilitar Animaciones",
+    "animationsDescription": "Transiciones suaves al expandir tarjetas y navegar",
+    "language": "Language / Idioma",
+    "languageDescription": "Selecciona tu idioma preferido"
+  },
+  "dataManagement": {
+    "title": "Gestionar Datos",
+    "description": "Consulta el directorio de datos para exportar o importar datos, o eliminar todos los datos.",
+    "button": "Gestionar Datos",
+    "deleteAllConfirm": "¿Eliminar TODOS los clientes y comisiones? Esto no se puede deshacer.",
+    "modal": {
+      "title": "Datos",
+      "close": "Cerrar",
+      "directoryLabel": "Directorio",
+      "unavailable": "No disponible",
+      "openFolder": "Abrir Carpeta",
+      "deleteAll": "Eliminar Todo",
+      "openingDirectory": "Abriendo directorio de datos: {{dir}}",
+      "failedToLocate": "No se pudo localizar el directorio de datos",
+      "manualDeleteMessage": "Por favor, elimine manualmente los archivos dentro del directorio de datos hasta que se implemente un comando de eliminación masiva.",
+      "failedToDelete": "No se pudieron eliminar los datos"
+    }
+  }
+}

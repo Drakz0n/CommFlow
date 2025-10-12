@@ -1,0 +1,14 @@
+{
+  "welcome": "Bienvenido",
+  "stats": {
+    "pending": "Pendientes",
+    "inProgress": "En Progreso",
+    "completed": "Completadas"
+  },
+  "navigation": {
+    "clients": "Clientes",
+    "pending": "Pendientes",
+    "finished": "Finalizadas",
+    "config": "Configuración"
+  }
+}

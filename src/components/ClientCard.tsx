@@ -4,6 +4,7 @@
  * Parent controls expanded state via props; animations are toggled via settings.
  */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSettings } from '../contexts/SettingsContext';
 import './ClientCard.css';
 import ArrowDown from '../assets/icons/arrow-down-s-line.svg?react';
@@ -22,6 +23,7 @@ interface ClientCardProps {
 }
 
 const ClientCard: React.FC<ClientCardProps> = ({ client, onEdit, onDelete, isExpanded, onToggle }) => {
+  const { t } = useTranslation('clients');
   const { settings } = useSettings();
 
   // Keep toggle logic simple and predictable; parent decides which card is open
@@ -80,20 +82,20 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onEdit, onDelete, isExp
       <div className="client-expanded-details">
         <div>
           <div className="client-section">
-            <h4>Client Information</h4>
+            <h4>{t('clientCard.information')}</h4>
             <div className="client-info-grid">
               <div className="info-item">
-                <span className="info-label">Join Date</span>
+                <span className="info-label">{t('clientCard.joinDate')}</span>
                 <span className="info-value">{new Date(client.joinDate).toLocaleDateString()}</span>
               </div>
               <div className="info-item">
-                <span className="info-label">Last Commission</span>
+                <span className="info-label">{t('clientCard.lastCommission')}</span>
                 <span className="info-value">
-                  {client.lastCommission ? new Date(client.lastCommission).toLocaleDateString() : 'No commissions yet'}
+                  {client.lastCommission ? new Date(client.lastCommission).toLocaleDateString() : t('clientCard.noCommissionsYet')}
                 </span>
               </div>
               <div className="info-item">
-                <span className="info-label">Communication</span>
+                <span className="info-label">{t('clientCard.communication')}</span>
                 <span className="info-value">{client.communicationPreference}</span>
               </div>
             </div>
@@ -111,18 +113,18 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onEdit, onDelete, isExp
               className="cf-btn cf-btn--danger"
               onClick={() => {
                                 // Confirm destructive actions to prevent accidental data loss
-                if (window.confirm(`Delete ${client.name}? This cannot be undone.`)) {
+                if (window.confirm(t('clientCard.deleteConfirm', { clientName: client.name }))) {
                   onDelete(client.id);
                 }
               }}
             >
-              Remove Client
+              {t('clientCard.removeButton')}
             </button>
             <button 
               className="cf-btn cf-btn--primary"
               onClick={() => onEdit(client)}
             >
-              Edit Client
+              {t('clientCard.editButton')}
             </button>
           </div>
         </div>

@@ -1,11 +1,11 @@
 /**
  * CommissionModal
- * Add a new p  // Support multiple image uploads with security checks; store as data URLs for portability
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {ding commission with basic validation and optional references.
+ * Add a new pending commission with basic validation and optional references.
  *  Parent controls visibility; contexts handle persistence and state updates.
  */
 import React, { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import { useClients } from '../contexts/ClientContext';
 import { useCommissions } from '../contexts/CommissionContext';
 import type { CommissionRef, ClientInfo } from '../contexts/CommissionContext';
@@ -18,6 +18,7 @@ interface CommissionModalProps {
 }
 
 const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation(['commissions', 'common']);
   const { clients } = useClients();
   const { addPendingCommission } = useCommissions();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -44,13 +45,13 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
 
     Array.from(files).forEach(file => {
       if (!SecurityValidator.validateFileType(file)) {
-        ErrorHandler.showUserError(`Invalid file type: ${file.name}. Only JPEG, PNG, GIF, and WebP images are allowed.`);
+        ErrorHandler.showUserError(t('commissions:errors.invalidFileType', { fileName: file.name }));
         ErrorHandler.logSecurityEvent('Invalid file type upload attempt', { fileName: file.name, fileType: file.type });
         return;
       }
 
       if (!SecurityValidator.validateFileSize(file, 25)) {
-        ErrorHandler.showUserError(`File too large: ${file.name}. Maximum size is 25MB.`);
+        ErrorHandler.showUserError(t('commissions:errors.fileTooLarge', { fileName: file.name }));
         return;
       }
 
@@ -58,7 +59,7 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
       reader.onload = (event) => {
         const imageUrl = event.target?.result as string;
         if (!SecurityValidator.validateImageDataURL(imageUrl)) {
-          ErrorHandler.showUserError(`Invalid image data: ${file.name}. The image may be corrupted or too large.`);
+          ErrorHandler.showUserError(t('commissions:errors.invalidImageData', { fileName: file.name }));
           ErrorHandler.logSecurityEvent('Invalid image data URL', { fileName: file.name });
           return;
         }
@@ -89,25 +90,25 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
     
     // Form validation ensures required data is present before processing
     if (!formData.clientId || !formData.commType || !formData.price || !formData.description) {
-      alert('Please fill in all required fields');
+      alert(t('commissions:errors.fillRequired'));
       return;
     }
 
     const priceValidation = SecurityValidator.validatePrice(formData.price);
     if (!priceValidation.isValid) {
-      ErrorHandler.showUserError(priceValidation.error || 'Invalid price');
+      ErrorHandler.showUserError(priceValidation.error || t('commissions:errors.invalidPrice'));
       return;
     }
 
     const sanitizedCommType = SecurityValidator.sanitizeText(formData.commType);
     if (sanitizedCommType.length < 3) {
-      ErrorHandler.showUserError('Commission type must be at least 3 characters long');
+      ErrorHandler.showUserError(t('commissions:errors.commTypeTooShort'));
       return;
     }
 
     const selectedClient = clients.find(c => c.id === formData.clientId);
     if (!selectedClient) {
-      ErrorHandler.showUserError('Please select a valid client');
+      ErrorHandler.showUserError(t('commissions:errors.selectValidClient'));
       return;
     }
 
@@ -150,14 +151,14 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
     <div className="commission-modal-overlay">
       <div className="commission-modal">
         <div className="commission-modal-header">
-          <h2>Add Commission</h2>
+          <h2>{t('commissions:addCommission')}</h2>
         </div>
 
         <form onSubmit={handleSubmit} className="commission-modal-form">
           <div className="form-group">
-            <label htmlFor="clientId">Client *</label>
+            <label htmlFor="clientId">{t('commissions:fields.client')} {t('commissions:required')}</label>
             <select id="clientId" name="clientId" value={formData.clientId} onChange={handleInputChange} required>
-              <option value="">Select a client...</option>
+              <option value="">{t('commissions:placeholders.selectClient')}</option>
               {clients.map(client => (
                 <option key={client.id} value={client.id}>
                   {client.name} ({client.contactInfo})
@@ -167,20 +168,20 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
           </div>
 
           <div className="form-group">
-            <label htmlFor="commType">Commission Type *</label>
+            <label htmlFor="commType">{t('commissions:fields.commissionType')} {t('commissions:required')}</label>
             <input
               type="text"
               id="commType"
               name="commType"
               value={formData.commType}
               onChange={handleInputChange}
-              placeholder="e.g., Character Design, Logo Design, Portrait..."
+              placeholder={t('commissions:placeholders.commissionType')}
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="price">Price *</label>
+            <label htmlFor="price">{t('commissions:fields.price')} {t('commissions:required')}</label>
             <input
               type="number"
               id="price"
@@ -195,19 +196,19 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
           </div>
 
           <div className="form-group">
-            <label htmlFor="description">Description</label>
+            <label htmlFor="description">{t('commissions:fields.description')}</label>
             <textarea
               id="description"
               name="description"
               value={formData.description}
               onChange={handleInputChange}
-              placeholder="Additional details about the commission..."
+              placeholder={t('commissions:placeholders.description')}
               rows={3}
             />
           </div>
 
           <div className="form-group">
-            <label>References</label>
+            <label>{t('commissions:fields.references')}</label>
             
             <div className="reference-upload">
               <input
@@ -219,7 +220,7 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
                 style={{ display: 'none' }}
               />
               <button type="button" className="cf-btn cf-btn--secondary" onClick={() => fileInputRef.current?.click()}>
-                Upload Images
+                {t('commissions:buttons.uploadImages')}
               </button>
             </div>
 
@@ -228,17 +229,17 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
                 type="text"
                 value={textRef}
                 onChange={(e) => setTextRef(e.target.value)}
-                placeholder="Add text reference..."
+                placeholder={t('commissions:placeholders.textReference')}
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTextReference())}
               />
               <button type="button" className="cf-btn cf-btn--secondary" onClick={addTextReference}>
-                Add Text
+                {t('commissions:buttons.addText')}
               </button>
             </div>
 
             {references.length > 0 && (
               <div className="references-list">
-                <h4>References ({references.length}):</h4>
+                <h4>{t('commissions:referencesCount', { count: references.length })}</h4>
                 {references.map((ref, index) => (
                   <div key={index} className="reference-item">
                     {ref.type === 'image' && ref.url ? (
@@ -252,7 +253,7 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
                       </div>
                     )}
                     <button type="button" className="cf-btn cf-btn--danger cf-btn--small" onClick={() => removeReference(index)}>
-                      Remove
+                      {t('common:buttons.remove')}
                     </button>
                   </div>
                 ))}
@@ -261,8 +262,8 @@ const CommissionModal: React.FC<CommissionModalProps> = ({ isOpen, onClose }) =>
           </div>
 
           <div className="commission-modal-actions">
-            <button type="button" className="cf-btn cf-btn--secondary" onClick={handleCancel}>Cancel</button>
-            <button type="submit" className="cf-btn cf-btn--primary">Add Commission</button>
+            <button type="button" className="cf-btn cf-btn--secondary" onClick={handleCancel}>{t('common:buttons.cancel')}</button>
+            <button type="submit" className="cf-btn cf-btn--primary">{t('commissions:buttons.addCommission')}</button>
           </div>
         </form>
       </div>

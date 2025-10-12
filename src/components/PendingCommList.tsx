@@ -4,6 +4,7 @@
  *  Data provided by context; small list sorting done client-side.
  */
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import PendingCommCard from './PendingCommCard';
 import { useCommissions } from '../contexts/CommissionContext';
 import type { PendingCommission } from '../contexts/CommissionContext';
@@ -19,6 +20,7 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
   onEditCommission, 
   sortOptions = { sortBy: 'date', sortOrder: 'desc', paymentPriority: 'unpaid-first' }
 }) => {
+  const { t } = useTranslation('commissions');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const { pendingCommissions, isLoading } = useCommissions();
 
@@ -69,7 +71,7 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
         <div className="pending-comm-list">
           <div className="loading-state">
             <div className="loading-spinner"></div>
-            <p>Loading commissions...</p>
+            <p>{t('loading')}</p>
           </div>
         </div>
       </div>
@@ -83,8 +85,8 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
         <div className="pending-comm-list">
           <div className="pending-comm-empty">
             <div className="pending-comm-empty-icon">📋</div>
-            <div className="pending-comm-empty-text">No pending commissions</div>
-            <div className="pending-comm-empty-subtext">Completed commissions will move to the history tab</div>
+            <div className="pending-comm-empty-text">{t('empty.noPending')}</div>
+            <div className="pending-comm-empty-subtext">{t('empty.pendingSubtext')}</div>
           </div>
         </div>
       </div>

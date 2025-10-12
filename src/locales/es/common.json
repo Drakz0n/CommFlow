@@ -1,0 +1,61 @@
+{
+  "buttons": {
+    "addClient": "Agregar Cliente",
+    "updateClient": "Actualizar Cliente",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "remove": "Eliminar"
+  },
+  "labels": {
+    "name": "Nombre",
+    "clientName": "Nombre del Cliente",
+    "contactInfo": "Información de Contacto",
+    "communicationPreference": "Preferencia de Comunicación",
+    "notes": "Notas",
+    "profilePicture": "Foto de Perfil",
+    "joinDate": "Fecha de Ingreso",
+    "lastCommission": "Última Comisión",
+    "communication": "Comunicación",
+    "price": "Precio",
+    "description": "Descripción",
+    "references": "Referencias",
+    "commissionType": "Tipo de Comisión",
+    "status": "Estado",
+    "paymentStatus": "Estado de Pago",
+    "date": "Fecha"
+  },
+  "placeholders": {
+    "enterClientName": "Ingrese el nombre del cliente",
+    "enterContactInfo": "Ingrese información de contacto",
+    "addNotes": "Agregue notas sobre este cliente...",
+    "enterDescription": "Ingrese descripción de la comisión...",
+    "addTextReference": "Agregar referencia de texto..."
+  },
+  "status": {
+    "pending": "Pendiente",
+    "inProgress": "En Progreso",
+    "completed": "Completado",
+    "cancelled": "Cancelado"
+  },
+  "paymentStatus": {
+    "notPaid": "❌ No Pagado",
+    "halfPaid": "⏳ Medio Pagado",
+    "fullyPaid": "✅ Pagado Completo"
+  },
+  "navigation": {
+    "clients": "Clientes",
+    "pending": "Pendientes",
+    "finished": "Finalizadas",
+    "config": "Configuración"
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Formato de correo inválido",
+    "invalidPrice": "Formato de precio inválido",
+    "invalidImage": "Datos de imagen inválidos"
+  }
+}

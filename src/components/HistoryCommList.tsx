@@ -4,6 +4,7 @@
  *  Sorting is stable enough for small lists; parent provides sort options.
  */
 import React, { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useCommissions } from '../contexts/CommissionContext';
 import HistoryCommCard from './HistoryCommCard';
 import type { HistoryCommission } from '../contexts/CommissionContext';
@@ -17,6 +18,7 @@ interface HistoryCommListProps {
 const HistoryCommList: React.FC<HistoryCommListProps> = ({ 
   sortOptions = { sortBy: 'date', sortOrder: 'desc', paymentPriority: 'unpaid-first' }
 }) => {
+  const { t } = useTranslation('commissions');
   const { historyCommissions } = useCommissions();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
@@ -69,12 +71,12 @@ const HistoryCommList: React.FC<HistoryCommListProps> = ({
     return (
       <div className="history-comm-container">
         <div className="history-comm-empty">
-          <div style={{ fontSize: '2rem', marginBottom: '16px' }}></div>
+          <div style={{ fontSize: '2rem', marginBottom: '16px' }}>📚</div>
           <div style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px', color: '#fff' }}>
-            No completed commissions yet
+            {t('empty.noHistory')}
           </div>
           <div style={{ fontSize: '0.9rem', color: '#718096' }}>
-            Completed commissions will appear here
+            {t('empty.historySubtext')}
           </div>
         </div>
       </div>

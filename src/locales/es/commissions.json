@@ -1,0 +1,117 @@
+{
+  "title": "Comisiones Pendientes",
+  "historyTitle": "Historial",
+  "addCommission": "Agregar Comisión",
+  "editCommission": "Editar Comisión",
+  "sortButton": "Ordenar",
+  "archiveAll": "Archivar Todo ({{count}})",
+  "archiveAllConfirm": "¿Está seguro de que desea archivar todas las {{count}} comisiones completadas? Esto las eliminará permanentemente.",
+  "noCommissionsToArchive": "No hay comisiones para archivar",
+  "pendingCommissions": "Comisiones Pendientes",
+  "finishedCommissions": "Comisiones Finalizadas",
+  "markComplete": "¿Marcar comisión de {{clientName}} como completa?",
+  "cancelCommission": "¿Está seguro de que desea cancelar la comisión de {{clientName}}? Esta acción no se puede deshacer.",
+  "required": "*",
+  "referencesCount": "Referencias ({{count}}):",
+  "fields": {
+    "client": "Cliente",
+    "commissionType": "Tipo de Comisión",
+    "price": "Precio",
+    "description": "Descripción",
+    "references": "Referencias"
+  },
+  "placeholders": {
+    "selectClient": "Selecciona un cliente...",
+    "commissionType": "ej., Diseño de Personaje, Diseño de Logo, Retrato...",
+    "description": "Detalles adicionales sobre la comisión...",
+    "textReference": "Agregar referencia de texto..."
+  },
+  "buttons": {
+    "uploadImages": "Subir Imágenes",
+    "addText": "Agregar Texto",
+    "addCommission": "Agregar Comisión",
+    "updateCommission": "Actualizar Comisión"
+  },
+  "errors": {
+    "fillRequired": "Por favor complete todos los campos requeridos",
+    "invalidPrice": "Precio inválido",
+    "commTypeTooShort": "El tipo de comisión debe tener al menos 3 caracteres",
+    "selectValidClient": "Por favor seleccione un cliente válido",
+    "invalidFileType": "Tipo de archivo inválido: {{fileName}}. Solo se permiten imágenes JPEG, PNG, GIF y WebP.",
+    "fileTooLarge": "Archivo demasiado grande: {{fileName}}. El tamaño máximo es 25MB.",
+    "invalidImageData": "Datos de imagen inválidos: {{fileName}}. La imagen puede estar corrupta o ser demasiado grande."
+  },
+  "actions": {
+    "markComplete": "Marcar Completa",
+    "markInProgress": "Marcar En Progreso",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "editDetails": "Editar Detalles",
+    "cancelCommission": "Cancelar Comisión"
+  },
+  "status": {
+    "pending": "Pendiente",
+    "inProgress": "En Progreso",
+    "completed": "Completada"
+  },
+  "paymentStatus": {
+    "notPaid": "❌ No Pagado",
+    "halfPaid": "⏳ Medio Pagado",
+    "fullyPaid": "✅ Pagado Completo"
+  },
+  "tooltips": {
+    "markComplete": "Marcar como Completa",
+    "markInProgress": "Marcar como En Progreso",
+    "markInProgressFirst": "Debe marcar como En Progreso primero",
+    "alreadyInProgress": "Ya está en progreso"
+  },
+  "history": {
+    "commissionDetails": "Detalles de la Comisión",
+    "started": "Iniciada:",
+    "completed": "Completada:",
+    "referencesUsed": "Referencias Utilizadas",
+    "markIncomplete": "¿Marcar esta comisión como incompleta? Se moverá de nuevo a pendientes.",
+    "deleteConfirm": "¿Está seguro de que desea eliminar esta comisión de {{clientName}}? Esta acción no se puede deshacer.",
+    "markPaidConfirm": "¿Marcar esta comisión como {{status}}?",
+    "halfPaid": "medio pagado",
+    "fullyPaid": "totalmente pagado",
+    "markHalfPaidBtn": "Marcar Medio Pagado ⏳",
+    "markFullyPaidBtn": "Marcar Pagado Completo ✅",
+    "markIncompleteBtn": "Marcar como Incompleta",
+    "deleteBtn": "Eliminar Comisión"
+  },
+  "sort": {
+    "title": "Opciones de Ordenamiento",
+    "sortBy": "Ordenar por:",
+    "order": "Orden:",
+    "paymentStatus": "Estado de Pago:",
+    "fields": {
+      "date": "Fecha",
+      "price": "Precio",
+      "clientName": "Nombre del Cliente",
+      "commissionType": "Tipo de Comisión"
+    },
+    "orderLabels": {
+      "newestFirst": "Más Reciente Primero",
+      "oldestFirst": "Más Antiguo Primero",
+      "highestFirst": "Más Alto Primero",
+      "lowestFirst": "Más Bajo Primero",
+      "zToA": "Z a A",
+      "aToZ": "A a Z"
+    },
+    "paymentPriority": {
+      "unpaidFirst": "No Pagados Primero",
+      "paidFirst": "Pagados Primero",
+      "unpaidInfo": "Prioriza comisiones no pagadas en la parte superior",
+      "paidInfo": "Prioriza comisiones totalmente pagadas en la parte superior"
+    },
+    "applySort": "Aplicar Orden"
+  },
+  "empty": {
+    "noPending": "No hay comisiones pendientes",
+    "pendingSubtext": "Las comisiones completadas se moverán a la pestaña de historial",
+    "noHistory": "Aún no hay comisiones completadas",
+    "historySubtext": "Las comisiones completadas aparecerán aquí"
+  },
+  "loading": "Cargando comisiones..."
+}

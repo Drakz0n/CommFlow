@@ -1,0 +1,31 @@
+{
+  "title": "Settings",
+  "settings": {
+    "displayName": "Display Name",
+    "displayNameDescription": "Your name shown on the main welcome screen",
+    "displayNamePlaceholder": "Enter your name",
+    "save": "Save",
+    "animations": "Enable Animations",
+    "animationsDescription": "Smooth transitions when expanding cards and navigating",
+    "language": "Language / Idioma",
+    "languageDescription": "Select your preferred language"
+  },
+  "dataManagement": {
+    "title": "Manage Data",
+    "description": "Check data directory to export or import data, or delete all data.",
+    "button": "Manage Data",
+    "deleteAllConfirm": "Delete ALL clients and commissions? This cannot be undone.",
+    "modal": {
+      "title": "Data",
+      "close": "Close",
+      "directoryLabel": "Directory",
+      "unavailable": "Unavailable",
+      "openFolder": "Open Folder",
+      "deleteAll": "Delete All",
+      "openingDirectory": "Opening data directory: {{dir}}",
+      "failedToLocate": "Failed to locate data directory",
+      "manualDeleteMessage": "Please manually remove files inside the data directory until a bulk delete command is implemented.",
+      "failedToDelete": "Failed to delete data"
+    }
+  }
+}

@@ -4,6 +4,7 @@
  *  Parent manages expansion; actions use confirmations to prevent accidental changes.
  */
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSettings } from '../contexts/SettingsContext';
 import { useCommissions } from '../contexts/CommissionContext';
 import type { PendingCommission } from '../contexts/CommissionContext';
@@ -22,6 +23,7 @@ interface PendingCommCardProps {
 }
 
 const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onToggle, onEditCommission }) => {
+  const { t } = useTranslation(['commissions', 'common']);
   const { settings } = useSettings();
   const [viewingImageIndex, setViewingImageIndex] = useState<number>(-1);
   const { 
@@ -39,7 +41,7 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
   const images = imageRefs.map(ref => ({ url: ref.url!, name: ref.name }));
 
   const handleMarkComplete = () => {
-    if (window.confirm(`Mark commission from ${comm.client.name} as complete?`)) {
+    if (window.confirm(t('commissions:markComplete', { clientName: comm.client.name }))) {
       markCommissionComplete(comm.id);
     }
   };
@@ -52,7 +54,7 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
   };
 
   const handleCancelCommission = () => {
-    if (window.confirm(`Are you sure you want to cancel the commission from ${comm.client.name}? This action cannot be undone.`)) {
+    if (window.confirm(t('commissions:cancelCommission', { clientName: comm.client.name }))) {
       deletePendingCommission(comm.id);
     }
   };
@@ -96,9 +98,9 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
                 onClick={(e) => e.stopPropagation()}
                 className="payment-select"
               >
-                <option value="not-paid">❌ Not Paid</option>
-                <option value="half-paid">⏳ Half Paid</option>
-                <option value="fully-paid">✅ Fully Paid</option>
+                <option value="not-paid">{t('commissions:paymentStatus.notPaid')}</option>
+                <option value="half-paid">{t('commissions:paymentStatus.halfPaid')}</option>
+                <option value="fully-paid">{t('commissions:paymentStatus.fullyPaid')}</option>
               </select>
             </label>
           </div>
@@ -116,12 +118,12 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
       <div className="pending-comm-details">
         <div>
           <div className="pending-comm-description">
-            <h4>Description</h4>
+            <h4>{t('common:labels.description')}</h4>
             <p>{comm.description}</p>
           </div>
 
           <div className="pending-comm-refs">
-            <h4>References</h4>
+            <h4>{t('common:labels.references')}</h4>
             <div className="pending-comm-refs-list">
               {comm.refs
                 .filter(ref => ref.type === 'image' && ref.url)
@@ -147,23 +149,23 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
               className={`cf-btn cf-btn--success ${comm.status === 'Pending' ? 'cf-btn--disabled' : ''}`}
               onClick={handleMarkComplete}
               disabled={comm.status === 'Pending'}
-              title={comm.status === 'Pending' ? 'Must mark as In Progress first' : 'Mark as Complete'}
+              title={comm.status === 'Pending' ? t('commissions:tooltips.markInProgressFirst') : t('commissions:tooltips.markComplete')}
             >
-              Mark as Complete
+              {t('commissions:actions.markComplete')}
             </button>
             <button 
               className={`cf-btn cf-btn--warning ${comm.status === 'In Progress' ? 'cf-btn--disabled' : ''}`}
               onClick={handleMarkInProgress}
               disabled={comm.status === 'In Progress'}
-              title={comm.status === 'In Progress' ? 'Already in progress' : 'Mark as In Progress'}
+              title={comm.status === 'In Progress' ? t('commissions:tooltips.alreadyInProgress') : t('commissions:tooltips.markInProgress')}
             >
-              {comm.status === 'In Progress' ? 'In Progress' : 'Mark In Progress'}
+              {comm.status === 'In Progress' ? t('commissions:status.inProgress') : t('commissions:actions.markInProgress')}
             </button>
             <button className="cf-btn cf-btn--secondary" onClick={() => onEditCommission?.(comm)}>
-              Edit Details
+              {t('commissions:actions.editDetails')}
             </button>
             <button className="cf-btn cf-btn--danger" onClick={handleCancelCommission}>
-              Cancel Commission
+              {t('commissions:actions.cancelCommission')}
             </button>
           </div>
         </div>
