@@ -1,6 +1,6 @@
 [package]
 name = "CommFlow"
-version = "0.5.2"
+version = "0.6.0"
 description = "CommFlow - Commission Management Application"
 authors = ["OtterWithInternet"]
 license = "MIT"
