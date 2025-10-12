@@ -1,0 +1,31 @@
+{
+  "title": "Einstellungen",
+  "settings": {
+    "displayName": "Anzeigename",
+    "displayNameDescription": "Ihr Name, der auf dem Hauptbegrüßungsbildschirm angezeigt wird",
+    "displayNamePlaceholder": "Geben Sie Ihren Namen ein",
+    "save": "Speichern",
+    "animations": "Animationen Aktivieren",
+    "animationsDescription": "Sanfte Übergänge beim Erweitern von Karten und Navigieren",
+    "language": "Sprache / Language",
+    "languageDescription": "Wählen Sie Ihre bevorzugte Sprache"
+  },
+  "dataManagement": {
+    "title": "Daten Verwalten",
+    "description": "Überprüfen Sie das Datenverzeichnis, um Daten zu exportieren oder zu importieren, oder löschen Sie alle Daten.",
+    "button": "Daten Verwalten",
+    "deleteAllConfirm": "ALLE Kunden und Aufträge löschen? Dies kann nicht rückgängig gemacht werden.",
+    "modal": {
+      "title": "Daten",
+      "close": "Schließen",
+      "directoryLabel": "Verzeichnis",
+      "unavailable": "Nicht verfügbar",
+      "openFolder": "Ordner Öffnen",
+      "deleteAll": "Alle Löschen",
+      "openingDirectory": "Datenverzeichnis wird geöffnet: {{dir}}",
+      "failedToLocate": "Datenverzeichnis konnte nicht gefunden werden",
+      "manualDeleteMessage": "Bitte entfernen Sie die Dateien im Datenverzeichnis manuell, bis ein Massenlöschbefehl implementiert ist.",
+      "failedToDelete": "Daten konnten nicht gelöscht werden"
+    }
+  }
+}

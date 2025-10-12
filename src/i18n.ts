@@ -19,6 +19,12 @@ import esClients from './locales/es/clients.json';
 import esCommissions from './locales/es/commissions.json';
 import esConfig from './locales/es/config.json';
 
+import deCommon from './locales/de/common.json';
+import deDashboard from './locales/de/dashboard.json';
+import deClients from './locales/de/clients.json';
+import deCommissions from './locales/de/commissions.json';
+import deConfig from './locales/de/config.json';
+
 // Configure i18next
 i18n
   .use(initReactI18next) // Bind react-i18next to the i18next instance
@@ -38,6 +44,13 @@ i18n
         clients: esClients,
         commissions: esCommissions,
         config: esConfig,
+      },
+      de: {
+        common: deCommon,
+        dashboard: deDashboard,
+        clients: deClients,
+        commissions: deCommissions,
+        config: deConfig,
       },
     },
     

@@ -1,0 +1,122 @@
+{
+  "title": "Aufträge",
+  "addCommission": "Auftrag Hinzufügen",
+  "editCommission": "Auftrag Bearbeiten",
+  "sortButton": "Sortieren",
+  "fields": {
+    "client": "Kunde",
+    "selectClient": "Kunde auswählen...",
+    "title": "Titel",
+    "description": "Beschreibung",
+    "deadline": "Frist",
+    "price": "Preis",
+    "referenceImage": "Referenzbild",
+    "status": "Status",
+    "paymentStatus": "Zahlungsstatus",
+    "commissionType": "Auftragstyp",
+    "references": "Referenzen"
+  },
+  "placeholders": {
+    "selectClient": "Kunde auswählen...",
+    "commissionType": "z.B. Charakterdesign, Logodesign, Portrait...",
+    "description": "Zusätzliche Details zum Auftrag...",
+    "textReference": "Textreferenz hinzufügen..."
+  },
+  "buttons": {
+    "uploadImages": "Bilder Hochladen",
+    "addText": "Text Hinzufügen",
+    "addCommission": "Auftrag Hinzufügen",
+    "updateCommission": "Auftrag Aktualisieren"
+  },
+  "fileUpload": {
+    "dragAndDrop": "Ziehen Sie ein Bild hierher oder klicken Sie zum Auswählen",
+    "invalidFileType": "Ungültiger Dateityp: {{fileName}}. Nur JPEG, PNG, GIF und WebP Bilder sind erlaubt.",
+    "fileTooLarge": "Datei zu groß: {{fileName}}. Maximale Größe ist 25MB.",
+    "invalidImageData": "Ungültige Bilddaten: {{fileName}}. Das Bild könnte beschädigt oder zu groß sein."
+  },
+  "errors": {
+    "fillRequired": "Bitte füllen Sie alle Pflichtfelder aus",
+    "invalidPrice": "Ungültiger Preis",
+    "commTypeTooShort": "Auftragstyp muss mindestens 3 Zeichen lang sein",
+    "selectValidClient": "Bitte wählen Sie einen gültigen Kunden aus",
+    "invalidFileType": "Ungültiger Dateityp: {{fileName}}. Nur JPEG, PNG, GIF und WebP Bilder sind erlaubt.",
+    "fileTooLarge": "Datei zu groß: {{fileName}}. Maximale Größe ist 25MB.",
+    "invalidImageData": "Ungültige Bilddaten: {{fileName}}. Das Bild könnte beschädigt oder zu groß sein."
+  },
+  "actions": {
+    "markComplete": "Als Abgeschlossen Markieren",
+    "markInProgress": "Als In Bearbeitung Markieren",
+    "edit": "Bearbeiten",
+    "cancel": "Abbrechen",
+    "editDetails": "Details Bearbeiten",
+    "cancelCommission": "Auftrag Abbrechen"
+  },
+  "status": {
+    "pending": "Ausstehend",
+    "inProgress": "In Bearbeitung",
+    "completed": "Abgeschlossen"
+  },
+  "paymentStatus": {
+    "notPaid": "❌ Nicht Bezahlt",
+    "halfPaid": "⏳ Halb Bezahlt",
+    "fullyPaid": "✅ Vollständig Bezahlt"
+  },
+  "tooltips": {
+    "markComplete": "Als Abgeschlossen Markieren",
+    "markInProgress": "Als In Bearbeitung Markieren",
+    "markInProgressFirst": "Muss zuerst als In Bearbeitung markiert werden",
+    "alreadyInProgress": "Bereits in Bearbeitung"
+  },
+  "history": {
+    "commissionDetails": "Auftragsdetails",
+    "started": "Gestartet:",
+    "completed": "Abgeschlossen:",
+    "referencesUsed": "Verwendete Referenzen",
+    "markIncomplete": "Diesen Auftrag als unvollständig markieren? Er wird zurück zu ausstehend verschoben.",
+    "deleteConfirm": "Möchten Sie diesen Auftrag von {{clientName}} wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "markPaidConfirm": "Diesen Auftrag als {{status}} markieren?",
+    "halfPaid": "halb bezahlt",
+    "fullyPaid": "vollständig bezahlt",
+    "markHalfPaidBtn": "Halb Bezahlt Markieren ⏳",
+    "markFullyPaidBtn": "Vollständig Bezahlt Markieren ✅",
+    "markIncompleteBtn": "Als Unvollständig Markieren",
+    "deleteBtn": "Auftrag Löschen"
+  },
+  "sort": {
+    "title": "Sortieroptionen",
+    "sortBy": "Sortieren nach:",
+    "order": "Reihenfolge:",
+    "paymentStatus": "Zahlungsstatus:",
+    "fields": {
+      "date": "Datum",
+      "price": "Preis",
+      "clientName": "Kundenname",
+      "commissionType": "Auftragstyp"
+    },
+    "orderLabels": {
+      "newestFirst": "Neueste Zuerst",
+      "oldestFirst": "Älteste Zuerst",
+      "highestFirst": "Höchster Zuerst",
+      "lowestFirst": "Niedrigster Zuerst",
+      "zToA": "Z bis A",
+      "aToZ": "A bis Z"
+    },
+    "paymentPriority": {
+      "unpaidFirst": "Unbezahlt Zuerst",
+      "paidFirst": "Bezahlt Zuerst",
+      "unpaidInfo": "Priorisiert unbezahlte Aufträge oben",
+      "paidInfo": "Priorisiert vollständig bezahlte Aufträge oben"
+    },
+    "applySort": "Sortierung Anwenden"
+  },
+  "archiveAll": "Alle Archivieren ({{count}})",
+  "noCommissionsToArchive": "Keine Aufträge zum Archivieren vorhanden",
+  "archiveAllConfirm": "Möchten Sie alle {{count}} abgeschlossenen Aufträge archivieren? Dies wird sie dauerhaft löschen.",
+  "empty": {
+    "noPending": "Keine ausstehenden Aufträge",
+    "pendingSubtext": "Abgeschlossene Aufträge werden zur Registerkarte Verlauf verschoben",
+    "noHistory": "Noch keine abgeschlossenen Aufträge",
+    "historySubtext": "Abgeschlossene Aufträge werden hier angezeigt"
+  },
+  "loading": "Aufträge werden geladen..."
+}

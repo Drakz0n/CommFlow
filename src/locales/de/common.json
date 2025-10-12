@@ -1,0 +1,65 @@
+{
+  "buttons": {
+    "addClient": "Kunde Hinzufügen",
+    "updateClient": "Kunde Aktualisieren",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "confirm": "Bestätigen",
+    "close": "Schließen",
+    "remove": "Entfernen"
+  },
+  "labels": {
+    "name": "Name",
+    "clientName": "Kundenname",
+    "contactInfo": "Kontaktinformationen",
+    "communicationPreference": "Kommunikationspräferenz",
+    "notes": "Notizen",
+    "profilePicture": "Profilbild",
+    "joinDate": "Beitrittsdatum",
+    "lastCommission": "Letzter Auftrag",
+    "communication": "Kommunikation",
+    "price": "Preis",
+    "description": "Beschreibung",
+    "references": "Referenzen",
+    "commissionType": "Auftragstyp",
+    "status": "Status",
+    "paymentStatus": "Zahlungsstatus",
+    "date": "Datum"
+  },
+  "placeholders": {
+    "enterClientName": "Kundennamen eingeben",
+    "enterContactInfo": "Kontaktinformationen eingeben",
+    "addNotes": "Notizen zu diesem Kunden hinzufügen...",
+    "enterDescription": "Auftragsbeschreibung eingeben...",
+    "addTextReference": "Textreferenz hinzufügen..."
+  },
+  "status": {
+    "pending": "Ausstehend",
+    "inProgress": "In Bearbeitung",
+    "completed": "Abgeschlossen",
+    "cancelled": "Abgebrochen",
+    "loading": "Lädt...",
+    "saving": "Wird gespeichert...",
+    "error": "Fehler",
+    "success": "Erfolg"
+  },
+  "paymentStatus": {
+    "notPaid": "❌ Nicht Bezahlt",
+    "halfPaid": "⏳ Halb Bezahlt",
+    "fullyPaid": "✅ Vollständig Bezahlt"
+  },
+  "navigation": {
+    "clients": "Kunden",
+    "pending": "Ausstehend",
+    "finished": "Abgeschlossen",
+    "config": "Einstellungen"
+  },
+  "validation": {
+    "required": "Dieses Feld ist erforderlich",
+    "invalidEmail": "Ungültiges E-Mail-Format",
+    "invalidPrice": "Ungültiges Preisformat",
+    "invalidImage": "Ungültige Bilddaten"
+  }
+}

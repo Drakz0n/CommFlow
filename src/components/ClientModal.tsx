@@ -153,7 +153,7 @@ const ClientModal: React.FC<ClientModalProps> = ({
                   />
                 ) : (
                   <div className="profile-placeholder">
-                    <span>Click to add photo</span>
+                    <span>{t('clients:uploadPhoto')}</span>
                   </div>
                 )}
               </div>
@@ -203,11 +203,11 @@ const ClientModal: React.FC<ClientModalProps> = ({
 
             <div className="form-group">
               <label htmlFor="contactInfo">
-                {formData.communicationPreference === 'Discord' && 'Discord Tag *'}
-                {formData.communicationPreference === 'Email' && 'Email Address *'}
-                {formData.communicationPreference === 'X (Twitter)' && 'X Username *'}
-                {formData.communicationPreference === 'Bluesky' && 'Bluesky Handle *'}
-                {formData.communicationPreference === 'Instagram' && 'Instagram Username *'}
+                {formData.communicationPreference === 'Discord' && t('clients:contactLabels.discord')}
+                {formData.communicationPreference === 'Email' && t('clients:contactLabels.email')}
+                {formData.communicationPreference === 'X (Twitter)' && t('clients:contactLabels.twitter')}
+                {formData.communicationPreference === 'Bluesky' && t('clients:contactLabels.bluesky')}
+                {formData.communicationPreference === 'Instagram' && t('clients:contactLabels.instagram')}
               </label>
               <input
                 type="text"

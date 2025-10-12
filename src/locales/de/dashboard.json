@@ -1,0 +1,14 @@
+{
+  "welcome": "Willkommen zurück",
+  "stats": {
+    "totalClients": "Kunden Gesamt",
+    "pendingCommissions": "Ausstehende Aufträge",
+    "completedCommissions": "Abgeschlossene Aufträge"
+  },
+  "navigation": {
+    "clients": "Kunden",
+    "pending": "Ausstehend",
+    "finished": "Abgeschlossen",
+    "config": "Einstellungen"
+  }
+}

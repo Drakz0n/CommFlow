@@ -124,7 +124,7 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onEdit, onDelete, isExp
               className="cf-btn cf-btn--primary"
               onClick={() => onEdit(client)}
             >
-              Edit Client
+              {t('clientCard.editButton')}
             </button>
           </div>
         </div>

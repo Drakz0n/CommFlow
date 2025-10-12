@@ -18,6 +18,21 @@
     "bluesky": "Bluesky",
     "instagram": "Instagram"
   },
+  "contactLabels": {
+    "discord": "Discord Tag *",
+    "email": "Dirección de Correo Electrónico *",
+    "twitter": "Nombre de Usuario de X *",
+    "bluesky": "Identificador de Bluesky *",
+    "instagram": "Nombre de Usuario de Instagram *"
+  },
+  "validation": {
+    "nameRequired": "El nombre es requerido",
+    "contactRequired": "La información de contacto es requerida",
+    "invalidImage": "Datos de imagen inválidos",
+    "selectValidImage": "Por favor seleccione un archivo de imagen válido",
+    "imageTooLarge": "El tamaño de la imagen debe ser menor a 25MB"
+  },
+  "uploadPhoto": "Haz clic para agregar foto",
   "empty": {
     "noClients": "Aún no hay clientes",
     "addFirstClient": "Agrega tu primer cliente para comenzar"
@@ -26,6 +41,7 @@
     "noCommissionsYet": "Aún sin comisiones",
     "deleteConfirm": "¿Eliminar a {{clientName}}? Esto no se puede deshacer.",
     "removeButton": "Eliminar Cliente",
+    "editButton": "Editar Cliente",
     "information": "Información del Cliente",
     "joinDate": "Fecha de Ingreso",
     "lastCommission": "Última Comisión",

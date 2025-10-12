@@ -1,0 +1,50 @@
+{
+  "title": "Kunden",
+  "addClient": "Kunde Hinzufügen",
+  "editClient": "Kunde Bearbeiten",
+  "deleteConfirm": "Möchten Sie diesen Kunden wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+  "required": "*",
+  "fields": {
+    "name": "Kundenname",
+    "contactInfo": "Kontaktinformationen",
+    "communicationPreference": "Kommunikationspräferenz",
+    "notes": "Notizen",
+    "profilePicture": "Profilbild"
+  },
+  "communicationMethods": {
+    "discord": "Discord",
+    "email": "E-Mail",
+    "twitter": "X (Twitter)",
+    "bluesky": "Bluesky",
+    "instagram": "Instagram"
+  },
+  "contactLabels": {
+    "discord": "Discord Tag *",
+    "email": "E-Mail-Adresse *",
+    "twitter": "X Benutzername *",
+    "bluesky": "Bluesky Handle *",
+    "instagram": "Instagram Benutzername *"
+  },
+  "validation": {
+    "nameRequired": "Name ist erforderlich",
+    "contactRequired": "Kontaktinformationen sind erforderlich",
+    "invalidImage": "Ungültige Bilddaten",
+    "selectValidImage": "Bitte wählen Sie eine gültige Bilddatei",
+    "imageTooLarge": "Bildgröße sollte weniger als 25MB betragen"
+  },
+  "uploadPhoto": "Klicken Sie hier, um ein Foto hinzuzufügen",
+  "empty": {
+    "noClients": "Noch keine Kunden",
+    "addFirstClient": "Fügen Sie Ihren ersten Kunden hinzu, um zu beginnen"
+  },
+  "clientCard": {
+    "noCommissionsYet": "Noch keine Aufträge",
+    "deleteConfirm": "{{clientName}} löschen? Dies kann nicht rückgängig gemacht werden.",
+    "removeButton": "Kunde Entfernen",
+    "editButton": "Kunde Bearbeiten",
+    "information": "Kundeninformationen",
+    "joinDate": "Beitrittsdatum",
+    "lastCommission": "Letzter Auftrag",
+    "communication": "Kommunikation"
+  }
+}
