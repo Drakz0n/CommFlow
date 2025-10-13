@@ -61,10 +61,6 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onEdit, onDelete, isExp
           </div>
         </div>
         
-        <div className="client-meta">
-          <div className="client-commissions">{client.totalCommissions} commissions</div>
-        </div>
-        
         {/* Stop header click from toggling twice when the button is pressed */}
         <button 
           className={`client-expand-btn ${isExpanded ? 'expanded' : ''}`}
