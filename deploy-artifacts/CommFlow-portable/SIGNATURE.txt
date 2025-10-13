@@ -1,0 +1,5 @@
+CommFlow Portable Build Signature
+Developer: AnOTTER
+Identifier: OtterWithInternet
+Executable: CommFlow.exe
+Generated: 2025-10-12T22:19:54.4260651-03:00
