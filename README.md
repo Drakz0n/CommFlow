@@ -5,6 +5,15 @@ A Simple desktop app made for small artists looking to manage their art commissi
 ![CommFlow Version](https://img.shields.io/badge/version-0.6.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+### Features
+-  Manage client information and commission details
+-  Track pricing and payment status 
+-  Organize commission files and references
+-  View commission history and statistics
+-  Built specifically for digital artists
+-  Handles data all locally (means you and only you have access to it <3)
+-  Multilanguage support (En, Es, De)
+
 ## Quick Start
 
 ### Windows Installation
@@ -38,9 +47,3 @@ Currently i cant afford any kind of license.. but that might change in the futur
 - The app is **safe** - no viruses, malware, or sketchy stuff, like i mentioned before you can check the code yourself (i know its a mess qwq)
 - Once im able to afford a license i promise i will for future apps n such nwn (ye im quite broke atm hehe)
 
-### Features
--  Manage client information and commission details
--  Track pricing and payment status
--  Organize commission files and references
--  View commission history and statistics
--  Built specifically for digital artists
