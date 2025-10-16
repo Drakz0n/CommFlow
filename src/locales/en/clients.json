@@ -33,6 +33,9 @@
     "imageTooLarge": "Image size should be less than 25MB"
   },
   "uploadPhoto": "Click to add photo",
+  "cropImage": "Crop Image",
+  "zoom": "Zoom",
+  "applyCrop": "Apply Crop",
   "empty": {
     "noClients": "No clients yet",
     "addFirstClient": "Add your first client to get started"

@@ -33,6 +33,9 @@
     "imageTooLarge": "Bildgröße sollte weniger als 25MB betragen"
   },
   "uploadPhoto": "Klicken Sie hier, um ein Foto hinzuzufügen",
+  "cropImage": "Bild Zuschneiden",
+  "zoom": "Zoom",
+  "applyCrop": "Zuschnitt Anwenden",
   "empty": {
     "noClients": "Noch keine Kunden",
     "addFirstClient": "Fügen Sie Ihren ersten Kunden hinzu, um zu beginnen"

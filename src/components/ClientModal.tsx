@@ -7,6 +7,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
 import './ClientModal.css';
+import ImageCropModal from './ImageCropModal';
 import type { Client } from '../contexts/ClientContext';
 import { SecurityValidator } from '../utils/validation';
 
@@ -37,6 +38,8 @@ const ClientModal: React.FC<ClientModalProps> = ({
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isCropModalOpen, setIsCropModalOpen] = useState(false);
+  const [imageToCrop, setImageToCrop] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // When opening in edit mode, prefill; otherwise reset for a clean add flow
@@ -103,7 +106,7 @@ const ClientModal: React.FC<ClientModalProps> = ({
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' })); // Clear field error on edit
   };
 
-  // Convert selected image file to base64 for local persistence without filesystem access
+  // Convert selected image file to base64 and open crop modal
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -119,11 +122,22 @@ const ClientModal: React.FC<ClientModalProps> = ({
       const reader = new FileReader();
       reader.onload = (event) => {
         const base64 = event.target?.result as string;
-        setFormData(prev => ({ ...prev, pfp: base64 }));
+        setImageToCrop(base64);
+        setIsCropModalOpen(true);
         setErrors(prev => ({ ...prev, pfp: '' }));
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleCropComplete = (croppedImage: string) => {
+    setFormData(prev => ({ ...prev, pfp: croppedImage }));
+    setIsCropModalOpen(false);
+  };
+
+  const handleCropCancel = () => {
+    setIsCropModalOpen(false);
+    setImageToCrop('');
   };
 
   if (!isOpen) return null;
@@ -252,6 +266,14 @@ const ClientModal: React.FC<ClientModalProps> = ({
           </div>
         </form>
       </div>
+
+      {/* Image Crop Modal */}
+      <ImageCropModal
+        isOpen={isCropModalOpen}
+        imageSrc={imageToCrop}
+        onCropComplete={handleCropComplete}
+        onClose={handleCropCancel}
+      />
     </div>,
     document.body
   );
