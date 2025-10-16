@@ -60,21 +60,34 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
       throw new Error('No 2d context');
     }
 
-    // Set canvas size to match the crop area
+    const safeArea = Math.max(image.width, image.height) * 2;
+
+    // Set canvas size to the safe area
+    canvas.width = safeArea;
+    canvas.height = safeArea;
+
+    // Translate canvas context to a central location to allow rotating around the center
+    ctx.translate(safeArea / 2, safeArea / 2);
+    ctx.translate(-safeArea / 2, -safeArea / 2);
+
+    // Draw rotated image
+    ctx.drawImage(
+      image,
+      safeArea / 2 - image.width * 0.5,
+      safeArea / 2 - image.height * 0.5
+    );
+
+    const data = ctx.getImageData(0, 0, safeArea, safeArea);
+
+    // Set canvas width to final desired crop size
     canvas.width = pixelCrop.width;
     canvas.height = pixelCrop.height;
 
-    // Draw the cropped image
-    ctx.drawImage(
-      image,
-      pixelCrop.x,
-      pixelCrop.y,
-      pixelCrop.width,
-      pixelCrop.height,
-      0,
-      0,
-      pixelCrop.width,
-      pixelCrop.height
+    // Paste generated image with correct offset
+    ctx.putImageData(
+      data,
+      Math.round(0 - safeArea / 2 + image.width * 0.5 - pixelCrop.x),
+      Math.round(0 - safeArea / 2 + image.height * 0.5 - pixelCrop.y)
     );
 
     // Convert canvas to base64
@@ -114,6 +127,9 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
             aspect={1}
             cropShape="round"
             showGrid={false}
+            minZoom={1}
+            maxZoom={5}
+            zoomSpeed={0.5}
             onCropChange={onCropChange}
             onZoomChange={onZoomChange}
             onCropComplete={onCropAreaChange}
@@ -126,7 +142,7 @@ const ImageCropModal: React.FC<ImageCropModalProps> = ({
             <input
               type="range"
               min={1}
-              max={3}
+              max={5}
               step={0.1}
               value={zoom}
               onChange={(e) => setZoom(Number(e.target.value))}

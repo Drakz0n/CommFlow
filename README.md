@@ -2,7 +2,7 @@
 
 A Simple desktop app made for small artists looking to manage their art commissions, built with Tauri + React + TypeScript.
 
-![CommFlow Version](https://img.shields.io/badge/version-0.6.1-blue)
+![CommFlow Version](https://img.shields.io/badge/version-0.6.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 ## Quick Start
