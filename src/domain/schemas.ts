@@ -34,7 +34,8 @@ export const StorageCommissionSchema = z.object({
   status: z.enum(['pending','in-progress','completed']),
   created_at: z.string(),
   updated_at: z.string(),
-  images: z.array(z.string()).default([])
+  images: z.array(z.string()).default([]),
+  is_pinned: z.boolean().default(false).optional() // Pin commission to top
 }).refine(d => d.price !== undefined || d.price_cents !== undefined, { 
   message: 'price or price_cents required' 
 });
@@ -77,7 +78,8 @@ export const DomainCommissionSchema = z.object({
   paymentStatus: PaymentStatusEnum,
   status: z.enum(['Pending','In Progress','Completed']),
   originalDate: z.string().optional(),
-  completedDate: z.string().optional()
+  completedDate: z.string().optional(),
+  isPinned: z.boolean().default(false).optional() // Pin commission to top
 });
 export type DomainCommission = z.infer<typeof DomainCommissionSchema>;
 

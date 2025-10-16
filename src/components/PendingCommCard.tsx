@@ -30,7 +30,8 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
     markCommissionComplete, 
     markCommissionInProgress, 
     updatePaymentStatus, 
-    deletePendingCommission 
+    deletePendingCommission,
+    togglePin
   } = useCommissions();
 
   /**
@@ -47,6 +48,8 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
   };
 
   const handleMarkInProgress = () => { markCommissionInProgress(comm.id); };
+
+  const handleTogglePin = () => { togglePin(comm.id); };
 
   const handlePaymentStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = e.target.value as 'not-paid' | 'half-paid' | 'fully-paid';
@@ -104,6 +107,14 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
               </select>
             </label>
           </div>
+          <button
+            className={`pending-comm-pin-btn ${comm.isPinned ? 'pinned' : ''}`}
+            onClick={(e) => { e.stopPropagation(); handleTogglePin(); }}
+            aria-label={comm.isPinned ? 'Unpin commission' : 'Pin commission'}
+            title={comm.isPinned ? 'Unpin commission' : 'Pin commission'}
+          >
+            📌
+          </button>
           <button
             className={`pending-comm-expand-btn ${isExpanded ? 'expanded' : ''}`}
             onClick={(e) => { e.stopPropagation(); onToggle(); }}
