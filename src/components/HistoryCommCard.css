@@ -2,49 +2,52 @@
 .history-comm-card {
     overflow: hidden;
     
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    border-radius: 12px;
+    border: 2px solid transparent;
+    border-radius: 20px;
     
     font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
     
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     
     color: #1a1d29;
+    
+    position: relative;
 }
 
 /* ANIMATION SYSTEM - Only when .animated class is present */
 .history-comm-card.animated {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .history-comm-card.animated:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.12),
+        0 4px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.01);
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 .history-comm-card.animated.expanded {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.12),
+        0 4px 8px rgba(0, 0, 0, 0.08);
     
     transform: translateY(-2px);
 }
 
 .history-comm-card.animated .history-comm-header {
-    transition: background-color 0.2s ease;
+    transition: background-color 0.25s ease;
 }
 
 .history-comm-card.animated .history-comm-header:hover {
-    background-color: rgba(76, 175, 80, 0.04);
-}
-
-.history-comm-card.animated .history-comm-expand-btn svg {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.history-comm-card.animated .history-comm-expand-btn.expanded svg {
-    transform: rotate(180deg);
+    background-color: rgba(16, 185, 129, 0.05);
 }
 
 .history-comm-header {
@@ -93,11 +96,16 @@
     overflow: hidden;
     
     border-radius: 50%;
+    border: 3px solid #ffffff;
     
-    height: 44px;
-    width: 44px;
+    height: 50px;
+    width: 50px;
     
-    background: #f1f5f9;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .client-pfp {
@@ -113,17 +121,18 @@
     
     border-radius: 50%;
     
-    height: 44px;
-    width: 44px;
+    height: 100%;
+    width: 100%;
     
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     
-    background: #4caf50;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     
-    box-shadow: 0 3px 6px rgba(76, 175, 80, 0.2);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     
     /* solid */
   
@@ -143,13 +152,14 @@
 .history-comm-client-name {
     overflow: hidden;
     
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.3;
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    color: #1a1d29;
+    color: #0f172a;
+    letter-spacing: -0.02em;
 }
 
 .history-comm-client-contact {
@@ -157,140 +167,130 @@
     
     margin-bottom: 2px;
     
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     line-height: 1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    color: #388e3c;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .history-comm-type {
     overflow: hidden;
     
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     line-height: 1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    color: #1a1d29;
+    color: #1e293b;
 }
 
 .history-comm-meta {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+    align-items: center;
+    gap: 12px;
     flex-shrink: 0;
-    
-    margin-right: 12px;
 }
 
 .history-comm-price {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 800;
     line-height: 1.2;
     
-    color: #4caf50;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    filter: drop-shadow(0 1px 2px rgba(16, 185, 129, 0.3));
 }
 
 .history-comm-status {
-    border-radius: 12px;
+    border-radius: 16px;
+    border: 2px solid #10b981;
     
-    padding: 2px 8px;
+    padding: 6px 14px;
     
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
     line-height: 1.2;
     white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     
-    background: rgba(76, 175, 80, 0.1);
-    color: #4caf50;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #047857;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    
+    box-shadow: 
+        0 2px 4px rgba(16, 185, 129, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Payment Status Styling */
 .history-comm-payment {
-    border-radius: 6px;
+    border-radius: 16px;
+    border: 2px solid;
     
-    padding: 4px 8px;
+    padding: 6px 14px;
     
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.2;
     white-space: nowrap;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .payment-status--not-paid {
-    background: #fee2e2;
+    border-color: #f87171;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
     color: #dc2626;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .payment-status--half-paid {
-    background: #fef3c7;
-    color: #f59e0b;
+    border-color: #fbbf24;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #d97706;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .payment-status--fully-paid {
-    background: #d1fae5;
+    border-color: #10b981;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
     color: #059669;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .history-comm-date {
     font-size: 0.85rem;
+    font-weight: 500;
     line-height: 1.2;
-    text-align: right;
     white-space: nowrap;
     
     color: #718096;
 }
 
-.history-comm-expand-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    
-    border: none;
-    border-radius: 8px;
-    
-    padding: 8px;
-    
-    background: none;
-    
-    outline: none;
-    
-    transition: background-color 0.2s ease;
-    
-    cursor: pointer;
-}
-
-.history-comm-expand-btn svg {
-    display: block;
-    
-    height: 20px;
-    width: 20px;
-    
-    color: #1a1d29;
-    
-    fill: #1a1d29;
-}
-
-/* Animation for expand button - only when animated */
-.history-comm-card.animated .history-comm-expand-btn svg {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.history-comm-expand-btn.expanded svg {
-    transform: rotate(180deg);
-}
-
 /* Action Buttons Container */
 .history-comm-actions {
-    border-top: 1px solid #f1f5f9;
+    border-top: 2px solid #e2e8f0;
     
     margin-top: 16px;
     padding-top: 16px;
+    
+    display: flex;
+    gap: 12px;
 }
 
 @media (max-width: 768px) {
@@ -340,7 +340,9 @@
 .history-comm-card.expanded .history-comm-details {
     grid-template-rows: 1fr;
     
-    border-top: 1px solid #f1f5f9;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    
+    border-top: 1px solid #d1fae5;
 }
 
 .history-comm-details > div {

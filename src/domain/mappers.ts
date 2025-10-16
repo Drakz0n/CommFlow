@@ -69,7 +69,8 @@ export function storageCommissionToDomain(c: StorageCommission) {
       status: c.status === 'completed' ? 'Completed' : 
               c.status === 'in-progress' ? 'In Progress' : 'Pending', 
       originalDate: undefined as string | undefined, 
-      completedDate: undefined as string | undefined 
+      completedDate: undefined as string | undefined,
+      isPinned: c.is_pinned || false
     };
     
     // Completion date logic for workflow tracking
@@ -100,6 +101,7 @@ export function domainCommissionToStorage(c: DomainCommission): StorageCommissio
             c.status === 'In Progress' ? 'in-progress' : 'pending', 
     created_at: c.date + 'T00:00:00.000Z', 
     updated_at: new Date().toISOString(), 
-    images: c.refs.filter(r => r.type === 'image').map(r => r.url || r.name) 
+    images: c.refs.filter(r => r.type === 'image').map(r => r.url || r.name),
+    is_pinned: c.isPinned || false
   }; 
 }

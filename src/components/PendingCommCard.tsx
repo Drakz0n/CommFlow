@@ -10,7 +10,6 @@ import { useCommissions } from '../contexts/CommissionContext';
 import type { PendingCommission } from '../contexts/CommissionContext';
 import ImageViewer from './ImageViewer';
 import './PendingCommCard.css';
-import ArrowDown from '../assets/icons/arrow-down-s-line.svg?react';
 
 // Legacy type alias for backward compatibility
 export type PendingComm = PendingCommission;
@@ -30,7 +29,8 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
     markCommissionComplete, 
     markCommissionInProgress, 
     updatePaymentStatus, 
-    deletePendingCommission 
+    deletePendingCommission,
+    togglePin
   } = useCommissions();
 
   /**
@@ -48,6 +48,8 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
 
   const handleMarkInProgress = () => { markCommissionInProgress(comm.id); };
 
+  const handleTogglePin = () => { togglePin(comm.id); };
+
   const handlePaymentStatusChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = e.target.value as 'not-paid' | 'half-paid' | 'fully-paid';
     updatePaymentStatus(comm.id, newStatus);
@@ -60,7 +62,7 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
   };
 
   return (
-    <div className={`pending-comm-card ${isExpanded ? 'expanded' : 'collapsed'} ${settings.animations ? 'animated' : ''}`}>
+    <div className={`pending-comm-card ${isExpanded ? 'expanded' : 'collapsed'} ${settings.animations ? 'animated' : ''} ${comm.isPinned ? 'pinned' : ''}`}>
       {/* Header: clicking toggles expansion; prevent nested controls from bubbling */}
       <div 
         className={`pending-comm-header ${isExpanded ? 'expanded-header' : ''}`}
@@ -105,11 +107,12 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
             </label>
           </div>
           <button
-            className={`pending-comm-expand-btn ${isExpanded ? 'expanded' : ''}`}
-            onClick={(e) => { e.stopPropagation(); onToggle(); }}
-            aria-label={isExpanded ? 'Collapse commission details' : 'Expand commission details'}
+            className={`pending-comm-pin-btn ${comm.isPinned ? 'pinned' : ''}`}
+            onClick={(e) => { e.stopPropagation(); handleTogglePin(); }}
+            aria-label={comm.isPinned ? 'Unpin commission' : 'Pin commission'}
+            title={comm.isPinned ? 'Unpin commission' : 'Pin commission'}
           >
-            <ArrowDown />
+            📌
           </button>
         </div>
       </div>

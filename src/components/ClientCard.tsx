@@ -7,7 +7,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from '../contexts/SettingsContext';
 import './ClientCard.css';
-import ArrowDown from '../assets/icons/arrow-down-s-line.svg?react';
 import type { Client } from '../contexts/ClientContext';
 
 /**
@@ -60,18 +59,6 @@ const ClientCard: React.FC<ClientCardProps> = ({ client, onEdit, onDelete, isExp
             <div className="client-contact">{client.contactInfo}</div>
           </div>
         </div>
-        
-        {/* Stop header click from toggling twice when the button is pressed */}
-        <button 
-          className={`client-expand-btn ${isExpanded ? 'expanded' : ''}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleExpanded();
-          }}
-          aria-label={isExpanded ? 'Collapse client details' : 'Expand client details'}
-        >
-          <ArrowDown />
-        </button>
       </div>
 
       {/* Mount once and show/hide with CSS to avoid remount jank during animations */}

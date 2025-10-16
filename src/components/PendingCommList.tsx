@@ -29,6 +29,10 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
     let sorted = [...pendingCommissions];
 
     sorted.sort((a, b) => {
+      // Pinned commissions always go first
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+      
       let comparison = 0;
       
       switch (sortOptions.sortBy) {
@@ -52,6 +56,10 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
     });
 
     sorted.sort((a, b) => {
+      // Pinned commissions always go first
+      if (a.isPinned && !b.isPinned) return -1;
+      if (!a.isPinned && b.isPinned) return 1;
+      
       const paymentPriority = { 'not-paid': 0, 'half-paid': 1, 'fully-paid': 2 };
       const aPriority = paymentPriority[a.paymentStatus] || 0;
       const bPriority = paymentPriority[b.paymentStatus] || 0;

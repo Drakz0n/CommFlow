@@ -32,6 +32,7 @@ export interface BaseCommission {
   refs: CommissionRef[];
   date: string;
   paymentStatus: 'not-paid' | 'half-paid' | 'fully-paid';
+  isPinned?: boolean;
 }
 
 /**
@@ -76,6 +77,9 @@ interface CommissionContextState {
   
   // Payment tracking for cash flow management
   updatePaymentStatus: (id: string, status: 'not-paid' | 'half-paid' | 'fully-paid', isPending?: boolean) => Promise<void>;
+  
+  // Pin management for commission prioritization
+  togglePin: (id: string) => Promise<void>;
   
   // Data synchronization with file system
   loadAllCommissions: () => Promise<void>;
@@ -404,6 +408,14 @@ export const CommissionProvider: React.FC<CommissionProviderProps> = ({ children
     if(isPending) { await updatePendingCommission(id, { paymentStatus: status }); const comm = pendingCommissions.find(c=>c.id===id); if (comm) recomputeClientStats(comm.client.id); } else { return updateHistoryPaymentStatus(id, status); }
   };
 
+  // Pin Actions - Toggle pin status for commission prioritization
+  const togglePin = async (id: string) => {
+    const comm = pendingCommissions.find(c => c.id === id);
+    if (comm) {
+      await updatePendingCommission(id, { isPinned: !comm.isPinned });
+    }
+  };
+
   // Search and Filter
   const searchCommissions = (query: string, type: 'pending' | 'history'): PendingCommission[] | HistoryCommission[] => {
     const q = query.toLowerCase();
@@ -438,6 +450,7 @@ export const CommissionProvider: React.FC<CommissionProviderProps> = ({ children
       markCommissionIncomplete,
       updateHistoryPaymentStatus,
       updatePaymentStatus,
+      togglePin,
       loadAllCommissions,
       searchCommissions,
       getTotalEarnings,
