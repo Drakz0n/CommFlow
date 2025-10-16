@@ -4,48 +4,88 @@
     
     overflow: hidden;
     
-    border: 1px solid rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
+    border: 2px solid transparent;
+    border-radius: 20px;
     
     box-sizing: border-box;
     width: 100%;
     
     font-family: "NeverMindHand", Arial, sans-serif;
     
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     
     color: #1a1d29;
+    
+    position: relative;
+}
+
+/* Pinned commission indicator */
+.pending-comm-card.pinned {
+    border-color: #fbbf24;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    box-shadow: 
+        0 4px 12px rgba(251, 191, 36, 0.2),
+        0 2px 4px rgba(251, 191, 36, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.pending-comm-card.pinned::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #fbbf24, #f59e0b);
+    border-radius: 20px 0 0 20px;
 }
 
 /* ANIMATION SYSTEM - Only when .animated class is present */
 .pending-comm-card.animated {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pending-comm-card.animated:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.12),
+        0 4px 8px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
     
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.01);
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.pending-comm-card.animated.pinned:hover {
+    border-color: #fbbf24;
+    box-shadow: 
+        0 12px 28px rgba(251, 191, 36, 0.25),
+        0 4px 12px rgba(251, 191, 36, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .pending-comm-card.animated.expanded {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16);
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.12),
+        0 4px 8px rgba(0, 0, 0, 0.08);
     
     transform: translateY(-2px);
 }
 
 .pending-comm-card.animated .pending-comm-header {
-    transition: background-color 0.2s ease;
+    transition: background-color 0.25s ease;
 }
 
 .pending-comm-card.animated .pending-comm-header:hover {
-    background-color: rgba(59, 130, 246, 0.04);
+    background-color: rgba(59, 130, 246, 0.05);
 }
 
 .pending-comm-card.animated .pending-comm-expand-btn svg {
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pending-comm-card.animated .pending-comm-expand-btn.expanded svg {
@@ -103,11 +143,16 @@
     overflow: hidden;
     
     border-radius: 50%;
+    border: 3px solid #ffffff;
     
-    height: 44px;
-    width: 44px;
+    height: 50px;
+    width: 50px;
     
-    background: #f1f5f9;
+    background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+    
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .client-pfp {
@@ -123,17 +168,18 @@
     
     border-radius: 50%;
     
-    height: 44px;
-    width: 44px;
+    height: 100%;
+    width: 100%;
     
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     
-    background: #ffb300;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
     
-    box-shadow: 0 3px 6px rgba(255, 179, 0, 0.2);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
     
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     
     /* solid */
   
@@ -194,11 +240,16 @@
 }
 
 .pending-comm-price {
-    font-size: 1.05rem;
-    font-weight: 700;
+    font-size: 1.15rem;
+    font-weight: 800;
     line-height: 1.2;
     
-    color: #ffb300;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    filter: drop-shadow(0 1px 2px rgba(251, 191, 36, 0.3));
 }
 
 .pending-comm-date {
@@ -229,24 +280,40 @@
 }
 
 .payment-select {
-    border: 1px solid #718096;
-    border-radius: 6px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
     
-    min-width: 90px;
-    padding: 4px 8px;
+    min-width: 100px;
+    padding: 6px 10px;
     
     font-family: "NeverMindHand", Arial, sans-serif;
     font-size: 0.85rem;
+    font-weight: 600;
     
-    background: white;
-    color: #718096;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    color: #475569;
+    
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    transition: all 0.2s ease;
     
     cursor: pointer;
 }
 
+.payment-select:hover {
+    border-color: #cbd5e1;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
 .payment-select:focus {
-    border-color: #ffb300;
-    box-shadow: 0 0 0 2px rgba(255, 179, 0, 0.1);
+    border-color: #fbbf24;
+    box-shadow: 
+        0 0 0 3px rgba(251, 191, 36, 0.15),
+        0 2px 4px rgba(0, 0, 0, 0.1);
     outline: none;
 }
 
@@ -256,36 +323,43 @@
 
 /* Status Badges */
 .pending-comm-status {
-    border-radius: 12px;
+    border-radius: 16px;
     
-    padding: 4px 10px;
+    padding: 6px 14px;
     
     font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
     white-space: nowrap;
+    
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .pending-comm-status--pending {
-    border: 1px solid #ffcc02;
+    border: 2px solid #fbbf24;
     
-    background: #fff8e1;
-    color: #f57c00;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #d97706;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .pending-comm-status--in-progress {
-    border: 1px solid #2196f3;
+    border: 2px solid #60a5fa;
     
-    background: #e3f2fd;
-    color: #1976d2;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #1d4ed8;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .pending-comm-status--finished {
-    border: 1px solid #4caf50;
+    border: 2px solid #34d399;
     
-    background: #e8f5e8;
-    color: #2e7d32;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #047857;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 /* Pin Button */
@@ -295,37 +369,47 @@
     align-items: center;
     flex-shrink: 0;
     
-    border: none;
-    border-radius: 6px;
+    border: 2px solid transparent;
+    border-radius: 8px;
     
-    height: 28px;
-    width: 28px;
+    height: 32px;
+    width: 32px;
     
-    background: none;
+    background: rgba(251, 191, 36, 0.1);
     
     outline: none;
     
-    font-size: 16px;
+    font-size: 18px;
     
-    opacity: 0.4;
+    opacity: 0.5;
     
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     
     cursor: pointer;
 }
 
 .pending-comm-pin-btn:hover {
-    opacity: 0.7;
-    background: rgba(59, 130, 246, 0.1);
+    opacity: 1;
+    background: rgba(251, 191, 36, 0.2);
+    border-color: rgba(251, 191, 36, 0.3);
+    transform: scale(1.1);
 }
 
 .pending-comm-pin-btn.pinned {
     opacity: 1;
-    background: rgba(59, 130, 246, 0.15);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    border-color: #f59e0b;
+    box-shadow: 
+        0 2px 8px rgba(251, 191, 36, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
 }
 
 .pending-comm-pin-btn.pinned:hover {
-    background: rgba(59, 130, 246, 0.25);
+    transform: scale(1.15) rotate(15deg);
+    box-shadow: 
+        0 4px 12px rgba(251, 191, 36, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 /* Expand Button */
@@ -335,38 +419,65 @@
     align-items: center;
     flex-shrink: 0;
     
-    border: none;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
     
-    height: 24px;
-    width: 24px;
+    height: 32px;
+    width: 32px;
     
-    background: none;
+    background: #ffffff;
     
     outline: none;
     
-    transition: transform 0.3s ease;
+    font-size: 14px;
+    font-weight: 700;
+    color: #475569;
+    
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     
     cursor: pointer;
+}
+
+.pending-comm-expand-btn:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    color: #1e293b;
+    transform: scale(1.1);
+}
+
+.pending-comm-expand-btn.expanded {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+    border-color: #3b82f6;
+    color: #ffffff;
+    box-shadow: 
+        0 2px 8px rgba(59, 130, 246, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.pending-comm-expand-btn.expanded:hover {
+    box-shadow: 
+        0 4px 12px rgba(59, 130, 246, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .pending-comm-expand-btn svg {
     display: block;
     
-    height: 20px;
-    width: 20px;
+    height: 22px;
+    width: 22px;
     
-    color: #0f172a;
-    fill: #0f172a;
+    fill: #475569;
     
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pending-comm-expand-btn:hover svg {
-    color: #0f172a;
-    fill: #0f172a;
+    fill: #1e293b;
 }
 
 .pending-comm-expand-btn.expanded svg {
+    fill: #ffffff;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
     transform: rotate(180deg);
 }
 

@@ -10,7 +10,6 @@ import { useCommissions } from '../contexts/CommissionContext';
 import type { HistoryCommission } from '../contexts/CommissionContext';
 import ImageViewer from './ImageViewer';
 import './HistoryCommCard.css';
-import ArrowDown from '../assets/icons/arrow-down-s-line.svg?react';
 
 /**
  * Legacy type alias preserved for backwards compatibility.
@@ -106,16 +105,6 @@ const HistoryCommCard: React.FC<HistoryCommCardProps> = ({ comm, isExpanded, onT
           </span>
           <span className="history-comm-date">{new Date(comm.completedDate).toLocaleDateString()}</span>
         </div>
-        <button
-          className={`history-comm-expand-btn ${isExpanded ? 'expanded' : ''}`}
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleExpanded();
-          }}
-          aria-label={isExpanded ? 'Collapse commission details' : 'Expand commission details'}
-        >
-          <ArrowDown />
-        </button>
       </div>
 
       {/* Persistent DOM mounting enables smooth CSS grid height animations without layout jumps */}
