@@ -10,30 +10,41 @@
     box-sizing: border-box;
     height: 100%;
     min-height: 0;
-    padding: 0;
+    padding: 20px;
     width: 100%;
+    
+    position: relative;
 }
 
 /* Pending Commission List Styles */
 .pending-comm-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     
     overflow-x: hidden;
     overflow-y: auto;
     
     box-sizing: border-box;
     max-height: 100%;
-    max-width: 680px;
-    padding: 0 20px;
+    max-width: 700px;
+    padding: 24px;
     width: 100%;
     
-    /* CRITICAL: Use the full height of parent */ height: 100%;
-    /* CRITICAL: Allow scrolling to work properly */ min-height: 0;
-    /* CRITICAL: Don't allow this to grow beyond its container */ flex-shrink: 1;
-    scrollbar-color: rgba(0, 172, 193, 0.3)transparent;
+    height: 100%;
+    min-height: 0;
+    flex-shrink: 1;
+    
+    /* Modern scrollbar */
     scrollbar-width: thin;
+    scrollbar-color: var(--theme-primary-subtle) transparent;
+    
+    /* Subtle background */
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    
+    /* Smooth scroll */
+    scroll-behavior: smooth;
 }
 
 /* Constrain individual cards within the list */
@@ -99,51 +110,77 @@
     background: rgba(0, 172, 193, 0.2);
 }
 
-/* Main scrollbar styling */
+/* Modern scrollbar styling */
 .pending-comm-list::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
 }
 
 .pending-comm-list::-webkit-scrollbar-track {
-    border-radius: 3px;
-    
     background: transparent;
+    border-radius: 4px;
 }
 
 .pending-comm-list::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    background: rgba(6, 182, 212, 0.2);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
     
-    background: rgba(0, 172, 193, 0.3);
+    transition: background 0.3s ease;
 }
 
 .pending-comm-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 172, 193, 0.5);
+    background: rgba(6, 182, 212, 0.4);
+    background-clip: padding-box;
 }
 
-/* Hide native scrollbars but keep scroll behavior (works with wheel/trackpad/keyboard) */
-.pending-comm-list,
-.client-list-content,
-.history-comm-list {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+/* Empty State Improvements */
+.pending-comm-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    min-height: 300px;
+    padding: 48px 24px;
+    
+    text-align: center;
 }
 
-.pending-comm-list::-webkit-scrollbar,
-.client-list-content::-webkit-scrollbar,
-.history-comm-list::-webkit-scrollbar {
-    width: 0; /* Chrome, Safari, Opera */
-    height: 0;
+.pending-comm-empty-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    
+    opacity: 0.5;
+    
+    animation: floatIcon 3s ease-in-out infinite;
 }
 
-/* Optional: provide a subtle custom thin thumb on hover (uncomment if you want it)
-.pending-comm-list:hover::-webkit-scrollbar-thumb,
-.client-list-content:hover::-webkit-scrollbar-thumb,
-.history-comm-list:hover::-webkit-scrollbar-thumb {
-    width: 6px;
-    background: rgba(0,172,193,0.25);
-    border-radius: 3px;
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
-*/
+
+.pending-comm-empty-text {
+    font-family: 'NeverMindHand', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    
+    color: var(--theme-text-primary);
+    margin-bottom: 8px;
+}
+
+.pending-comm-empty-subtext {
+    font-size: 0.95rem;
+    color: var(--theme-text-secondary);
+    
+    max-width: 300px;
+    line-height: 1.5;
+}
 
 /* Loading State */
 .loading-state {
@@ -152,82 +189,69 @@
     justify-content: center;
     align-items: center;
     
-    height: 200px;
+    min-height: 300px;
+    padding: 48px 24px;
     
-    font-family: "NeverMindHand", Arial, sans-serif;
+    font-family: 'NeverMindHand', Arial, sans-serif;
     
-    color: #718096;
+    color: var(--theme-text-secondary);
 }
 
 .loading-spinner {
-    border: 3px solid #718096;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    
+    border: 4px solid var(--theme-border-light);
+    border-top-color: var(--theme-primary);
     border-radius: 50%;
-    border-top: 3px solid #00bcd4;
     
-    height: 40px;
-    margin-bottom: 16px;
-    width: 40px;
-    
-    animation: spin 1s linear infinite;
+    animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
+    to {
         transform: rotate(360deg);
     }
 }
 
-/* Empty State */
-.pending-comm-empty {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-    height: 200px;
-    
-    font-family: "NeverMindHand", Arial, sans-serif;
-    text-align: center;
-    
-    color: #718096;
-}
-
-.pending-comm-empty-icon {
-    margin-bottom: 16px;
-    
-    font-size: 3rem;
-    
-    opacity: 0.5;
-}
-
-.pending-comm-empty-text {
-    margin-bottom: 8px;
-    
+.loading-state p {
     font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.pending-comm-empty-subtext {
-    font-size: 0.9rem;
+    font-weight: 500;
     
     opacity: 0.7;
+    
+    animation: pulse 2s ease-in-out infinite;
 }
 
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
 @media (max-width: 800px) {
     .pending-comm-container {
-        padding: 0;
+        padding: 12px;
     }
 
     .pending-comm-list {
         max-width: 100%;
-    padding: 0 10px;
+        padding: 16px;
+        gap: 12px;
     }
 
     .pending-comm-list .pending-comm-card.expanded {
         max-height: 70vh;
+    }
+    
+    .pending-comm-empty,
+    .loading-state {
+        min-height: 200px;
+        padding: 32px 16px;
     }
 }

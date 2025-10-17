@@ -177,7 +177,7 @@
     background: transparent;
 }
 
-/* Hover glow zones for each direction */
+/* Hover glow zones for each direction - positioned behind content */
 .viewport-box.comm-main::before {
     content: '';
     position: absolute;
@@ -189,45 +189,54 @@
     background: transparent;
     pointer-events: none;
     
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: -1;
+    opacity: 0;
 }
 
-/* Top glow effect */
+/* Top glow effect - subtle with animation */
 .comm-top:hover ~ .comm-center .viewport-box.comm-main::before,
 .viewport-container:has(.comm-top:hover) .viewport-box.comm-main::before {
     background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 0%,
         transparent 30%
     );
+    opacity: 1;
+    animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/* Left glow effect */
+/* Left glow effect - subtle with animation */
 .viewport-container:has(.comm-left:hover) .viewport-box.comm-main::before {
     background: linear-gradient(
         to right,
-        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 0%,
         transparent 30%
     );
+    opacity: 1;
+    animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/* Right glow effect */
+/* Right glow effect - subtle with animation */
 .viewport-container:has(.comm-right:hover) .viewport-box.comm-main::before {
     background: linear-gradient(
         to left,
-        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 0%,
         transparent 30%
     );
+    opacity: 1;
+    animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/* Bottom glow effect */
+/* Bottom glow effect - subtle with animation */
 .viewport-container:has(.comm-bottom:hover) .viewport-box.comm-main::before {
     background: linear-gradient(
         to top,
-        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.08) 0%,
         transparent 30%
     );
+    opacity: 1;
+    animation: pulseGlow 2s ease-in-out infinite;
 }
 
 /* Top Arrow and Label */
@@ -236,11 +245,11 @@
     align-items: center;
     justify-content: center;
     
-    left: 50%;
+    left: 0;
+    right: 0;
     position: absolute;
-    top: 8px;
-    
-    transform: translateX(-50%);
+    top: 0;
+    height: 40px;
     
     cursor: pointer;
     padding: 8px 24px;
@@ -250,7 +259,8 @@
     
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    z-index: 10;
+    z-index: 5;
+    pointer-events: auto;
 }
 
 .comm-arrow-up {
@@ -281,22 +291,22 @@
     align-items: center;
     justify-content: center;
     
-    left: -45px;
+    left: 0;
     position: absolute;
-    top: 50%;
-    
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: center center;
+    top: 0;
+    bottom: 0;
+    width: 30px;
     
     cursor: pointer;
-    padding: 8px 24px;
+    padding: 8px 12px;
     
     background: transparent;
     border: none;
     
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    z-index: 10;
+    z-index: 5;
+    pointer-events: auto;
 }
 
 .comm-arrow-left {
@@ -313,6 +323,8 @@
     color: rgba(255, 255, 255, 0.35);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     
+    transform: rotate(-90deg);
+    
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -328,21 +340,21 @@
     justify-content: center;
     
     position: absolute;
-    right: -45px;
-    top: 50%;
-    
-    transform: translateY(-50%) rotate(90deg);
-    transform-origin: center center;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 30px;
     
     cursor: pointer;
-    padding: 8px 24px;
+    padding: 8px 12px;
     
     background: transparent;
     border: none;
     
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    z-index: 10;
+    z-index: 5;
+    pointer-events: auto;
 }
 
 .comm-label-right {
@@ -354,6 +366,8 @@
     
     color: rgba(255, 255, 255, 0.35);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    
+    transform: rotate(90deg);
     
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -369,16 +383,15 @@
 
 /* Bottom Arrow and Label */
 .comm-bottom {
-    bottom: 8px;
-    
     display: flex;
     align-items: center;
     justify-content: center;
     
-    left: 50%;
+    left: 0;
+    right: 0;
     position: absolute;
-    
-    transform: translateX(-50%);
+    bottom: 0;
+    height: 40px;
     
     cursor: pointer;
     padding: 8px 24px;
@@ -388,7 +401,8 @@
     
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     
-    z-index: 10;
+    z-index: 5;
+    pointer-events: auto;
 }
 
 .comm-label-bottom {
@@ -573,6 +587,16 @@
         opacity: 0;
     
     transform: translate(-50%, -100%);
+    }
+}
+
+/* Pulse glow animation for hover effects */
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
     }
 }
 

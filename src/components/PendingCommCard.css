@@ -96,16 +96,19 @@
 .pending-comm-header {
     display: flex;
     align-items: center;
+    gap: 16px;
     flex-shrink: 0;
     
     border-bottom: none;
     
     box-sizing: border-box;
     min-height: 70px;
-    padding: 18px 20px;
+    padding: 20px 24px;
     width: 100%;
     
     cursor: pointer;
+    border-radius: 20px 20px 0 0;
+    transition: all 0.2s ease;
 }
 
 .pending-comm-card.animated .pending-comm-header {
@@ -118,6 +121,7 @@
 
 .pending-comm-header.expanded-header {
     border-bottom: 1px solid #f1f5f9;
+    border-radius: 20px 20px 0 0;
 }
 
 .pending-comm-client {
@@ -509,10 +513,10 @@
 .pending-comm-details > div {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
     
     min-height: 0;
-    padding: 0 20px;
+    padding: 0 24px;
     
     opacity: 0;
     
@@ -524,7 +528,7 @@
 }
 
 .pending-comm-card.expanded .pending-comm-details > div {
-    padding: 20px;
+    padding: 24px;
     
     opacity: 1;
 }
@@ -638,9 +642,17 @@
 
 /* Action Buttons Container */
 .pending-comm-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    
     border-top: 1px solid #f1f5f9;
     
-    padding-top: 16px;
+    padding: 20px 24px 24px 24px;
+    background: linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%);
+    border-radius: 0 0 20px 20px;
 }
 
 @media (max-width: 768px) {
