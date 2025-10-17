@@ -18,7 +18,7 @@
 .history-comm-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     flex-shrink: 1;
     
     overflow-x: hidden;
@@ -27,12 +27,16 @@
     box-sizing: border-box;
     height: 100%;
     max-height: 100%;
-    max-width: 680px;
+    max-width: 700px;
     min-height: 0;
-    padding: 20px;
-    width: 100%;
+    width: calc(100% - 40px);
+    margin: 20px;
+    padding: 24px;
     
-    scrollbar-color: rgba(76, 175, 80, 0.3)transparent;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    
+    scrollbar-color: var(--theme-primary-subtle) transparent;
     scrollbar-width: thin;
 }
 
@@ -46,25 +50,28 @@
     width: 100%;
 }
 
-/* Main scrollbar styling with green theme */
+/* Main scrollbar styling - modern and minimal */
 .history-comm-list::-webkit-scrollbar {
     width: 6px;
 }
 
 .history-comm-list::-webkit-scrollbar-track {
-    border-radius: 3px;
-    
     background: transparent;
 }
 
 .history-comm-list::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: 10px;
     
-    background: rgba(76, 175, 80, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    transition: all 0.3s ease;
 }
 
 .history-comm-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(76, 175, 80, 0.5);
+    background: var(--theme-primary, rgba(6, 182, 212, 0.4));
+    border-color: var(--theme-primary, rgba(6, 182, 212, 0.2));
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
 }
 
 @media (max-width: 800px) {
@@ -85,27 +92,32 @@
     justify-content: center;
     align-items: center;
     
-    height: 200px;
+    min-height: 300px;
+    padding: 48px 24px;
     
     font-family: "NeverMindHand", Arial, sans-serif;
     text-align: center;
     
-    color: #718096;
+    color: var(--theme-text-muted, #718096);
 }
 
 .history-comm-empty-icon {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     
-    font-size: 3rem;
+    font-size: 4rem;
     
-    opacity: 0.5;
+    opacity: 0.4;
+    
+    animation: floatIcon 3s ease-in-out infinite;
 }
 
 .history-comm-empty-text {
     margin-bottom: 8px;
     
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    
+    color: var(--theme-text-primary, #1a1d29);
 }
 
 .history-comm-empty-subtext {
