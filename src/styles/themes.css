@@ -1,0 +1,331 @@
+/**
+ * CommFlow Theme System
+ * Centralized color and style variables for easy theming
+ * 
+ * Usage: Add data-theme="theme-name" to root element to switch themes
+ */
+
+/* ===== DEFAULT THEME (Current Blue/Cyan) ===== */
+:root,
+[data-theme="default"] {
+    /* Primary Colors */
+    --theme-primary: #06b6d4;
+    --theme-primary-dark: #0891b2;
+    --theme-primary-light: #22d3ee;
+    --theme-primary-subtle: rgba(6, 182, 212, 0.1);
+    
+    /* Accent Colors */
+    --theme-accent: #10b981;
+    --theme-accent-dark: #059669;
+    --theme-accent-light: #34d399;
+    
+    /* Warning/Alert Colors */
+    --theme-warning: #fbbf24;
+    --theme-warning-dark: #f59e0b;
+    --theme-warning-light: #fde68a;
+    
+    /* Background Colors */
+    --theme-bg-primary: #ffffff;
+    --theme-bg-secondary: #f8fafc;
+    --theme-bg-tertiary: #f1f5f9;
+    --theme-bg-dark: #1a1d29;
+    
+    /* Text Colors */
+    --theme-text-primary: #1a1d29;
+    --theme-text-secondary: #64748b;
+    --theme-text-tertiary: #94a3b8;
+    --theme-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --theme-border-light: #e2e8f0;
+    --theme-border-medium: #cbd5e1;
+    --theme-border-dark: #94a3b8;
+    
+    /* Shadow System */
+    --theme-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --theme-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --theme-shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+    --theme-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* Gradients */
+    --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+    --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-dark) 100%);
+    --theme-gradient-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+    --theme-gradient-card: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    
+    /* App Background Pattern */
+    --theme-bg-pattern: 
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+}
+
+/* ===== DARK THEME ===== */
+[data-theme="dark"] {
+    /* Primary Colors */
+    --theme-primary: #22d3ee;
+    --theme-primary-dark: #06b6d4;
+    --theme-primary-light: #67e8f9;
+    --theme-primary-subtle: rgba(34, 211, 238, 0.15);
+    
+    /* Accent Colors */
+    --theme-accent: #34d399;
+    --theme-accent-dark: #10b981;
+    --theme-accent-light: #6ee7b7;
+    
+    /* Warning/Alert Colors */
+    --theme-warning: #fde68a;
+    --theme-warning-dark: #fbbf24;
+    --theme-warning-light: #fef3c7;
+    
+    /* Background Colors */
+    --theme-bg-primary: #0f172a;
+    --theme-bg-secondary: #1e293b;
+    --theme-bg-tertiary: #334155;
+    --theme-bg-dark: #020617;
+    
+    /* Text Colors */
+    --theme-text-primary: #f1f5f9;
+    --theme-text-secondary: #cbd5e1;
+    --theme-text-tertiary: #94a3b8;
+    --theme-text-inverse: #0f172a;
+    
+    /* Border Colors */
+    --theme-border-light: #334155;
+    --theme-border-medium: #475569;
+    --theme-border-dark: #64748b;
+    
+    /* Shadow System */
+    --theme-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --theme-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.5);
+    --theme-shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+    --theme-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Gradients */
+    --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary-dark) 0%, var(--theme-primary) 100%);
+    --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent-dark) 0%, var(--theme-accent) 100%);
+    --theme-gradient-bg: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    --theme-gradient-card: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    
+    /* App Background Pattern */
+    --theme-bg-pattern: 
+        radial-gradient(circle at 20% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(52, 211, 153, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(253, 230, 138, 0.05) 0%, transparent 50%);
+}
+
+/* ===== RED/PASSION THEME ===== */
+[data-theme="passion"] {
+    /* Primary Colors */
+    --theme-primary: #ef4444;
+    --theme-primary-dark: #dc2626;
+    --theme-primary-light: #f87171;
+    --theme-primary-subtle: rgba(239, 68, 68, 0.1);
+    
+    /* Accent Colors */
+    --theme-accent: #f59e0b;
+    --theme-accent-dark: #d97706;
+    --theme-accent-light: #fbbf24;
+    
+    /* Warning/Alert Colors */
+    --theme-warning: #fbbf24;
+    --theme-warning-dark: #f59e0b;
+    --theme-warning-light: #fde68a;
+    
+    /* Background Colors */
+    --theme-bg-primary: #ffffff;
+    --theme-bg-secondary: #fef2f2;
+    --theme-bg-tertiary: #fee2e2;
+    --theme-bg-dark: #1a1d29;
+    
+    /* Text Colors */
+    --theme-text-primary: #1a1d29;
+    --theme-text-secondary: #64748b;
+    --theme-text-tertiary: #94a3b8;
+    --theme-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --theme-border-light: #fee2e2;
+    --theme-border-medium: #fecaca;
+    --theme-border-dark: #fca5a5;
+    
+    /* Shadow System */
+    --theme-shadow-sm: 0 2px 4px rgba(239, 68, 68, 0.1);
+    --theme-shadow-md: 0 4px 6px rgba(239, 68, 68, 0.1), 0 1px 3px rgba(239, 68, 68, 0.2);
+    --theme-shadow-lg: 0 12px 24px rgba(239, 68, 68, 0.2), 0 4px 8px rgba(239, 68, 68, 0.15);
+    --theme-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* Gradients */
+    --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+    --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-dark) 100%);
+    --theme-gradient-bg: linear-gradient(135deg, #fef2f2 0%, #fee2e2 50%, #fed7aa 100%);
+    --theme-gradient-card: linear-gradient(135deg, #ffffff 0%, #fef2f2 100%);
+    
+    /* App Background Pattern */
+    --theme-bg-pattern: 
+        radial-gradient(circle at 20% 30%, rgba(239, 68, 68, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+}
+
+/* ===== PURPLE/ROYAL THEME ===== */
+[data-theme="royal"] {
+    /* Primary Colors */
+    --theme-primary: #a855f7;
+    --theme-primary-dark: #9333ea;
+    --theme-primary-light: #c084fc;
+    --theme-primary-subtle: rgba(168, 85, 247, 0.1);
+    
+    /* Accent Colors */
+    --theme-accent: #ec4899;
+    --theme-accent-dark: #db2777;
+    --theme-accent-light: #f472b6;
+    
+    /* Warning/Alert Colors */
+    --theme-warning: #fbbf24;
+    --theme-warning-dark: #f59e0b;
+    --theme-warning-light: #fde68a;
+    
+    /* Background Colors */
+    --theme-bg-primary: #ffffff;
+    --theme-bg-secondary: #faf5ff;
+    --theme-bg-tertiary: #f3e8ff;
+    --theme-bg-dark: #1a1d29;
+    
+    /* Text Colors */
+    --theme-text-primary: #1a1d29;
+    --theme-text-secondary: #64748b;
+    --theme-text-tertiary: #94a3b8;
+    --theme-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --theme-border-light: #f3e8ff;
+    --theme-border-medium: #e9d5ff;
+    --theme-border-dark: #d8b4fe;
+    
+    /* Shadow System */
+    --theme-shadow-sm: 0 2px 4px rgba(168, 85, 247, 0.1);
+    --theme-shadow-md: 0 4px 6px rgba(168, 85, 247, 0.1), 0 1px 3px rgba(168, 85, 247, 0.2);
+    --theme-shadow-lg: 0 12px 24px rgba(168, 85, 247, 0.2), 0 4px 8px rgba(168, 85, 247, 0.15);
+    --theme-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* Gradients */
+    --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+    --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-dark) 100%);
+    --theme-gradient-bg: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #fce7f3 100%);
+    --theme-gradient-card: linear-gradient(135deg, #ffffff 0%, #faf5ff 100%);
+    
+    /* App Background Pattern */
+    --theme-bg-pattern: 
+        radial-gradient(circle at 20% 30%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+}
+
+/* ===== OCEAN/BLUE THEME ===== */
+[data-theme="ocean"] {
+    /* Primary Colors */
+    --theme-primary: #3b82f6;
+    --theme-primary-dark: #2563eb;
+    --theme-primary-light: #60a5fa;
+    --theme-primary-subtle: rgba(59, 130, 246, 0.1);
+    
+    /* Accent Colors */
+    --theme-accent: #06b6d4;
+    --theme-accent-dark: #0891b2;
+    --theme-accent-light: #22d3ee;
+    
+    /* Warning/Alert Colors */
+    --theme-warning: #fbbf24;
+    --theme-warning-dark: #f59e0b;
+    --theme-warning-light: #fde68a;
+    
+    /* Background Colors */
+    --theme-bg-primary: #ffffff;
+    --theme-bg-secondary: #eff6ff;
+    --theme-bg-tertiary: #dbeafe;
+    --theme-bg-dark: #1a1d29;
+    
+    /* Text Colors */
+    --theme-text-primary: #1a1d29;
+    --theme-text-secondary: #64748b;
+    --theme-text-tertiary: #94a3b8;
+    --theme-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --theme-border-light: #dbeafe;
+    --theme-border-medium: #bfdbfe;
+    --theme-border-dark: #93c5fd;
+    
+    /* Shadow System */
+    --theme-shadow-sm: 0 2px 4px rgba(59, 130, 246, 0.1);
+    --theme-shadow-md: 0 4px 6px rgba(59, 130, 246, 0.1), 0 1px 3px rgba(59, 130, 246, 0.2);
+    --theme-shadow-lg: 0 12px 24px rgba(59, 130, 246, 0.2), 0 4px 8px rgba(59, 130, 246, 0.15);
+    --theme-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* Gradients */
+    --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+    --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-dark) 100%);
+    --theme-gradient-bg: linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #cffafe 100%);
+    --theme-gradient-card: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+    
+    /* App Background Pattern */
+    --theme-bg-pattern: 
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(96, 165, 250, 0.05) 0%, transparent 50%);
+}
+
+/* ===== FOREST/GREEN THEME ===== */
+[data-theme="forest"] {
+    /* Primary Colors */
+    --theme-primary: #10b981;
+    --theme-primary-dark: #059669;
+    --theme-primary-light: #34d399;
+    --theme-primary-subtle: rgba(16, 185, 129, 0.1);
+    
+    /* Accent Colors */
+    --theme-accent: #84cc16;
+    --theme-accent-dark: #65a30d;
+    --theme-accent-light: #a3e635;
+    
+    /* Warning/Alert Colors */
+    --theme-warning: #fbbf24;
+    --theme-warning-dark: #f59e0b;
+    --theme-warning-light: #fde68a;
+    
+    /* Background Colors */
+    --theme-bg-primary: #ffffff;
+    --theme-bg-secondary: #f0fdf4;
+    --theme-bg-tertiary: #dcfce7;
+    --theme-bg-dark: #1a1d29;
+    
+    /* Text Colors */
+    --theme-text-primary: #1a1d29;
+    --theme-text-secondary: #64748b;
+    --theme-text-tertiary: #94a3b8;
+    --theme-text-inverse: #ffffff;
+    
+    /* Border Colors */
+    --theme-border-light: #dcfce7;
+    --theme-border-medium: #bbf7d0;
+    --theme-border-dark: #86efac;
+    
+    /* Shadow System */
+    --theme-shadow-sm: 0 2px 4px rgba(16, 185, 129, 0.1);
+    --theme-shadow-md: 0 4px 6px rgba(16, 185, 129, 0.1), 0 1px 3px rgba(16, 185, 129, 0.2);
+    --theme-shadow-lg: 0 12px 24px rgba(16, 185, 129, 0.2), 0 4px 8px rgba(16, 185, 129, 0.15);
+    --theme-shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* Gradients */
+    --theme-gradient-primary: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+    --theme-gradient-accent: linear-gradient(135deg, var(--theme-accent) 0%, var(--theme-accent-dark) 100%);
+    --theme-gradient-bg: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #ecfccb 100%);
+    --theme-gradient-card: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+    
+    /* App Background Pattern */
+    --theme-bg-pattern: 
+        radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(132, 204, 22, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(52, 211, 153, 0.05) 0%, transparent 50%);
+}
