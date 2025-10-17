@@ -9,6 +9,7 @@ import PendingCommCard from './PendingCommCard';
 import { useCommissions } from '../contexts/CommissionContext';
 import type { PendingCommission } from '../contexts/CommissionContext';
 import type { SortOptions } from './SortModal';
+import './CommListShared.css';
 import './PendingCommList.css';
 
 interface PendingCommListProps {
@@ -89,12 +90,12 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
   // Empty: provide helpful guidance
   if (sortedPending.length === 0) {
     return (
-      <div className="pending-comm-container">
-        <div className="pending-comm-list">
-          <div className="pending-comm-empty">
-            <div className="pending-comm-empty-icon">📋</div>
-            <div className="pending-comm-empty-text">{t('empty.noPending')}</div>
-            <div className="pending-comm-empty-subtext">{t('empty.pendingSubtext')}</div>
+      <div className="comm-list-container-shared">
+        <div className="comm-list-shared">
+          <div className="comm-list-empty-shared">
+            <div className="empty-icon">📋</div>
+            <h3>{t('empty.noPending')}</h3>
+            <p>{t('empty.pendingSubtext')}</p>
           </div>
         </div>
       </div>
@@ -102,8 +103,8 @@ const PendingCommList: React.FC<PendingCommListProps> = ({
   }
 
   return (
-    <div className="pending-comm-container">
-      <div className="pending-comm-list">
+    <div className="comm-list-container-shared">
+      <div className="comm-list-shared">
         {sortedPending.map((comm: PendingCommission) => (
           <PendingCommCard
             key={comm.id}

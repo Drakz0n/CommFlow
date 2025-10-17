@@ -17,9 +17,8 @@ import {
   ConfigView,
 } from './MainViewportViews';
 import type { ViewType } from './MainViewportViews';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { slideTransitionStyles } from './transitionStyles';
-import { invoke } from '@tauri-apps/api/core';
 import type { SlideDirection } from './transitionStyles';
 import { triggerDataSync } from '../hooks/useDataSync';
 
@@ -68,23 +67,8 @@ const MainViewport = () => {
   const [view, setView] = useState<ViewType>('main');
   const [transition, setTransition] = useState<{direction: SlideDirection, nextView: ViewType, type: 'exit' | 'enter'} | null>(null);
   const [displayView, setDisplayView] = useState<ViewType>('main');
-  const [appVersion, setAppVersion] = useState<string>('0.6.2'); // Default fallback
   const timeoutRef = useRef<number | null>(null);
   const lastSyncRef = useRef<number>(0);
-
-  // Fetch app version from Cargo.toml
-  useEffect(() => {
-    const fetchVersion = async () => {
-      try {
-        const version = await invoke<string>('get_app_version');
-        setAppVersion(version);
-      } catch (error) {
-        console.warn('Failed to fetch app version:', error);
-        // Keep the default fallback version
-      }
-    };
-    fetchVersion();
-  }, []);
 
   /**
    * Smooth animated navigation with intelligent data prefetching.
@@ -188,11 +172,6 @@ const MainViewport = () => {
             <ArrowDown className="comm-arrow comm-arrow-down" />
           </div>
         )}
-
-        {/* Version: only show in main menu */}
-        {view === 'main' && (
-          <div className="comm-version">Ver: <span className="comm-version-number">{appVersion}</span></div>
-        )}  
       </div>
     </div>
   );

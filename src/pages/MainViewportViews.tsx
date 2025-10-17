@@ -4,6 +4,7 @@
  */
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { invoke } from '@tauri-apps/api/core';
 import ClientList from '../components/ClientList';
 import ClientModal from '../components/ClientModal';
 import { useClients } from '../contexts/ClientContext';
@@ -24,6 +25,20 @@ export function MainView() {
   const { t } = useTranslation(['dashboard', 'common']);
   const stats = useStats();
   const { settings } = useSettings();
+  const [appVersion, setAppVersion] = useState<string>('0.6.5');
+
+  // Fetch app version
+  useEffect(() => {
+    const fetchVersion = async () => {
+      try {
+        const version = await invoke<string>('get_app_version');
+        setAppVersion(version);
+      } catch (error) {
+        console.warn('Failed to fetch app version:', error);
+      }
+    };
+    fetchVersion();
+  }, []);
   
   return (
     <>
@@ -41,6 +56,22 @@ export function MainView() {
         <span style={{ color: '#ff9800', fontWeight: '600' }}>{stats.inProgressCommissions} {t('dashboard:stats.inProgress')}</span>
         <span style={{ margin: '0 15px', color: '#4a5568' }}>•</span>
         <span style={{ color: '#4caf50', fontWeight: '600' }}>{stats.completedCommissions} {t('dashboard:stats.completed')}</span>
+      </div>
+
+      {/* App version with Beta tag */}
+      <div style={{
+        textAlign: 'center',
+        marginTop: '12px',
+        color: 'rgba(100, 200, 255, 0.5)',
+        fontSize: '0.75rem',
+        fontFamily: '"Roboto", sans-serif',
+        letterSpacing: '0.5px',
+      }}>
+        v{appVersion} <span style={{ 
+          color: 'rgba(100, 200, 255, 0.4)',
+          fontWeight: '600',
+          marginLeft: '4px'
+        }}>BETA</span>
       </div>
     </>
   );
@@ -98,7 +129,6 @@ export function ClientsView() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '700px',
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
@@ -201,7 +231,6 @@ export function PendingView() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '700px',
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
@@ -324,7 +353,6 @@ export function HistoryView() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '700px',
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',

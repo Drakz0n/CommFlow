@@ -9,6 +9,7 @@ import { useCommissions } from '../contexts/CommissionContext';
 import HistoryCommCard from './HistoryCommCard';
 import type { HistoryCommission } from '../contexts/CommissionContext';
 import type { SortOptions } from './SortModal';
+import './CommListShared.css';
 import './HistoryCommList.css';
 
 interface HistoryCommListProps {
@@ -69,14 +70,12 @@ const HistoryCommList: React.FC<HistoryCommListProps> = ({
 
   if (sortedHistory.length === 0) {
     return (
-      <div className="history-comm-container">
-        <div className="history-comm-empty">
-          <div style={{ fontSize: '2rem', marginBottom: '16px' }}>📚</div>
-          <div style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px', color: '#fff' }}>
-            {t('empty.noHistory')}
-          </div>
-          <div style={{ fontSize: '0.9rem', color: '#718096' }}>
-            {t('empty.historySubtext')}
+      <div className="comm-list-container-shared">
+        <div className="comm-list-shared">
+          <div className="comm-list-empty-shared">
+            <div className="empty-icon">📚</div>
+            <h3>{t('empty.noHistory')}</h3>
+            <p>{t('empty.historySubtext')}</p>
           </div>
         </div>
       </div>
@@ -84,8 +83,8 @@ const HistoryCommList: React.FC<HistoryCommListProps> = ({
   }
 
   return (
-    <div className="history-comm-container">
-      <div className="history-comm-list">
+    <div className="comm-list-container-shared">
+      <div className="comm-list-shared">
         {sortedHistory.map((commission: HistoryCommission) => (
           <HistoryCommCard 
             key={commission.id} 

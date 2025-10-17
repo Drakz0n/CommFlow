@@ -86,10 +86,12 @@ const PendingCommCard: React.FC<PendingCommCardProps> = ({ comm, isExpanded, onT
         </div>
         <div className="pending-comm-meta">
           <span className="pending-comm-price">${comm.price}</span>
-          <span className={`pending-comm-status pending-comm-status--${comm.status.toLowerCase().replace(/\s/g, '-')}`}>
-            {comm.status}
-          </span>
-          <span className="pending-comm-date">{comm.date}</span>
+          <div className="pending-comm-status-group">
+            <span className={`pending-comm-status pending-comm-status--${comm.status.toLowerCase().replace(/\s/g, '-')}`}>
+              {comm.status}
+            </span>
+            <span className="pending-comm-date">{comm.date}</span>
+          </div>
           {/* Stop propagation so selecting payment status doesn't toggle card */}
           <div className="pending-comm-payment">
             <label className="payment-selector" onClick={(e) => e.stopPropagation()}>
