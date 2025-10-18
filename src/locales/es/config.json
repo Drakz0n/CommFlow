@@ -5,6 +5,18 @@
     "displayNameDescription": "Tu nombre mostrado en la pantalla de bienvenida principal",
     "displayNamePlaceholder": "Ingresa tu nombre",
     "save": "Guardar",
+    "theme": "Tema",
+    "themeDescription": "Elige tu esquema de colores preferido",
+    "themes": {
+      "default": "Cian (Predeterminado)",
+      "purple": "Sueño Púrpura",
+      "green": "Verde Bosque",
+      "sunset": "Naranja Atardecer",
+      "ocean": "Océano Profundo",
+      "rose": "Oro Rosa",
+      "lith-red": "Rojo Lith",
+      "lithRed": "Rojo Lith"
+    },
     "animations": "Habilitar Animaciones",
     "animationsDescription": "Transiciones suaves al expandir tarjetas y navegar",
     "language": "Language / Idioma",

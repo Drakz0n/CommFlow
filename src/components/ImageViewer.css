@@ -69,11 +69,11 @@
     align-items: center;
     flex-shrink: 0; /* Maintains consistent header height regardless of content */
     
-    border-bottom: 1px solid #444; /* Subtle separation from image area */
+    border-bottom: 1px solid var(--theme-border-medium);
     
     padding: 16px 20px;
     
-    background: #2d2d2d; /* Slightly lighter than container for visual hierarchy */
+    background: var(--theme-bg-secondary);
 }
 
 /* File information helps users maintain context during navigation */
@@ -95,7 +95,7 @@
     text-overflow: ellipsis; /* Graceful handling of long names */
     white-space: nowrap;
     
-    color: #fff;
+    color: var(--theme-text-primary);
 }
 
 /* Counter provides navigation context when viewing multiple images */
@@ -103,7 +103,7 @@
     font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
     font-size: 0.9rem;
     
-    color: #718096; /* Muted color indicates secondary importance */
+    color: var(--theme-text-muted);
 }
 
 /* Control cluster provides intuitive zoom and navigation without overwhelming the interface */
@@ -120,7 +120,7 @@
     font-size: 0.9rem;
     text-align: center;
     
-    color: #fff;
+    color: var(--theme-text-primary);
 }
 
 /* Main content area optimizes space for image display */
@@ -202,13 +202,13 @@
 
 /* Footer provides helpful keyboard shortcuts without cluttering the interface */
 .image-viewer-footer {
-    border-top: 1px solid #444; /* Subtle separation from image content */
+    border-top: 1px solid var(--theme-border-medium);
     
     padding: 12px 20px;
     
     text-align: center; /* Centered hints feel balanced and professional */
     
-    background: #2d2d2d; /* Matches header for visual consistency */
+    background: var(--theme-bg-secondary);
 }
 
 /* Hint text guides users toward efficient keyboard navigation */
@@ -216,7 +216,7 @@
     font-family: "NeverMindHand", "Roboto", Arial, sans-serif;
     font-size: 0.9rem;
     
-    color: #718096; /* Muted color indicates this is supplementary information */
+    color: var(--theme-text-muted);
 }
 
 /* Tablet optimization maintains usability while maximizing screen real estate */

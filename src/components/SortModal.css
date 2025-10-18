@@ -28,8 +28,8 @@
     
     font-family: "NeverMindHand", Arial, sans-serif;
     
-    background: #2a2f3a;
-    color: #fff;
+    background: var(--theme-bg-secondary);
+    color: var(--theme-text-primary);
     
     animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
@@ -54,7 +54,7 @@
     justify-content: space-between;
     align-items: center;
     
-    border-bottom: 1px solid #4a5568;
+    border-bottom: 1px solid var(--theme-border-medium);
     
     padding: 20px 24px;
 }
@@ -65,7 +65,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     
-    color: #fff;
+    color: var(--theme-text-primary);
 }
 
 .sort-modal-content {
@@ -90,7 +90,7 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     
-    color: #00bcd4;
+    color: var(--theme-primary);
 }
 
 /* Sort Options Grid */
@@ -102,7 +102,7 @@
 }
 
 .sort-option {
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid var(--theme-border-light);
     border-radius: 8px;
     
     padding: 16px 12px;
@@ -111,7 +111,7 @@
     font-weight: 600;
     text-align: center;
     
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--theme-bg-primary);
     
     transition: all 0.2s ease;
     
@@ -120,21 +120,21 @@
 }
 
 .sort-option:hover {
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--theme-border-medium);
     
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--theme-bg-hover);
     
     transform: translateY(-1px);
 }
 
 .sort-option.active {
-    border-color: #00bcd4;
+    border-color: var(--theme-primary);
     
-    background: rgba(0, 188, 212, 0.2);
+    background: var(--theme-primary-subtle);
     
-    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.1);
+    box-shadow: 0 0 0 2px var(--theme-glow-primary);
     
-    color: #00bcd4;
+    color: var(--theme-primary);
 }
 
 /* Sort Order Options */
@@ -145,7 +145,7 @@
 }
 
 .sort-order-option {
-    border: 2px solid rgba(255, 255, 255, 0.15);
+    border: 2px solid var(--theme-border-light);
     border-radius: 8px;
     
     padding: 12px 16px;
@@ -153,7 +153,7 @@
     font-size: 0.9rem;
     font-weight: 500;
     
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--theme-bg-primary);
     
     transition: all 0.2s ease;
     
@@ -162,19 +162,19 @@
 }
 
 .sort-order-option:hover {
-    border-color: rgba(255, 255, 255, 0.25);
+    border-color: var(--theme-border-medium);
     
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--theme-bg-hover);
 }
 
 .sort-order-option.active {
-    border-color: #00bcd4;
+    border-color: var(--theme-primary);
     
-    background: rgba(0, 188, 212, 0.2);
+    background: var(--theme-primary-subtle);
     
-    box-shadow: 0 0 0 2px rgba(0, 188, 212, 0.1);
+    box-shadow: 0 0 0 2px var(--theme-glow-primary);
     
-    color: #00bcd4;
+    color: var(--theme-primary);
 }
 
 /* Payment Status Info */
@@ -183,12 +183,12 @@
     flex-direction: column;
     gap: 8px;
     
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--theme-border-light);
     border-radius: 8px;
     
     padding: 16px;
     
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--theme-bg-primary);
 }
 
 .payment-status-info {
@@ -198,7 +198,7 @@
     
     font-size: 0.9rem;
     
-    color: #718096;
+    color: var(--theme-text-muted);
 }
 
 .payment-dot {
@@ -228,7 +228,7 @@
     font-size: 0.8rem;
     font-style: italic;
     
-    color: #718096;
+    color: var(--theme-text-muted);
 }
 
 /* Payment Priority Toggle */
@@ -245,11 +245,11 @@
     justify-content: flex-end;
     gap: 12px;
     
-    border-top: 1px solid #4a5568;
+    border-top: 1px solid var(--theme-border-medium);
     
     padding: 20px 24px;
     
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--theme-bg-primary);
 }
 
 /* Sort Button in Views */

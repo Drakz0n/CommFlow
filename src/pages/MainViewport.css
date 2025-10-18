@@ -595,11 +595,12 @@
     font-size: 1.6rem;
     font-weight: 500;
     
-    color: #f1f5f9;
+    color: var(--theme-text-inverse, #f1f5f9);
 }
 
 .comm-user {
-    color: #06b6d4;
+    color: var(--theme-primary, #06b6d4);
+    font-weight: 600;
 }
 
 .comm-pending {
@@ -607,11 +608,11 @@
     
     font-size: 1.1rem;
     
-    color: #718096;
+    color: var(--theme-text-tertiary, #718096);
 }
 
 .comm-pending-count {
-    color: #00bcd4;
+    color: var(--theme-primary-light, #00bcd4);
 }
 
 /* Version and Edit Icon */
@@ -622,7 +623,7 @@
     
     font-size: 1rem;
     
-    color: #06b6d4;
+    color: var(--theme-primary, #06b6d4);
 }
 
 .comm-edit {
@@ -632,7 +633,7 @@
     
     font-size: 1.5rem;
     
-    color: #f8fafc;
+    color: var(--theme-text-inverse, #f8fafc);
 }
 
 @font-face {

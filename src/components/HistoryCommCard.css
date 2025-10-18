@@ -1,5 +1,7 @@
 /* History Commission Card Styles */
 .history-comm-card {
+    flex-shrink: 0;
+    
     overflow: hidden;
     
     border: 2px solid transparent;
@@ -296,10 +298,9 @@
     
     border-top: 1px solid #f1f5f9;
     
-    padding: 20px 24px 24px 24px;
-    margin-top: 0;
-    background: linear-gradient(to bottom, #fafbfc 0%, #ffffff 100%);
-    border-radius: 0 0 20px 20px;
+    padding: 20px 0 0 0;
+    margin-top: auto;
+    background: transparent;
 }
 
 @media (max-width: 768px) {

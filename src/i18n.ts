@@ -12,18 +12,21 @@ import enDashboard from './locales/en/dashboard.json';
 import enClients from './locales/en/clients.json';
 import enCommissions from './locales/en/commissions.json';
 import enConfig from './locales/en/config.json';
+import enImageViewer from './locales/en/imageViewer.json';
 
 import esCommon from './locales/es/common.json';
 import esDashboard from './locales/es/dashboard.json';
 import esClients from './locales/es/clients.json';
 import esCommissions from './locales/es/commissions.json';
 import esConfig from './locales/es/config.json';
+import esImageViewer from './locales/es/imageViewer.json';
 
 import deCommon from './locales/de/common.json';
 import deDashboard from './locales/de/dashboard.json';
 import deClients from './locales/de/clients.json';
 import deCommissions from './locales/de/commissions.json';
 import deConfig from './locales/de/config.json';
+import deImageViewer from './locales/de/imageViewer.json';
 
 // Configure i18next
 i18n
@@ -37,6 +40,7 @@ i18n
         clients: enClients,
         commissions: enCommissions,
         config: enConfig,
+        imageViewer: enImageViewer,
       },
       es: {
         common: esCommon,
@@ -44,6 +48,7 @@ i18n
         clients: esClients,
         commissions: esCommissions,
         config: esConfig,
+        imageViewer: esImageViewer,
       },
       de: {
         common: deCommon,
@@ -51,6 +56,7 @@ i18n
         clients: deClients,
         commissions: deCommissions,
         config: deConfig,
+        imageViewer: deImageViewer,
       },
     },
     

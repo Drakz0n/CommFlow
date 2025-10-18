@@ -7,6 +7,7 @@ export interface SettingsState {
   animations: boolean;
   userName: string;
   language: string;
+  theme: string;
   // Extensible design allows adding new preferences without breaking existing code
 }
 
@@ -34,6 +35,7 @@ const defaultSettings: SettingsState = {
   animations: true,
   userName: 'User',
   language: 'en',
+  theme: 'default',
 };
 
 interface SettingsProviderProps {
@@ -61,6 +63,11 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
         // Sync i18n with loaded language preference
         if (mergedSettings.language) {
           i18n.changeLanguage(mergedSettings.language);
+        }
+        
+        // Apply saved theme on startup
+        if (mergedSettings.theme) {
+          document.documentElement.setAttribute('data-theme', mergedSettings.theme);
         }
       } else {
         console.log('SettingsContext: No saved settings found, using defaults'); // Debug logging
@@ -96,6 +103,11 @@ export const SettingsProvider: React.FC<SettingsProviderProps> = ({ children }) 
     // If language is being updated, sync with i18n
     if (updates.language && updates.language !== settings.language) {
       i18n.changeLanguage(updates.language);
+    }
+    
+    // If theme is being updated, apply it to the root element
+    if (updates.theme && updates.theme !== settings.theme) {
+      document.documentElement.setAttribute('data-theme', updates.theme);
     }
     
     setSettings(prev => {

@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ClientCard from './ClientCard';
 import ClientModal from './ClientModal';
+import './CommListShared.css';
 import './ClientList.css';
 import { useClients } from '../contexts/ClientContext';
 import type { Client } from '../contexts/ClientContext';
@@ -46,24 +47,12 @@ const ClientList: React.FC = () => {
 
   if (clients.length === 0) {
     return (
-      <div className="client-list">
-        <div className="client-list-content">
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '200px',
-            textAlign: 'center',
-            color: '#718096'
-          }}>
-            <div style={{ fontSize: '2rem', marginBottom: '16px' }}>👥</div>
-            <div style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '8px' }}>
-              {t('empty.noClients')}
-            </div>
-            <div style={{ fontSize: '0.9rem' }}>
-              {t('empty.addFirstClient')}
-            </div>
+      <div className="comm-list-container-shared">
+        <div className="comm-list-shared">
+          <div className="comm-list-empty-shared">
+            <div className="empty-icon">👥</div>
+            <h3>{t('empty.noClients')}</h3>
+            <p>{t('empty.addFirstClient')}</p>
           </div>
         </div>
       </div>
@@ -71,8 +60,8 @@ const ClientList: React.FC = () => {
   }
 
   return (
-    <div className="client-list">
-      <div className="client-list-content">
+    <div className="comm-list-container-shared">
+      <div className="comm-list-shared">
         {clients.map((client) => (
           <ClientCard 
             key={client.id} 

@@ -5,6 +5,7 @@
  */
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslation } from 'react-i18next';
 import './ImageViewer.css';
 
 interface ImageViewerProps {
@@ -22,6 +23,7 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
   onClose, 
   onIndexChange 
 }) => {
+  const { t } = useTranslation('imageViewer');
   const [zoom, setZoom] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -121,15 +123,15 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
           <div className="image-viewer-info">
             <span className="image-viewer-title">{currentImage.name}</span>
             {images.length > 1 && (
-              <span className="image-viewer-counter">{currentIndex + 1} of {images.length}</span>
+              <span className="image-viewer-counter">{currentIndex + 1} {t('of')} {images.length}</span>
             )}
           </div>
           <div className="image-viewer-controls">
             <button className="cf-btn cf-btn--secondary cf-btn--small" onClick={handleZoomOut} disabled={zoom <= 0.25}>−</button>
             <span className="zoom-level">{Math.round(zoom * 100)}%</span>
             <button className="cf-btn cf-btn--secondary cf-btn--small" onClick={handleZoomIn} disabled={zoom >= 5}>+</button>
-            <button className="cf-btn cf-btn--secondary cf-btn--small" onClick={resetZoom}>Reset</button>
-            <button className="cf-btn cf-btn--secondary cf-btn--small" onClick={onClose}>Close</button>
+            <button className="cf-btn cf-btn--secondary cf-btn--small" onClick={resetZoom}>{t('reset')}</button>
+            <button className="cf-btn cf-btn--secondary cf-btn--small" onClick={onClose}>{t('close')}</button>
           </div>
         </div>
         
@@ -160,8 +162,8 @@ const ImageViewer: React.FC<ImageViewerProps> = ({
         
         <div className="image-viewer-footer">
           <span className="image-viewer-hint">
-            {images.length > 1 ? 'Use ← → keys to navigate • ' : ''}
-            Scroll, +/- to zoom • Drag to pan when zoomed • R to reset • ESC to close
+            {images.length > 1 ? `${t('navigationHint')} • ` : ''}
+            {t('controlsHint')}
           </span>
         </div>
       </div>
