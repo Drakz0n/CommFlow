@@ -1,0 +1,9 @@
+{
+  "of": "von",
+  "zoomOut": "Verkleinern",
+  "zoomIn": "Vergrößern",
+  "reset": "Zurücksetzen",
+  "close": "Schließen",
+  "navigationHint": "Verwende ← → zum Navigieren",
+  "controlsHint": "Scrollen, +/- zum Zoomen • Ziehen zum Verschieben • R zum Zurücksetzen • ESC zum Schließen"
+}

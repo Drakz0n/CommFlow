@@ -1,39 +1,192 @@
-/* History Commission List Container */
+/* ============================================
+   HISTORY COMMISSIONS LIST - COMPLETE STYLES
+   ============================================ */
+
+/* Parent container - centers everything */
 .history-comm-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex: 1;
     
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    
+    padding: 0;
     overflow: hidden;
     
     box-sizing: border-box;
-    height: 100%;
-    min-height: 0;
-    padding: 0;
-    width: 100%;
+    position: relative;
 }
 
-/* History Commission List Styles */
+/* Main list container */
 .history-comm-list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    flex-shrink: 1;
+    gap: 16px;
+    
+    width: calc(100% - 80px);
+    max-width: 800px;
+    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+    
+    margin: 0 40px;
+    padding: 24px 0;
     
     overflow-x: hidden;
     overflow-y: auto;
     
     box-sizing: border-box;
-    height: 100%;
-    max-height: 100%;
-    max-width: 680px;
-    min-height: 0;
-    padding: 20px;
-    width: 100%;
+    flex-shrink: 1;
     
-    scrollbar-color: rgba(76, 175, 80, 0.3)transparent;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    
+    scroll-behavior: smooth;
     scrollbar-width: thin;
+    scrollbar-color: var(--theme-primary-subtle) transparent;
+}
+
+/* Card constraints */
+.history-comm-list .history-comm-card {
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Expanded card handling */
+.history-comm-list .history-comm-card.expanded {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    max-height: 500px;
+    overflow: hidden;
+}
+
+.history-comm-list .history-comm-card.expanded .history-comm-details {
+    flex: 1;
+    min-height: 0;
+    max-height: 350px;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 185, 129, 0.2) transparent;
+}
+
+/* Card details scrollbar */
+.history-comm-list .history-comm-card.expanded .history-comm-details::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history-comm-list .history-comm-card.expanded .history-comm-details::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history-comm-list .history-comm-card.expanded .history-comm-details::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(16, 185, 129, 0.15);
+}
+
+.history-comm-list .history-comm-card.expanded .history-comm-details::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.3);
+}
+
+/* Main list scrollbar - WebKit */
+.history-comm-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-comm-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history-comm-list::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.history-comm-list::-webkit-scrollbar-thumb:hover {
+    background: var(--theme-primary, rgba(6, 182, 212, 0.4));
+    border-color: var(--theme-primary, rgba(6, 182, 212, 0.2));
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
+/* Empty state */
+.history-comm-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    min-height: 300px;
+    padding: 48px 24px;
+    
+    text-align: center;
+    font-family: "NeverMindHand", Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.history-comm-empty-icon {
+    margin-bottom: 24px;
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+.history-comm-empty h3 {
+    margin: 0 0 12px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.history-comm-empty p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 800px) {
+    .history-comm-container {
+        padding: 0;
+    }
+
+    .history-comm-list {
+        max-width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .history-comm-list {
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .history-comm-empty {
+        min-height: 200px;
+        padding: 32px 16px;
+    }
+
+    .history-comm-empty-icon {
+        font-size: 3rem;
+    }
+
+    .history-comm-empty h3 {
+        font-size: 1.2rem;
+    }
+
+    .history-comm-empty p {
+        font-size: 0.95rem;
+    }
 }
 
 /* Constrain individual cards within the list */
@@ -46,25 +199,28 @@
     width: 100%;
 }
 
-/* Main scrollbar styling with green theme */
+/* Main scrollbar styling - modern and minimal */
 .history-comm-list::-webkit-scrollbar {
     width: 6px;
 }
 
 .history-comm-list::-webkit-scrollbar-track {
-    border-radius: 3px;
-    
     background: transparent;
 }
 
 .history-comm-list::-webkit-scrollbar-thumb {
-    border-radius: 3px;
+    border-radius: 10px;
     
-    background: rgba(76, 175, 80, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    
+    transition: all 0.3s ease;
 }
 
 .history-comm-list::-webkit-scrollbar-thumb:hover {
-    background: rgba(76, 175, 80, 0.5);
+    background: var(--theme-primary, rgba(6, 182, 212, 0.4));
+    border-color: var(--theme-primary, rgba(6, 182, 212, 0.2));
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
 }
 
 @media (max-width: 800px) {
@@ -85,27 +241,32 @@
     justify-content: center;
     align-items: center;
     
-    height: 200px;
+    min-height: 300px;
+    padding: 48px 24px;
     
     font-family: "NeverMindHand", Arial, sans-serif;
     text-align: center;
     
-    color: #718096;
+    color: var(--theme-text-muted, #718096);
 }
 
 .history-comm-empty-icon {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     
-    font-size: 3rem;
+    font-size: 4rem;
     
-    opacity: 0.5;
+    opacity: 0.4;
+    
+    animation: floatIcon 3s ease-in-out infinite;
 }
 
 .history-comm-empty-text {
     margin-bottom: 8px;
     
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    
+    color: var(--theme-text-primary, #1a1d29);
 }
 
 .history-comm-empty-subtext {

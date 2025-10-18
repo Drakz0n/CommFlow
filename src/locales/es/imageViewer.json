@@ -1,0 +1,9 @@
+{
+  "of": "de",
+  "zoomOut": "Alejar",
+  "zoomIn": "Acercar",
+  "reset": "Restablecer",
+  "close": "Cerrar",
+  "navigationHint": "Usa ← → para navegar",
+  "controlsHint": "Rueda, +/- para zoom • Arrastra para mover • R para restablecer • ESC para cerrar"
+}

@@ -4,6 +4,7 @@
  */
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { invoke } from '@tauri-apps/api/core';
 import ClientList from '../components/ClientList';
 import ClientModal from '../components/ClientModal';
 import { useClients } from '../contexts/ClientContext';
@@ -24,6 +25,20 @@ export function MainView() {
   const { t } = useTranslation(['dashboard', 'common']);
   const stats = useStats();
   const { settings } = useSettings();
+  const [appVersion, setAppVersion] = useState<string>('0.6.5');
+
+  // Fetch app version
+  useEffect(() => {
+    const fetchVersion = async () => {
+      try {
+        const version = await invoke<string>('get_app_version');
+        setAppVersion(version);
+      } catch (error) {
+        console.warn('Failed to fetch app version:', error);
+      }
+    };
+    fetchVersion();
+  }, []);
   
   return (
     <>
@@ -33,14 +48,30 @@ export function MainView() {
       <div style={{ 
         textAlign: 'center', 
         marginTop: '20px', 
-        color: '#fff', 
+        color: 'var(--theme-text-primary, #fff)', 
         fontSize: '0.95rem',
       }}>
-        <span style={{ color: '#00acc1', fontWeight: '600' }}>{stats.pendingCommissions} {t('dashboard:stats.pending')}</span>
-        <span style={{ margin: '0 15px', color: '#4a5568' }}>•</span>
-        <span style={{ color: '#ff9800', fontWeight: '600' }}>{stats.inProgressCommissions} {t('dashboard:stats.inProgress')}</span>
-        <span style={{ margin: '0 15px', color: '#4a5568' }}>•</span>
-        <span style={{ color: '#4caf50', fontWeight: '600' }}>{stats.completedCommissions} {t('dashboard:stats.completed')}</span>
+        <span style={{ color: 'var(--theme-primary, #00acc1)', fontWeight: '600' }}>{stats.pendingCommissions} {t('dashboard:stats.pending')}</span>
+        <span style={{ margin: '0 15px', color: 'var(--theme-text-tertiary, #4a5568)' }}>•</span>
+        <span style={{ color: 'var(--theme-warning, #ff9800)', fontWeight: '600' }}>{stats.inProgressCommissions} {t('dashboard:stats.inProgress')}</span>
+        <span style={{ margin: '0 15px', color: 'var(--theme-text-tertiary, #4a5568)' }}>•</span>
+        <span style={{ color: 'var(--theme-accent, #4caf50)', fontWeight: '600' }}>{stats.completedCommissions} {t('dashboard:stats.completed')}</span>
+      </div>
+
+      {/* App version with Beta tag */}
+      <div style={{
+        textAlign: 'center',
+        marginTop: '12px',
+        color: 'var(--theme-primary-light, rgba(100, 200, 255, 0.5))',
+        fontSize: '0.75rem',
+        fontFamily: '"NeverMindHand", Arial, sans-serif',
+        letterSpacing: '0.5px',
+      }}>
+        v{appVersion} <span style={{ 
+          color: 'var(--theme-primary, rgba(100, 200, 255, 0.4))',
+          fontWeight: '600',
+          marginLeft: '4px'
+        }}>BETA</span>
       </div>
     </>
   );
@@ -98,7 +129,6 @@ export function ClientsView() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '700px',
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
@@ -201,7 +231,6 @@ export function PendingView() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '700px',
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
@@ -324,7 +353,6 @@ export function HistoryView() {
       <div style={{
         flex: 1,
         width: '100%',
-        maxWidth: '700px',
         display: 'flex',
         justifyContent: 'center',
         overflow: 'auto',
@@ -451,7 +479,7 @@ export const ConfigView = () => {
               }}
             />
             <button
-              className="cf-btn cf-btn--success"
+              className="cf-btn cf-btn--primary"
               onClick={handleSaveUserName}
               disabled={!localUserName.trim() || (!hasUnsavedChanges && localUserName === settings.userName)}
             >
@@ -466,6 +494,39 @@ export const ConfigView = () => {
           background: 'rgba(255, 255, 255, 0.1)', 
           margin: '30px 0 20px 0' 
         }} />
+        
+        {/* Theme Selection */}
+        <div className="setting-item">
+          <label className="setting-label">
+            <span className="setting-name">{t('settings.theme')}</span>
+            <span className="setting-description">
+              {t('settings.themeDescription')}
+            </span>
+          </label>
+          <select
+            value={settings.theme}
+            onChange={(e) => updateSettings({ theme: e.target.value })}
+            style={{
+              background: '#2d3748',
+              border: '1px solid #4a5568',
+              borderRadius: '4px',
+              color: '#fff',
+              padding: '8px 12px',
+              fontSize: '0.9rem',
+              width: '200px',
+              maxWidth: '100%',
+              cursor: 'pointer',
+            }}
+          >
+            <option value="default">{t('settings.themes.default')}</option>
+            <option value="purple">{t('settings.themes.purple')}</option>
+            <option value="green">{t('settings.themes.green')}</option>
+            <option value="sunset">{t('settings.themes.sunset')}</option>
+            <option value="ocean">{t('settings.themes.ocean')}</option>
+            <option value="rose">{t('settings.themes.rose')}</option>
+            <option value="lith-red">{t('settings.themes.lithRed')}</option>
+          </select>
+        </div>
         
         {/* Language Selection */}
         <div className="setting-item">
@@ -526,7 +587,7 @@ export const ConfigView = () => {
             </span>
           </label>
           <button 
-            className="export-import-btn cf-btn cf-btn--success"
+            className="export-import-btn cf-btn cf-btn--primary"
             onClick={openExportImport}
             style={undefined}
           >
@@ -539,6 +600,23 @@ export const ConfigView = () => {
       {isExportImportOpen && (
         <ExportImportData onClose={closeExportImport} />
       )}
+
+      {/* Footer with credits */}
+      <div style={{
+        textAlign: 'center',
+        marginTop: '40px',
+        paddingTop: '20px',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        color: 'var(--theme-text-tertiary, #94a3b8)',
+        fontSize: '0.8rem'
+      }}>
+        <p style={{ margin: '0 0 4px 0' }}>
+          <span style={{ fontWeight: '600', color: 'var(--theme-primary, #06b6d4)' }}>CommFlow</span> by OtterWinternet (Drakz0n)
+        </p>
+        <p style={{ margin: '0', fontSize: '0.75rem', color: 'var(--theme-text-tertiary, #64748b)' }}>
+          © 2025
+        </p>
+      </div>
     </div>
   );
 };

@@ -5,6 +5,18 @@
     "displayNameDescription": "Ihr Name, der auf dem Hauptbegrüßungsbildschirm angezeigt wird",
     "displayNamePlaceholder": "Geben Sie Ihren Namen ein",
     "save": "Speichern",
+    "theme": "Thema",
+    "themeDescription": "Wählen Sie Ihr bevorzugtes Farbschema",
+    "themes": {
+      "default": "Cyan (Standard)",
+      "purple": "Lila Traum",
+      "green": "Waldgrün",
+      "sunset": "Sonnenuntergang Orange",
+      "ocean": "Tiefer Ozean",
+      "rose": "Roségold",
+      "lith-red": "Lith Rot",
+      "lithRed": "Lith Rot"
+    },
     "animations": "Animationen Aktivieren",
     "animationsDescription": "Sanfte Übergänge beim Erweitern von Karten und Navigieren",
     "language": "Sprache / Language",

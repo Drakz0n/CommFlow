@@ -5,6 +5,18 @@
     "displayNameDescription": "Your name shown on the main welcome screen",
     "displayNamePlaceholder": "Enter your name",
     "save": "Save",
+    "theme": "Theme",
+    "themeDescription": "Choose your preferred color scheme",
+    "themes": {
+      "default": "Cyan (Default)",
+      "purple": "Purple Dream",
+      "green": "Forest Green",
+      "sunset": "Sunset Orange",
+      "ocean": "Deep Ocean",
+      "rose": "Rose Gold",
+      "lith-red": "Lith Red",
+      "lithRed": "Lith Red"
+    },
     "animations": "Enable Animations",
     "animationsDescription": "Smooth transitions when expanding cards and navigating",
     "language": "Language / Idioma",

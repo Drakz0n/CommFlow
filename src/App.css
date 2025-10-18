@@ -1,10 +1,35 @@
 /* Root container centers content and provides responsive max-width for readability */
 #root {
-    margin: 0 auto;
-    max-width: 1280px; /* Prevents content from becoming too wide on large screens */
-    padding: 2rem;
+    margin: 0;
+    padding: 0;
     
-    text-align: center; /* Default center alignment for main content */
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: hidden;
+    
+    /* ALWAYS keep dark background */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background-attachment: fixed;
+}
+
+/* Add subtle theme accent glow overlay */
+#root::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, var(--theme-glow-primary, rgba(6, 182, 212, 0.08)) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, var(--theme-glow-accent, rgba(16, 185, 129, 0.08)) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Logo styling with interactive hover effects for brand engagement */
@@ -55,34 +80,34 @@
     color: #718096; /* Subdued color indicates secondary importance */
 }
 
-/* Custom context menu styles - ensure buttons are blue and text is white */
+/* Custom context menu styles - ensure buttons match theme */
 .custom-context-menu {
     /* container fallback if inline styles are removed later */
-    background: #0f1724;
-    color: #fff;
+    background: var(--theme-bg-secondary);
+    color: var(--theme-text-primary);
     border-radius: 6px;
     box-shadow: 0 8px 24px rgba(2,6,23,0.6);
 }
 
 .custom-context-menu .cf-btn {
-    background: #00bcd4; /* brand cyan */
-    color: #ffffff !important; /* force white text */
+    background: var(--theme-primary);
+    color: var(--theme-text-inverse) !important;
     border: none !important;
-    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.18);
+    box-shadow: 0 4px 12px var(--theme-glow-primary);
     padding: 8px 12px !important;
     border-radius: 6px !important;
     text-align: left;
 }
 
 .custom-context-menu .cf-btn:hover:not(:disabled) {
-    background: #00acc1 !important; /* slightly darker on hover */
+    background: var(--theme-primary-dark) !important;
     transform: translateY(-1px) !important;
 }
 
 .custom-context-menu .cf-btn:disabled,
 .custom-context-menu .cf-btn:disabled:hover {
-    background: rgba(0,0,0,0.25) !important;
-    color: #718096 !important;
+    background: var(--theme-bg-primary) !important;
+    color: var(--theme-text-muted) !important;
     opacity: 0.6 !important;
     box-shadow: none !important;
     transform: none !important;

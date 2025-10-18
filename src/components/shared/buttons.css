@@ -3,20 +3,21 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 6px; /* Comfortable spacing for icon-text combinations */
+    gap: 8px; /* Comfortable spacing for icon-text combinations */
     flex-shrink: 0; /* Prevents distortion in flexible layouts */
     
     overflow: hidden; /* Contains any internal animations or effects */
     
     position: relative; /* Enables loading spinners and focus effects */
     
-    border: none;
-    border-radius: 8px; /* Friendly rounded corners match the app's design language */
+    border: 2px solid transparent;
+    border-radius: 10px; /* More rounded corners for modern look */
     
-    padding: 8px 16px; /* Generous padding ensures comfortable touch targets */
+    padding: 10px 20px; /* More generous padding */
+    min-height: 40px; /* Ensures consistent button height */
     
     font-family: 'NeverMindHand', 'Roboto', Arial, sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.9rem; /* Slightly larger for better readability */
     font-weight: 600; /* Semi-bold text stands out against colored backgrounds */
     letter-spacing: .3px; /* Slight spacing improves readability on small buttons */
     text-decoration: none; /* Clean appearance when used as link elements */
@@ -27,19 +28,29 @@
     
     outline: none; /* Custom focus styles provide better control */
     
-    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.18s ease; /* Smooth interactions feel responsive */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth interactions feel responsive */
     
     cursor: pointer;
+    
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Hover effects provide satisfying tactile feedback for all button interactions */
 .cf-btn:hover:not(:disabled):not(.cf-btn--disabled) {
-    transform: translateY(-2px)scale(1.02); /* Gentle lift and growth indicates responsiveness */
+    transform: translateY(-2px) scale(1.02); /* Gentle lift and growth indicates responsiveness */
+    box-shadow: 
+        0 6px 12px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* Active state provides immediate feedback during click/tap */
 .cf-btn:active:not(:disabled):not(.cf-btn--disabled) {
-    transform: translateY(0)scale(.99); /* Slight compression mimics physical button press */
+    transform: translateY(0) scale(.98); /* Slight compression mimics physical button press */
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Size variants accommodate different interface contexts and importance levels */
@@ -59,174 +70,162 @@
 
 /* Primary actions use brand cyan for main commission workflow steps */
 .cf-btn--primary {
-    background: #00bcd4; /* Brand cyan creates strong visual hierarchy for main actions */
+    background: linear-gradient(135deg, var(--theme-primary, #06b6d4) 0%, var(--theme-primary-dark, #0891b2) 100%);
+    border-color: var(--theme-primary-dark, #0891b2);
     
-    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.2); /* Subtle depth reinforces importance */
+    box-shadow: 
+        0 2px 6px var(--theme-primary-subtle, rgba(6, 182, 212, 0.25)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     
-    color: white; /* High contrast ensures accessibility compliance */
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cf-btn--primary:hover {
-    background: #00acc1; /* Darker shade confirms user interaction */
+    background: linear-gradient(135deg, var(--theme-primary-dark, #0891b2) 0%, var(--theme-primary, #06b6d4) 100%);
+    border-color: var(--theme-primary, #06b6d4);
     
-    box-shadow: 0 6px 18px rgba(0, 188, 212, .35); /* Enhanced shadow adds tactile quality */
+    box-shadow: 
+        0 6px 16px var(--theme-primary-subtle, rgba(6, 182, 212, 0.35)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
     
-    transform: translateY(-1px); /* Lift effect feels responsive and engaging */
+    transform: translateY(-2px) scale(1.02);
 }
 
 .cf-btn--primary:active {
-    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.2); /* Returns to base shadow for press feedback */
+    box-shadow: 
+        0 2px 6px var(--theme-primary-subtle, rgba(6, 182, 212, 0.25)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     
-    transform: translateY(0); /* Reset transform provides click confirmation */
+    transform: translateY(0) scale(.98);
 }
 
 /* Success actions signal positive outcomes like payment completion and project delivery */
 .cf-btn--success {
-    background: #4caf50; /* Green universally represents success and completion */
+    background: linear-gradient(135deg, var(--theme-accent, #10b981) 0%, var(--theme-accent-dark, #059669) 100%);
+    border-color: var(--theme-accent-dark, #059669);
     
-    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
+    box-shadow: 
+        0 2px 6px rgba(16, 185, 129, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cf-btn--success:hover {
-    background: #43a047; /* Darker green maintains color family consistency */
+    background: linear-gradient(135deg, var(--theme-accent-dark, #059669) 0%, var(--theme-accent, #10b981) 100%);
+    border-color: var(--theme-accent, #10b981);
     
-    box-shadow: 0 6px 18px rgba(76, 175, 80, .35);
+    box-shadow: 
+        0 6px 16px rgba(16, 185, 129, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
     
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
 }
 
 /* Warning actions indicate attention needed without panic for commission status changes */
 .cf-btn--warning {
-    background: #ff9800; /* Orange captures attention while remaining approachable */
+    background: linear-gradient(135deg, var(--theme-warning, #f59e0b) 0%, var(--theme-warning-dark, #d97706) 100%);
+    border-color: var(--theme-warning-dark, #d97706);
     
-    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
+    box-shadow: 
+        0 2px 6px rgba(245, 158, 11, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cf-btn--warning:hover {
-    background: #f57c00; /* Deeper orange reinforces the need for caution */
+    background: linear-gradient(135deg, var(--theme-warning-dark, #d97706) 0%, #b45309 100%);
+    border-color: #b45309;
     
-    box-shadow: 0 6px 18px rgba(255, 152, 0, .4);
+    box-shadow: 
+        0 6px 16px rgba(245, 158, 11, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
     
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
 }
 
 /* Danger actions for irreversible operations like deleting clients or commissions */
 .cf-btn--danger {
-    background: #f44336; /* Red universally signals danger and permanent deletion */
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    border-color: #dc2626;
     
-    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
+    box-shadow: 
+        0 2px 6px rgba(239, 68, 68, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
     
     color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .cf-btn--danger:hover {
-    background: #d32f2f; /* Darker red emphasizes the seriousness of the action */
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    border-color: #b91c1c;
     
-    box-shadow: 0 6px 18px rgba(244, 67, 54, .45);
+    box-shadow: 
+        0 6px 16px rgba(239, 68, 68, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.35);
     
-    transform: translateY(-1px);
-}
-
-/* WARNING ACTIONS -> Orange (In Progress, Pending Review) */
-.cf-btn--warning {
-    background: #ff9800;
-    
-    box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
-    
-    /* solid */
-  
-  
-  color: white;
-}
-
-.cf-btn--warning:hover {
-    background: #f57c00;
-    
-    box-shadow: 0 6px 18px rgba(255, 152, 0, .4);
-    
-    /* darker */
-  
-  
-  transform: translateY(-1px);
-}
-
-/* DANGER ACTIONS -> Red (Delete, Cancel, Remove) */
-.cf-btn--danger {
-    background: #f44336;
-    
-    box-shadow: 0 2px 4px rgba(244, 67, 54, 0.2);
-    
-    /* solid */
-  
-  
-  color: white;
-}
-
-.cf-btn--danger:hover {
-    background: #d32f2f;
-    
-    box-shadow: 0 6px 18px rgba(244, 67, 54, .45);
-    
-    /* darker */
-  
-  
-  transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
 }
 
 /* Secondary actions provide important functionality without overwhelming primary workflows */
 .cf-btn--secondary {
-    border: 1px solid #718096; /* Light border defines button without competing for attention */
+    border: 2px solid var(--theme-border-light, #cbd5e1);
     
-    background: #ffffff; /* Clean white works well in both light and dark contexts */
+    background: linear-gradient(135deg, var(--theme-bg-primary, #ffffff) 0%, var(--theme-bg-secondary, #f8fafc) 100%);
     
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow maintains button recognition */
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     
-    color: #475569; /* Muted color indicates supporting role */
+    color: var(--theme-text-primary, #475569);
 }
 
 .cf-btn--secondary:hover {
-    border-color: #718096; /* Darker border provides interaction feedback */
+    border-color: var(--theme-border-medium, #94a3b8);
     
-    background: #f8fafc; /* Light tint shows responsiveness */
+    background: linear-gradient(135deg, var(--theme-bg-secondary, #f8fafc) 0%, var(--theme-bg-tertiary, #f1f5f9) 100%);
     
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow creates depth */
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
     
-    color: #1e293b; /* Darker text on hover improves readability */
+    color: var(--theme-text-primary, #1e293b);
     
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.02);
 }
 
 /* Tertiary actions for minimal operations like closing dialogs or going back */
 .cf-btn--tertiary {
-    border: 1px solid #718096; /* Minimal border provides structure */
+    border: 1px solid var(--theme-border-medium, #718096); /* Minimal border provides structure */
     
     background: transparent; /* Transparency keeps focus on more important elements */
-    color: #718096; /* Subdued color suggests optional actions */
+    color: var(--theme-text-secondary, #718096); /* Subdued color suggests optional actions */
 }
 
 .cf-btn--tertiary:hover {
-    border-color: #718096; /* Subtle border change indicates interactivity */
+    border-color: var(--theme-border-dark, #718096); /* Subtle border change indicates interactivity */
     
-    background: #f1f5f9; /* Very light background provides gentle feedback */
-    color: #475569;
+    background: var(--theme-bg-primary, #f1f5f9); /* Very light background provides gentle feedback */
+    color: var(--theme-text-primary, #475569);
 }
 
 /* Outline variants provide brand emphasis without the visual weight of filled buttons */
 .cf-btn--outline-primary {
-    border: 2px solid #00bcd4; /* Prominent border creates brand recognition */
+    border: 2px solid var(--theme-primary, #00bcd4); /* Prominent border creates brand recognition */
     
     background: transparent; /* Transparency reduces visual competition */
-    color: #00bcd4; /* Matching text color reinforces brand consistency */
+    color: var(--theme-primary, #00bcd4); /* Matching text color reinforces brand consistency */
 }
 
 .cf-btn--outline-primary:hover {
-    background: #00bcd4; /* Fill on hover provides clear interaction feedback */
+    background: var(--theme-primary, #00bcd4); /* Fill on hover provides clear interaction feedback */
     
-    box-shadow: 0 6px 18px rgba(0, 188, 212, .35);
+    box-shadow: 0 6px 18px var(--theme-primary-subtle, rgba(0, 188, 212, .35));
     
     color: white; /* White text ensures readability on filled background */
     
@@ -234,14 +233,14 @@
 }
 
 .cf-btn--outline-success {
-    border: 2px solid #4caf50; /* Green outline for positive actions */
+    border: 2px solid var(--theme-accent, #4caf50); /* Green outline for positive actions */
     
     background: transparent;
-    color: #4caf50;
+    color: var(--theme-accent, #4caf50);
 }
 
 .cf-btn--outline-success:hover {
-    background: #4caf50; /* Consistent fill behavior across outline variants */
+    background: var(--theme-accent, #4caf50); /* Consistent fill behavior across outline variants */
     
     box-shadow: 0 6px 18px rgba(76, 175, 80, .35);
     

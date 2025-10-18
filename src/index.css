@@ -80,24 +80,24 @@
 
 /* Primary buttons use brand cyan for main actions and calls-to-action */
 .cf-btn--primary {
-    background: #00bcd4; /* Brand cyan creates strong visual hierarchy */
+    background: linear-gradient(135deg, var(--theme-primary, #00bcd4) 0%, var(--theme-primary-dark, #0891b2) 100%);
     
-    box-shadow: 0 2px 4px rgba(0, 188, 212, 0.2); /* Subtle depth reinforces importance */
+    box-shadow: 0 2px 4px var(--theme-primary-subtle, rgba(0, 188, 212, 0.2));
     
     color: white; /* High contrast ensures accessibility */
 }
 
 .cf-btn--primary:hover {
-    background: #00acc1; /* Darker shade confirms interaction */
+    background: linear-gradient(135deg, var(--theme-primary-dark, #00acc1) 0%, var(--theme-primary, #00bcd4) 100%);
     
-    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3); /* Enhanced shadow adds tactile feedback */
+    box-shadow: 0 4px 12px var(--theme-primary-subtle, rgba(0, 188, 212, 0.3));
     
     transform: translateY(-1px); /* Gentle lift effect feels responsive */
 }
 
 /* Success buttons for positive actions like saving and completing */
 .cf-btn--success {
-    background: #4caf50; /* Green universally signals positive actions */
+    background: linear-gradient(135deg, var(--theme-accent, #4caf50) 0%, var(--theme-accent-dark, #388e3c) 100%);
     
     box-shadow: 0 2px 4px rgba(76, 175, 80, 0.2);
     
@@ -105,7 +105,7 @@
 }
 
 .cf-btn--success:hover {
-    background: #388e3c; /* Darker green maintains color family consistency */
+    background: linear-gradient(135deg, var(--theme-accent-dark, #388e3c) 0%, var(--theme-accent, #4caf50) 100%);
     
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
     
@@ -114,7 +114,7 @@
 
 /* Warning buttons for potentially risky but reversible actions */
 .cf-btn--warning {
-    background: #ff9800; /* Orange captures attention without panic */
+    background: linear-gradient(135deg, var(--theme-warning, #ff9800) 0%, var(--theme-warning-dark, #f57c00) 100%);
     
     box-shadow: 0 2px 4px rgba(255, 152, 0, 0.2);
     
@@ -122,7 +122,7 @@
 }
 
 .cf-btn--warning:hover {
-    background: #f57c00; /* Deeper orange increases urgency appropriately */
+    background: linear-gradient(135deg, var(--theme-warning-dark, #f57c00) 0%, var(--theme-warning, #ff9800) 100%);
     
     box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
     
@@ -148,19 +148,19 @@
 
 /* Secondary buttons for supporting actions that need visibility but not dominance */
 .cf-btn--secondary {
-    border: 1px solid #718096; /* Light border provides definition without heaviness */
+    border: 1px solid var(--theme-border-medium, #718096);
     
-    background: #ffffff; /* Clean white background works with any color scheme */
+    background: var(--theme-bg-primary, #ffffff);
     
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Minimal shadow maintains button recognition */
     
-    color: #475569; /* Muted text color indicates secondary importance */
+    color: var(--theme-text-primary, #475569);
 }
 
 .cf-btn--secondary:hover {
-    border-color: #718096; /* Subtle border darkening shows responsiveness */
+    border-color: var(--theme-border-dark, #718096);
     
-    background: #f8fafc; /* Light tint provides feedback without drama */
+    background: var(--theme-bg-secondary, #f8fafc);
     
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow creates tactile feeling */
     
@@ -248,22 +248,51 @@ body {
     min-height: 100vh; /* Full viewport height ensures proper layout */
     min-width: 320px; /* Minimum width prevents extremely narrow displays */
     
-    /* Animated checker pattern background with dark base */
-    background-color: #232833;
-    background-image: 
-        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    animation: checkerMove 300s linear infinite;
+    /* Theme-based background with beautiful pattern */
+    background: var(--theme-gradient-bg);
     
-    color: #718096; /* Light text for readability on dark background */
+    /* Overlay pattern from theme system */
+    position: relative;
+    
+    color: var(--theme-text-secondary); /* Theme-aware text color */
     
     place-items: center; 
+}
+
+/* Background pattern overlay using theme variables */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     
+    background: var(--theme-bg-pattern);
+    
+    pointer-events: none;
+    z-index: 0;
+    
+    /* Subtle animation for living background */
+    animation: patternFloat 60s ease-in-out infinite;
+}
+
+/* All children need to be above the pattern */
+body > * {
     position: relative;
+    z-index: 1;
+}
+
+/* Gentle floating animation for background pattern */
+@keyframes patternFloat {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
 }
 
 /* Slow diagonal movement animation */

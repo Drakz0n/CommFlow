@@ -1,0 +1,9 @@
+{
+  "of": "of",
+  "zoomOut": "Zoom Out",
+  "zoomIn": "Zoom In",
+  "reset": "Reset",
+  "close": "Close",
+  "navigationHint": "Use ← → keys to navigate",
+  "controlsHint": "Scroll, +/- to zoom • Drag to pan when zoomed • R to reset • ESC to close"
+}
